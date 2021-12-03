@@ -5,7 +5,7 @@ Organize an event, invite family members, ask for their preferences and match th
 - Organizer
 - Participant
 
-# Flows
+# Scenario
 <ol>
 <li>As an Organizer provide emails and nicknames of all participants you plan to invite</li>
 <li>Click 'SEND' button</li>
