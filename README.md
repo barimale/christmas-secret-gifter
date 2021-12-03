@@ -3,10 +3,11 @@ Organize an event, invite family members, ask for their preferences and match th
 
 # Getting Started
 <ol>
-<li>	Installation process</li>
-<li>	Software dependencies</li>
-3.	Latest releases
-4.	API references
+<li>Installation process</li>
+## alksdj
+<li>Software dependencies</li>
+<li>Latest releases</li>
+<li>API </li>
 </ol>
 
 # Build and Test
