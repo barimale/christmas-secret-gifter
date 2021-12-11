@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import sizeMe from 'react-sizeme';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import MenuWithItems from '../organisms/menu/menu-mobile/MenuWithItems';
-import { GetFullPathTo } from '../../router/routerConfiguration';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
 import { Title as MainTitle } from '../screens/ContactScreen';
 import { StyledLink } from '../atoms/StyledLink';
@@ -66,7 +65,7 @@ const TopMenu = function () {
               >
                 <StyledLink
                   className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
-                  to={GetFullPathTo(MainTitle)}
+                  // to={GetFullPathTo(MainTitle)}
                 >
                   Christmas Secret Gifter
                 </StyledLink>
