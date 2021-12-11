@@ -1,14 +1,15 @@
 import React from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
-import { Link } from 'react-router-dom';
-import Divider from '@material-ui/core/Divider';
 
+// eslint-disable-next-line no-unused-vars
 type MenuItemsProps = {
+  // eslint-disable-next-line react/no-unused-prop-types
   handleClose: () => void;
 };
+
+// eslint-disable-next-line no-unused-vars
 export const MenuItems = function (props: MenuItemsProps) {
   return (
-    <>
+    <div>
       {/* {OrderedSectionsConfiguration.map((section: configSection, index: number) => {
         if (section.type === configSectionType.divider) {
           return (<Divider orientation="horizontal" />);
@@ -36,6 +37,6 @@ export const MenuItems = function (props: MenuItemsProps) {
           </MenuItem>
         );
       })} */}
-    </>
+    </div>
   );
 };

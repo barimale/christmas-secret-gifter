@@ -1,8 +1,8 @@
 import React from 'react';
 
 const CenteredDiv = function (props: any) {
-  const backgroundColor: string = props.style.backgroundColor ?? 'unset';
-  const verticalAlign: string = props.style.verticalAlign ?? 'center';
+  const backgroundColor: string = (props.style && props.style.backgroundColor) ?? 'unset';
+  const verticalAlign: string = (props.style && props.style.verticalAlign) ?? 'center';
 
   return (
     <div

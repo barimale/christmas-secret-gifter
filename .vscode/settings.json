@@ -3,6 +3,12 @@
         "/src/store",
         "/src/components/organisms/menu/menu-desktop",
         "/src/components/organisms/menu/menu-mobile",
-        "/src/components/organisms/Footer"
+        "/src/components/organisms/Footer",
+        "/src/components/templates",
+        "/src/components/screens",
+        "/src/components/pages",
+        "/src/components/organisms",
+        "/src/components/atoms",
+        "/src/components/molecules"
     ]
 }

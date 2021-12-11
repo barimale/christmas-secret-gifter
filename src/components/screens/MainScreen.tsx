@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { EventContext } from '../../contexts/CartContext';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -18,15 +17,15 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const MainScreen = function () {
-  const { getParticipantsAmount } = useContext(EventContext);
-  const [wizardInProgress] = useState<boolean>(getParticipantsAmount() > 0);
+  // const { getParticipantsAmount } = useContext(EventContext);
+  // const [wizardInProgress] = useState<boolean>(getParticipantsAmount() > 0);
 
   return (
-    getParticipantsAmount() > 0 || wizardInProgress ? (
-      <div>1</div>
-    ) : (
-      <div>2</div>
-    )
+  // getParticipantsAmount() > 0 || wizardInProgress ? (
+    <div>1</div>
+  // ) : (
+  //   <div>2</div>
+  // )
   );
 };
 

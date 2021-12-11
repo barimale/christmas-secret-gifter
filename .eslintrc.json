@@ -6,8 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb",
-        "plugin:prettier/recommended"
+        "airbnb"
+        // "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,11 +19,11 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
-        // "@typescript-eslint/eslint-plugin"
+        "@typescript-eslint",
+        "@typescript-eslint/eslint-plugin"
     ],
     "rules": {
-        "linebreak-style": ["error", "windows"],
+        "linebreak-style": "off",
         "func-names":"off",
         "react/jsx-pascal-case": [0, "always"],
         "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents":true }],
@@ -53,6 +53,7 @@
             "namedComponents": [ "function-declaration", "function-expression", "arrow-function"],
             "unnamedComponents": ["function-expression", "arrow-function"]
           }],
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "no-restricted-exports": "off"
     }
 }

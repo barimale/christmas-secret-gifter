@@ -65,7 +65,7 @@ const TopMenu = function () {
               >
                 <StyledLink
                   className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
-                  // to={GetFullPathTo(MainTitle)}
+                  to={MainTitle}
                 >
                   Christmas Secret Gifter
                 </StyledLink>

@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ContentLayout from '../templates/ContentLayout';
-import CenteredDiv from '../templates/CenteredDiv';
 import { Wrapper } from './styles';
+import ContentLayout from '../../templates/ContentLayout';
+import CenteredDiv from '../../templates/CenteredDiv';
 
 const LoadingInProgress = () => (
   <Wrapper>
@@ -12,6 +12,6 @@ const LoadingInProgress = () => (
       </CenteredDiv>
     </ContentLayout>
   </Wrapper>
-)
+);
 
 export default LoadingInProgress;
