@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { init } from 'emailjs-com';
+import { CustomMuiThemeProvider } from '../theme/CustomMuiThemeProvider';
+import CenteredDiv from '../components/templates/CenteredDiv';
+import ResourceLoadedApp from './resources-loaded/ResourceLoadedApp';
 
 const App = function () {
   const [isLoading, setIsLoading] = useState<boolean>(true);

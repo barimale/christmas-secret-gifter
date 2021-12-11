@@ -38,6 +38,18 @@
             "custom": "enforce",
             "explicitSpread": "enforce"
         }],
-        "object-curly-spacing": ["warn", "always"]
+        "object-curly-spacing": ["warn", "always"],
+        "import/no-unresolved": [0, { "commonjs": true}],
+        "import/prefer-default-export": "off",
+        "import/extensions": ["off", "never" ],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "always",
+            "asyncArrow": "always"
+        }],
+        "react/function-component-definition": [0, {
+            "namedComponents": [ "function-declaration", "function-expression", "arrow-function"],
+            "unnamedComponents": ["function-expression", "arrow-function"]
+          }]
     }
 }

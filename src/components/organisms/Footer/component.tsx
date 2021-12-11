@@ -13,7 +13,7 @@ const Footer = () => {
       <div className={classes.title}>
         <span>
           <>
-            &copy; 2021 - Christmas Secret Gifter
+            &copy; 2021 - Christmas Secret Gifter 
           </>
       </span>
       </div>
