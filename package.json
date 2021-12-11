@@ -43,7 +43,7 @@
     "yup": "^0.32.8"
   },
   "scripts": {
-    "setup": "rimraf ./node_modules && rimraf ./*.lock && yarn install --force && npm install --force",
+    "setup": "rimraf ./node_modules && rimraf ./yarn.lock && yarn install --force",
     "start": "set PORT=3010 && react-scripts start",
     "build-fast": "react-scripts build",
     "build": "npx ts-node --project tsconfig.node.json ./scripts/sitemap-builder.ts && yarn build-fast",
@@ -82,9 +82,13 @@
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^19.0.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1"
   }
 }

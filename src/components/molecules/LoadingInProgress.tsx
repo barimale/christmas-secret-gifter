@@ -1,14 +1,16 @@
-import React from "react";
+import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CenteredDiv from "../templates/CenteredDiv";
-import { ContentLayout } from "../templates/ContentLayout";
+import ContentLayout from '../templates/ContentLayout';
+import CenteredDiv from '../templates/CenteredDiv';
 
-export const LoadingInProgress = () =>{
-    return(
-        <ContentLayout>
-            <CenteredDiv>
-                    <CircularProgress color="secondary" />
-            </CenteredDiv>
-        </ContentLayout>
-    );
-}
+const LoadingInProgress = function () {
+  return (
+    <ContentLayout>
+      <CenteredDiv>
+        <CircularProgress color="secondary" />
+      </CenteredDiv>
+    </ContentLayout>
+  );
+};
+
+export default LoadingInProgress;

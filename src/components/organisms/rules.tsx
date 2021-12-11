@@ -1,4 +1,4 @@
-export const title = "Regulamin sklepu";
+export const title = 'Regulamin sklepu';
 
 const description = `
 Sklep internetowy dostępny pod adresem internetowym www.odkrywajcie.pl prowadzony 
@@ -19,9 +19,9 @@ z dnia 30 maja 2014 r. o prawach konsumenta (Dz. U. poz. 827, z późn. zm.). Po
 Regulaminu mniej korzystne dla Konsumenta niż postanowienia ustawy są nieważne, a w ich miejsce 
 stosuje się przepisy ustawy. W przypadku ewentualnej niezgodności postanowień Regulaminu z ww. 
 przepisami, pierwszeństwo i zastosowanie mają przedmiotowe przepisy. 
-`
+`;
 
-const section1Title = "I. Definicje";
+const section1Title = 'I. Definicje';
 const section1Content = `
 <ol style="padding-left: 15px;">
     <li>Dzień roboczy - jeden dzień od poniedziałku do piątku z wyłączeniem dni ustawowo wolnych od pracy.</li>
@@ -49,7 +49,7 @@ const section1Content = `
 </ol>
 `;
 
-const section2Title = "II. Postanowienia ogólne";
+const section2Title = 'II. Postanowienia ogólne';
 const section2Content = `
 <ol style="padding-left: 15px;">
     <li>Regulamin jest nieprzerwanie dostępny w witrynie internetowej www.odkrywajcie.pl, w sposób umożliwiający każdemu użytkownikowi jego pozyskanie, odtwarzanie i utrwalanie jego treści poprzez wydrukowanie lub zapisanie na nośniku w każdej chwili.</li>
@@ -70,7 +70,7 @@ const section2Content = `
 </ol>
 `;
 
-const section3Title = "III. Usługi świadczone drogą elektroniczną";
+const section3Title = 'III. Usługi świadczone drogą elektroniczną';
 const section3Content = `
 <ol style="padding-left: 15px;">
     <li>Sprzedawca świadczy, że za pośrednictwem Sklepu internetowego dostępna jest Usługa: Formularz zamówienia.</li>
@@ -110,7 +110,7 @@ const section3Content = `
 </ol>
 `;
 
-const section4Title = "IV. Umowa sprzedaży";
+const section4Title = 'IV. Umowa sprzedaży';
 const section4Content = `
 <ol style="padding-left: 15px;">
     <li>Zawarcie Umowy Sprzedaży Towaru/Usługi między Klientem a Sprzedawcą następuje po uprzednim złożeniu przez Klienta Zamówienia za pomocą Formularza Zamówienia w Sklepie Internetowym.</li>
@@ -126,7 +126,7 @@ const section4Content = `
 </ol>
 `;
 
-const section5Title = "V. Dodatkowe warunki zawarcia Umowy sprzedaży Usługi";
+const section5Title = 'V. Dodatkowe warunki zawarcia Umowy sprzedaży Usługi';
 const section5Content = `
 <ol style="padding-left: 15px;">
     <li>Dokonanie wyboru Usługi następuje z produktów zawierających w swojej nazwie „Szkolenie” poprzez podejmowanie kolejnych czynności technicznych w oparciu o wyświetlane na stronie internetowej komunikaty i inne informacje (w szczególności wybór następuje poprzez kliknięcie przycisku „DO KOSZYKA”).</li>
@@ -139,7 +139,7 @@ const section5Content = `
 </ol>
 `;
 
-const section6Title = "VI. Realizacja zamówień i dostawa";
+const section6Title = 'VI. Realizacja zamówień i dostawa';
 const section6Content = `
 <ol style="padding-left: 15px;">
     <li>Dostawa Towaru dostępna jest na terytorium Rzeczypospolitej Polskiej i odbywa się na adres wskazany przez Klienta w trakcie procedury składania Zamówienia.</li>
@@ -155,7 +155,7 @@ const section6Content = `
 </ol>
 `;
 
-const section7Title = "VII. Metody płatności";
+const section7Title = 'VII. Metody płatności';
 const section7Content = `
 <ol style="padding-left: 15px;">
     <li>Sprzedawca umożliwia następujące metody płatności: przelew tradycyjny na rachunek bankowy Sprzedawcy podany każdorazowo w wiadomości potwierdzającej przyjęcie zamówienia przez Sprzedawcę.</li>
@@ -164,7 +164,7 @@ const section7Content = `
 </ol>
 `;
 
-const section8Title = "VIII. Rękojmia i reklamacje";
+const section8Title = 'VIII. Rękojmia i reklamacje';
 const section8Content = `
 <ol style="padding-left: 15px;">
     <li>Sprzedawca jest odpowiedzialny względem kupującego, jeżeli rzecz sprzedana ma wadę fizyczną lub prawną. Podstawa i zakres odpowiedzialności Sprzedawcy wobec Klienta, w sytuacji gdy sprzedany Towar ma wadę fizyczną lub prawną zostały ustalone przepisami prawa powszechnie obowiązującego, w tym zostały określone w k.c. (w szczególności w art. 556-576 k.c.).</li>
@@ -186,7 +186,7 @@ const section8Content = `
 </ol>
 `;
 
-const section9Title = "IX. Zasady korzystania z Kart Cyfrowych";
+const section9Title = 'IX. Zasady korzystania z Kart Cyfrowych';
 const section9Content = `
 <ol style="padding-left: 15px;">
     <li>Zakupione i opłacone Karty Cyfrowe będą dostępne dla Klienta na jego koncie poczty elektronicznej po ich przesłaniu przez Sprzedawcę na podany adres poczty elektronicznej.</li>
@@ -199,7 +199,7 @@ const section9Content = `
 </ol>
 `;
 
-const section10Title = "X. Prawo do odstąpienia od umowy";
+const section10Title = 'X. Prawo do odstąpienia od umowy';
 const section10Content = `
 <ol style="padding-left: 15px;">
     <li>Zgodnie z art. 27 ustawy o prawach konsumenta, Klientowi będącemu Konsumentem przysługuje prawo do odstąpienia od umowy zawartej na odległość bez podania przyczyny.</li>
@@ -232,7 +232,7 @@ const section10Content = `
 </ol>
 `;
 
-const section11Title = "XI. Pozasądowe metody rozwiązywania sporów";
+const section11Title = 'XI. Pozasądowe metody rozwiązywania sporów';
 const section11Content = `
 <ol style="padding-left: 15px;">
     <li>Klientowi będącemu Konsumentem przysługuje prawo do skorzystania z pozasądowych metod rozwiązywania sporów.</li>
@@ -245,7 +245,7 @@ const section11Content = `
 </ol>
 `;
 
-const section12Title = "XII. Przedsiębiorcy";
+const section12Title = 'XII. Przedsiębiorcy';
 const section12Content = `
 <ol style="padding-left: 15px;">
     <li>Niniejszy paragraf Regulaminu oraz postanowienia w nim zawarte dotyczą tylko i wyłącznie Klientów nie będących Konsumentami.</li>
@@ -261,7 +261,7 @@ const section12Content = `
 </ol>
 `;
 
-const section13Title = "XIII. Postanowienia końcowe";
+const section13Title = 'XIII. Postanowienia końcowe';
 const section13Content = `
 <ol style="padding-left: 15px;">
     <li>Umowy zawierane są w języku polskim za pośrednictwem Sklepu internetowego.</li>

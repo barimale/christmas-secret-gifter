@@ -1,5 +1,8 @@
 {
     "exportall.config.folderListener": [
-        "/src/store"
+        "/src/store",
+        "/src/components/organisms/menu/menu-desktop",
+        "/src/components/organisms/menu/menu-mobile",
+        "/src/components/organisms/Footer"
     ]
 }

@@ -1,5 +1,6 @@
+import React from 'react';
 
-export const ContentLayout = (props: any) => {
+const ContentLayout = function (props: any) {
   return (
     <div style={{
       display: 'flex',
@@ -7,9 +8,12 @@ export const ContentLayout = (props: any) => {
       width: 'inherit',
       alignItems: 'stretch',
       justifyContent: 'stretch',
-      backgroundColor: 'white'
-    }}>
+      backgroundColor: 'white',
+    }}
+    >
       {props.children}
     </div>
   );
 };
+
+export default ContentLayout;

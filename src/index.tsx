@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './assets/fonts/Sacramento-Regular.ttf'
+import './assets/fonts/Sacramento-Regular.ttf';
 import {Helmet} from 'react-helmet';
 import App from './app/App';
 

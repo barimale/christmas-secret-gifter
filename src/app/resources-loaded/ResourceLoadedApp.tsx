@@ -5,18 +5,18 @@ import { EventContextProvider } from '../../contexts/CartContext';
 import { DeviceContextProvider } from '../../contexts/DeviceContext';
 import Routes from '../../router/Routes';
 
-function ResourceLoadedApp() {
+const ResourceLoadedApp = function () {
   return (
     <EventContextProvider>
       <DeviceContextProvider>
         <Router>
           <MainLayout>
-            <Routes/>
+            <Routes />
           </MainLayout>
         </Router>
       </DeviceContextProvider>
     </EventContextProvider>
   );
-}
+};
 
 export default ResourceLoadedApp;
