@@ -1,9 +1,9 @@
 import React from 'react';
 import { lazy, Suspense } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CenteredDiv from '../layouts/CenteredDiv';
+import CenteredDiv from '../templates/CenteredDiv';
 
-const ContactScreenContent = lazy(() => import("../common/ContactScreenContent"));
+const ContactScreenContent = lazy(() => import("../pages/ContactScreenContent"));
 
 export const Path = "/contact";
 export const Title = "Contact";

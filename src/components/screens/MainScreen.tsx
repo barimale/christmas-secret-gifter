@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { EventContext } from '../../contexts/CartContext';
-import { EventWizard } from '../common/event-wizard/getSteps';
-import { StartEvent } from '../common/event-wizard/StartEvent';
+import { EventWizard } from '../organisms/event-wizard/getSteps';
+import { StartEvent } from '../organisms/event-wizard/StartEvent';
 
 export const Path = "/";
 export const Title = "Events"
