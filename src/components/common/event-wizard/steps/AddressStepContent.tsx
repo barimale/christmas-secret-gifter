@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { CartContext, AddressDetails } from '../../../contexts/CartContext';
+import { EventContext, AddressDetails } from '../../../../contexts/CartContext';
 import * as Yup from 'yup';
 import { FormikProps, useField } from "formik";
-import { DeviceContextConsumer, DeviceType } from '../../../contexts/DeviceContext';
+import { DeviceContextConsumer, DeviceType } from '../../../../contexts/DeviceContext';
 
 export const ShortAddressSchema = Yup.object().shape({
   email: Yup.string()
@@ -47,7 +47,7 @@ export const LongAddressSchema = Yup.object().shape({
 });
 
 export function AddressStepContent(props: FormikProps<AddressDetails>) {
-  const { isPhysicalItemIncluded } = useContext(CartContext);
+  const { isPhysicalItemIncluded } = useContext(EventContext);
   
   return (
     <Grid container spacing={3} style={{width: '100%', verticalAlign: 'center'}}>

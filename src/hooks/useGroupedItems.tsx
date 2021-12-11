@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { ItemDetails } from '../components/common/BuyItems';
-import { CartContext } from '../contexts/CartContext';
+import { EventContext } from '../contexts/CartContext';
 
 function GroupBy<T, K extends keyof T>(array: T[], key: K) {
     let map = new Map<T[K], T[]>();
@@ -21,7 +21,7 @@ export type CountedItemDetails ={
 }
 
 export const useGroupedItems = () => {
-  const { items } = useContext(CartContext);
+  const { items } = useContext(EventContext);
   const [ groupedItems, setGroupedItems ] = useState<Array<CountedItemDetails>>(
       new Array<CountedItemDetails>());
 

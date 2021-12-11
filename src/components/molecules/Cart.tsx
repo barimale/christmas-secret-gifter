@@ -1,9 +1,9 @@
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Path as CartPath } from '../screens/CartScreen';
+import { Path as CartPath } from '../screens/MainScreen';
 import { appBaseRouteKey } from "../../router/routerConfiguration";
 import { StyledLink } from "../molecules/Header";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from '../../contexts/CartContext';
+import { EventContext } from '../../contexts/CartContext';
 import Badge from '@material-ui/core/Badge';
 import { Theme, withStyles, createStyles } from '@material-ui/core/styles';
 import { tileData, ItemDetails } from '../common/BuyItems';
@@ -27,7 +27,7 @@ const StyledBadge = withStyles((theme: Theme) =>
 )(Badge);
 
 const Cart = (props: any) => {
-    const { getCount, items } = useContext(CartContext);
+    const { getParticipantsAmount: getCount, items } = useContext(EventContext);
     const [ classNames, setClassNames ] = useState<string>("");
     const cartRef = document.getElementById("styledBadgeIdForAnimation");
 
@@ -70,7 +70,7 @@ const Cart = (props: any) => {
 }
 
 export const BuyButton = (props:{item: ItemDetails, onClicked: ()=> void}) => {
-    const { add } = useContext(CartContext);
+    const { add } = useContext(EventContext);
     const { item, onClicked } = props;
     
     return (

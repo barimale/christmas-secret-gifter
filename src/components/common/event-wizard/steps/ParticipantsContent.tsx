@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import { CartContext } from "../../../contexts/CartContext";
+import { EventContext } from "../../../../contexts/CartContext";
 import Button from '@material-ui/core/Button';
-import { CountedItemDetails, useGroupedItems } from "../../../hooks/useGroupedItems";
+import { CountedItemDetails, useGroupedItems } from "../../../../hooks/useGroupedItems";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
@@ -12,12 +12,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { DeviceContextConsumer, DeviceType } from '../../../contexts/DeviceContext';
+import { DeviceContextConsumer, DeviceType } from '../../../../contexts/DeviceContext';
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import { Path as HomePath } from '../../screens/CartScreen';
+import { Path as HomePath } from '../../../screens/MainScreen';
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -30,7 +30,7 @@ export const Title = "Participants";
 export function ParticipantsContent(){
     const classes = useStyles();
     const { groupedItems, total } = useGroupedItems();
-    const { remove, add, getCount, decrementByOne } = useContext(CartContext);
+    const { remove, add, getParticipantsAmount: getCount, decrementByOne } = useContext(EventContext);
     const history = useHistory();
 
     useEffect(()=>{

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ItemDetails } from '../components/common/BuyItems';
 
@@ -14,47 +15,73 @@ export interface AddressDetails {
   emailConfirmed: string;
 }
 
-type Cart = {
+type Event = {
     items: Array<ItemDetails>;
     getAddressDetails: () => AddressDetails;
     orderStatus: string;
     setOrderStatus: (value: string) => void;
     clear: () => void;
-    getCount: () => number;
+    getParticipantsAmount: () => number;
     add: (item: ItemDetails) => void;
     remove: (item: ItemDetails) => void;
     decrementByOne: (item: ItemDetails) => void;
     isPhysicalItemIncluded: () => boolean;
     registerAddressDetails: (data: AddressDetails) => void;
+    registerFreeEvent: () => void;
+    registerManagedEvent: () => void;
 };
 
-const CartContext = React.createContext<Cart>({} as Cart);
+const EventContext = React.createContext<Event>({} as Event);
 
-const CART_KEY = "71dc692c-47e5-4966-9fdc-da0fd26dbe13";
+const EVENT_KEY = "71dc692c-47e5-4966-9fdc-da0fd26dbe13";
 
-const CartContextProvider = (props: any) => {
+const apiUrl = process.env.REACT_APP_SHOP_APP;
+
+const EventContextProvider = (props: any) => {
     const [ defaultItems, setDefaultItems] = useState<Array<ItemDetails>>(new Array<ItemDetails>());
     const [ addressDetails, setAddressDetails] = useState<AddressDetails>({} as AddressDetails);
     const [ orderStatus, setOrderStatus ] = useState<string>("");
 
     useEffect(()=>{
-      var cartContent = localStorage.getItem(CART_KEY);
+      var cartContent = localStorage.getItem(EVENT_KEY);
       if(cartContent !== null){
         var result: Array<ItemDetails> = JSON.parse(cartContent);
         setDefaultItems(result);
       }
     }, []);
 
+    // const register = async (isManaged: boolean) => {
+    //   try{
+    //     return await axios.post(
+    //       `${apiUrl}/api/engine/analyze`, 
+    //       {}, 
+    //       {}).catch(async (thrown: any)=>{
+    //           console.log('Request canceled', thrown.message);
+    //       }).finally(async() => {
+    //         localStorage.removeItem(TOKEN_KEY);
+    //         await dispatch({ type: 'SIGN_OUT' });
+    //       });
+    //   }catch(e){
+    //     console.log(e);
+    //   }
+    // }
+
     useEffect(()=>{
-      localStorage.setItem(CART_KEY, JSON.stringify(defaultItems));
+      localStorage.setItem(EVENT_KEY, JSON.stringify(defaultItems));
     }, [defaultItems]);
 
-      const cartContext: Cart = ({
+      const eventContext: Event = ({
         clear: () => {
           setDefaultItems(new Array<ItemDetails>());  
           setAddressDetails({} as AddressDetails);    
         },
-        getCount: () => {
+        registerFreeEvent: async () => {
+
+        },
+        registerManagedEvent: async () => {
+
+        },
+        getParticipantsAmount: () => {
             return defaultItems.length;
           },
         add: (data: ItemDetails) => {
@@ -92,7 +119,7 @@ const CartContextProvider = (props: any) => {
         items: defaultItems
       });
   
-    return <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>;
+    return <EventContext.Provider value={eventContext}>{props.children}</EventContext.Provider>;
   }
 
-export { CartContextProvider, CartContext };
+export { EventContextProvider, EventContext };

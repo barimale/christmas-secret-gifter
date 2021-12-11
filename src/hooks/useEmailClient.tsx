@@ -2,7 +2,7 @@ import ReactDOMServer from 'react-dom/server';
 import React, { useContext } from 'react';
 import { Guid } from "guid-typescript";
 import { CountedItemDetails, useGroupedItems } from './useGroupedItems';
-import { CartContext } from '../contexts/CartContext';
+import { EventContext } from '../contexts/CartContext';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -27,7 +27,7 @@ const templateHtml = `
 
 export const useEmailClient = () =>{
   const { total, groupedItems } = useGroupedItems();
-  const { getAddressDetails } = useContext(CartContext);
+  const { getAddressDetails } = useContext(EventContext);
   const { sendByNode } = useNodeEmailClient();
 
     const send = async (address: string, title: string, captcha: string): Promise<string> => {

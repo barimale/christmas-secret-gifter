@@ -1,14 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { useGroupedItems } from "../../../hooks/useGroupedItems";
-import { DeviceContextConsumer } from '../../../contexts/DeviceContext';
+import { useGroupedItems } from "../../../../hooks/useGroupedItems";
+import { DeviceContextConsumer } from '../../../../contexts/DeviceContext';
 import Divider from "@material-ui/core/Divider";
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../../../contexts/CartContext';
+import { EventContext } from '../../../../contexts/CartContext';
 import { Button } from '@material-ui/core';
 import { Checkbox } from '@material-ui/core';
-import { useEmailClient } from '../../../hooks/useEmailClient';
+import { useEmailClient } from '../../../../hooks/useEmailClient';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -38,7 +38,7 @@ export default function SummaryContent(props: SummaryContentProps){
   const [ isPolicyTermAgreed, setIsPolicyTermAgreed ] = useState<boolean>(false);
   const [ isCaptchaAgreed, setIsCaptchaAgreed ] = useState<boolean>(false);
   const [ captchaToken, setCaptchaToken ] = useState<string | null>(null);
-  const { clear, getAddressDetails, items, setOrderStatus } = useContext(CartContext);
+  const { clear, getAddressDetails, items, setOrderStatus } = useContext(EventContext);
   const [ isModalDisplayed, setIsModalDisplayed ] = useState<boolean>(false);
   const [ isModal2Displayed, setIsModal2Displayed ] = useState<boolean>(false);
 

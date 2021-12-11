@@ -1,4 +1,4 @@
-import { Title as MainTitle, Path as MainPath } from '../components/screens/CartScreen';
+import { Title as MainTitle, Path as MainPath } from '../components/screens/MainScreen';
 import { Title as ContactTitle, Path as ContactPath } from "../components/screens/ContactScreen";
 
 export const appBaseRouteKey = "";

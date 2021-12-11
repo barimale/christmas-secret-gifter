@@ -1,8 +1,8 @@
-import CenteredDiv  from '../../common/CenteredDiv';
+import CenteredDiv  from '../../CenteredDiv';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { appBaseRouteKey} from "../../../router/routerConfiguration";
-import { Path as ContactPath } from "../../screens/ContactScreen";
+import { appBaseRouteKey} from "../../../../router/routerConfiguration";
+import { Path as ContactPath } from "../../../screens/ContactScreen";
 import WarningIcon from '@material-ui/icons/Warning';
 
 const useStyles = makeStyles((theme: Theme) =>
