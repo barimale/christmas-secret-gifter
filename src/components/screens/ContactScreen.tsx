@@ -1,7 +1,7 @@
 import React from 'react';
 import { lazy, Suspense } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CenteredDiv from '../common/CenteredDiv';
+import CenteredDiv from '../layouts/CenteredDiv';
 
 const ContactScreenContent = lazy(() => import("../common/ContactScreenContent"));
 

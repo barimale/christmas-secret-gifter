@@ -1,7 +1,7 @@
 import React from "react";
-import { CenteredDiv } from "../common/divs";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { ContentLayout } from "../layouts/MainLayout";
+import CenteredDiv from "../layouts/CenteredDiv";
+import { ContentLayout } from "../layouts/ContentLayout";
 
 export const LoadingInProgress = () =>{
     return(

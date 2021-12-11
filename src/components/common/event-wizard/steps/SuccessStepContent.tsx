@@ -1,4 +1,4 @@
-import CenteredDiv from '../../CenteredDiv';
+import CenteredDiv from '../../../layouts/CenteredDiv';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DoneAllIcon from '@material-ui/icons/DoneAll';

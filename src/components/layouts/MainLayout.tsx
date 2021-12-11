@@ -54,32 +54,3 @@ export const MainLayout = (props : any) =>  {
     </>
     );
 }
-
-export const ContentLayout = (props: any) => {
-    return (
-      <div style={{
-          height: 'inherit',
-          width:'inherit',
-          display: 'inline-flex',
-          alignItems: 'center', 
-          justifyContent: 'center'
-          }}>
-        {props.children}
-      </div>
-    );
-}
-
-export const ContentLayout2 = (props: any) => {
-    return (
-      <div style={{
-        display: 'flex', 
-        flexDirection:'column', 
-        width:'inherit',
-        alignItems: 'stretch', 
-        justifyContent: 'stretch',
-        backgroundColor: 'white'
-        }}>
-        {props.children}
-      </div>
-    );
-}

@@ -3,15 +3,15 @@ import Button from '@material-ui/core/Button';
 import { DeviceContextConsumer, DeviceType } from '../../../contexts/DeviceContext';
 import { AddressDetails, EventContext } from '../../../contexts/CartContext';
 import StepperContainer from "../../molecules/Stepper";
-import CenteredDiv from '../CenteredDiv';
+import CenteredDiv from '../../layouts/CenteredDiv';
 import SuccessStepContent from "./steps/SuccessStepContent";
 import ErrorStepContent from "./steps/ErrorStepContent";
 import { ShortAddressSchema, LongAddressSchema } from "./steps/AddressStepContent";
 import { Formik, Form } from 'formik';
-import { ContentLayout2 } from "../../layouts/MainLayout";
 import { useStyles } from '../../screens/MainScreen';
 import { getWizardStepContent } from './getWizardStepContent';
 import { getWizardStepTitles } from './getWizardSteps';
+import { ContentLayout } from '../../layouts/ContentLayout';
 
 export const EventWizard = () => {
   const classes = useStyles();
@@ -44,7 +44,7 @@ export const EventWizard = () => {
   };
 
   return (
-    <ContentLayout2>
+    <ContentLayout>
       <DeviceContextConsumer>
         {context => <div className={classes.root}>
           <Formik
@@ -128,6 +128,6 @@ export const EventWizard = () => {
           </Formik>
         </div>}
       </DeviceContextConsumer>
-    </ContentLayout2>
+    </ContentLayout>
   );
 }
