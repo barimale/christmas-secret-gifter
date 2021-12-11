@@ -1,3 +1,4 @@
+import React from 'react';
 import { Title as MainTitle, Path as MainPath } from '../components/screens/MainScreen';
 import { Title as ContactTitle, Path as ContactPath } from "../components/screens/ContactScreen";
 
@@ -12,7 +13,7 @@ export type configSection = {
     title: string;
     api: string;
     type: configSectionType;
-}
+};
 
 export function GetFullPathTo(title: string): string{
     const result = OrderedSectionsConfiguration.findIndex((p: configSection) => p.title === title);
@@ -36,3 +37,7 @@ export const OrderedSectionsConfiguration: Array<configSection> = [
         type: configSectionType.link
     },
 ];
+
+export const DD = () => {
+    return (<div></div>);
+}

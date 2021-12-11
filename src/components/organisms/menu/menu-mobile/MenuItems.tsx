@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
-import { configSection, configSectionType, OrderedSectionsConfiguration, GetFullPathTo } from '../../../../router/routerConfiguration';
+import { OrderedSectionsConfiguration, GetFullPathTo, configSection, configSectionType } from '../../../../router/routerConfiguration';
 
 type MenuItemsProps = {
   handleClose: () => void;

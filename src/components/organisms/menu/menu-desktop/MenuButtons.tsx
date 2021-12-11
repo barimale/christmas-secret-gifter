@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { configSection, configSectionType, OrderedSectionsConfiguration, GetFullPathTo } from '../../../../router/routerConfiguration';
+import { OrderedSectionsConfiguration, GetFullPathTo, configSection, configSectionType } from '../../../../router/routerConfiguration';
 
 const MenuButtons = function (props: any) {
   return (

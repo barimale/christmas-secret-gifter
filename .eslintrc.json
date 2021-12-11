@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,6 +20,7 @@
     "plugins": [
         "react",
         "@typescript-eslint"
+        // "@typescript-eslint/eslint-plugin"
     ],
     "rules": {
         "linebreak-style": ["error", "windows"],
@@ -50,6 +52,7 @@
         "react/function-component-definition": [0, {
             "namedComponents": [ "function-declaration", "function-expression", "arrow-function"],
             "unnamedComponents": ["function-expression", "arrow-function"]
-          }]
+          }],
+        "no-use-before-define": "off"
     }
 }
