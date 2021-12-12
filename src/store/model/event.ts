@@ -1,9 +1,11 @@
-/**
- * This is a TypeGen auto-generated file.
- * Any changes made to this file can be lost when this file is regenerated.
- */
+/* eslint-disable no-unused-vars */
 
-import EventState from "./event-state";
+/**
+  * This is a TypeGen auto-generated file.
+  * Any changes made to this file can be lost when this file is regenerated.
+  *  */
+
+import EventState from './event-state';
 
 interface Event {
   id: string | null | undefined;
