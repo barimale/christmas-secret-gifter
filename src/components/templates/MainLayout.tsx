@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-
 import { useLocation, useHistory } from 'react-router-dom';
 import Footer from '../organisms/Footer';
 import Header from '../organisms/Header';
+import { Theme } from '../../theme/custom-theme';
 
 const usePrevious = (value: any) => {
   const ref = useRef();
@@ -49,8 +49,9 @@ export const MainLayout = (props : any) => {
           height: height - paddingTop,
           width: '100%',
           paddingTop,
+          marginBottom: `${-paddingTop}px`,
           display: 'inline-flex',
-          background: 'radial-gradient(ellipse at bottom, #0B3976 0%, black 100%)',
+          background: `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`,
           justifyContent: 'center',
         }}
       >

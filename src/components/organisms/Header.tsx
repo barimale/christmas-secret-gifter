@@ -7,13 +7,13 @@ import sizeMe from 'react-sizeme';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import MenuWithItems from '../organisms/menu/menu-mobile/MenuWithItems';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
-import { Title as MainTitle } from '../screens/ContactScreen';
+import { Path as MainPath } from '../screens/ContactScreen';
 import { StyledLink } from '../atoms/StyledLink';
+import { Theme } from '../../theme/custom-theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    fontFamily: 'unset !important',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -42,8 +42,8 @@ const TopMenu = function () {
         <DeviceContextConsumer>
           {(context) => (
             <Toolbar style={{
-              color: '#303336',
-              backgroundColor: 'white',
+              color: `${Theme.palette.text.primary}`,
+              backgroundColor: `${Theme.palette.common.black}`,
               paddingLeft: context === DeviceType.isDesktopOrLaptop ? '32px' : '10px',
               paddingRight: context === DeviceType.isDesktopOrLaptop ? '32px' : '10px',
             }}
@@ -56,8 +56,7 @@ const TopMenu = function () {
                 className={classes.title}
                 align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
                 style={{
-                  fontFamily: 'SacramentoRegular',
-                  fontWeight: 'bold',
+                  color: `${Theme.palette.common.white}`,
                   WebkitTapHighlightColor: 'transparent',
                   fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '32px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
@@ -65,9 +64,9 @@ const TopMenu = function () {
               >
                 <StyledLink
                   className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
-                  to={MainTitle}
+                  to={MainPath}
                 >
-                  Christmas Secret Gifter
+                  {'Christmas Secret Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
               {context === DeviceType.isDesktopOrLaptop && (

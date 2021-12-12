@@ -9,6 +9,9 @@
         "/src/components/pages",
         "/src/components/organisms",
         "/src/components/atoms",
-        "/src/components/molecules"
+        "/src/components/molecules",
+        "/src/assets/fonts/Lora",
+        "/src/assets/fonts/Nanum_Gothic",
+        "/src/assets/fonts/Sacramento-Regular"
     ]
 }

@@ -3,15 +3,15 @@ import { createTheme } from '@material-ui/core/styles';
 export const Theme = createTheme({
   palette: {
     primary: {
-      main: '#0B3976',
+      main: '#1f8c31',
     },
     secondary: {
-      main: 'rgba(206, 17, 38, 1)',
+      main: '#bdad31',
     },
   },
   typography: {
     fontFamily: [
-      'Montserrat', 'sans-serif',
+      'Nanum-Gothic', 'sans-serif',
     ].join(','),
   },
   overrides: {

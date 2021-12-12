@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const MainScreen = function () {
+export const MainScreen = function () {
   // const { getParticipantsAmount } = useContext(EventContext);
   // const [wizardInProgress] = useState<boolean>(getParticipantsAmount() > 0);
 
@@ -28,5 +28,3 @@ const MainScreen = function () {
   // )
   );
 };
-
-export default MainScreen;

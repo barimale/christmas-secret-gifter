@@ -14,5 +14,70 @@ code {
 
 @font-face {
   font-family: 'SacramentoRegular';
-  src: local('SacramentoRegular'), url(./assets/fonts/Sacramento-Regular.ttf) format('truetype');
+  src: local('SacramentoRegular'), url(./assets/fonts/Sacramento-Regular/Sacramento-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraBold';
+  src: local('LoraBold'), url(./assets/fonts/Lora/static/Lora-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraBolItalic';
+  src: local('LoraBoldItalic'), url(./assets/fonts/Lora/static/Lora-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraItalic';
+  src: local('LoraItalic'), url(./assets/fonts/Lora/static/Lora-Italic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraMedium';
+  src: local('LoraMedium'), url(./assets/fonts/Lora/static/Lora-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraMediumItalic';
+  src: local('LoraMediumItalic'), url(./assets/fonts/Lora/static/Lora-MediumItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraRegular';
+  src: local('LoraRegular'), url(./assets/fonts/Lora/static/Lora-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraSemiBold';
+  src: local('LoraSemiBold'), url(./assets/fonts/Lora/static/Lora-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraSemiBoldItalic';
+  src: local('LoraSemiBoldItalic'), url(./assets/fonts/Lora/static/Lora-SemiBoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraItalicVariableFontwght';
+  src: local('LoraItalicVariableFontwght'), url(./assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LoraVariableFontwght';
+  src: local('LoraVariableFontwght'), url(./assets/fonts/Lora/Lora-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NanumGothicBold';
+  src: local('NanumGothicBold'), url(./assets/fonts/Nanum-Gothic/NanumGothic-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NanumGothicExtraBold';
+  src: local('NanumGothicExtraBold'), url(./assets/fonts/Nanum-Gothic/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NanumGothicRegular';
+  src: local('NanumGothicRegular'), url(./assets/fonts/Nanum-Gothic/NanumGothic-Regular.ttf) format('truetype');
 }
