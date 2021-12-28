@@ -3,6 +3,8 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import { Theme as customTheme } from '../../theme/custom-theme';
+import ConsoledChristmasTree from '../organisms/ConsoledChristmasTree';
+// import ChristmassTreeImage from '../molecules/ChristmassTreeImage';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -29,12 +31,26 @@ export const MainScreen = function () {
         variant="outlined"
         style={{
           fontSize: '40px',
-          backgroundColor: '#8c1f83',
+          backgroundColor: 'radial-gradient(ellipse at bottom, black  0%, black 100%)',
           boxShadow: `${customTheme.shadows[10]}`,
+          textShadow: '1px 1px darkred',
         }}
       >
-        Let&apos;s begin
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '15px',
+          }}
+        >
+          {/* <ChristmassTreeImage style={{
+            height: '100px',
+          }}
+          /> */}
+          Let&apos;s begin
+        </div>
       </Button>
+      <ConsoledChristmasTree />
     </CenteredDiv>
   // // getParticipantsAmount() > 0 || wizardInProgress ? (
   //   <div>1</div>

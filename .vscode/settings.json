@@ -12,6 +12,7 @@
         "/src/components/molecules",
         "/src/assets/fonts/Lora",
         "/src/assets/fonts/Nanum_Gothic",
-        "/src/assets/fonts/Sacramento-Regular"
+        "/src/assets/fonts/Sacramento-Regular",
+        "/src/components/organisms/ConsoledChristmasTree"
     ]
 }

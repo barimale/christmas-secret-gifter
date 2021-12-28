@@ -26,6 +26,7 @@
     "nodemon": "^2.0.15",
     "react": "^16.7.0",
     "react-card-flip": "^1.1.4",
+    "react-console-component": "^0.6.1",
     "react-dom": "^16.7.0",
     "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^6.1.0",
@@ -40,10 +41,11 @@
     "styled-components": "^5.3.3",
     "typescript": "^4.5.3",
     "web-vitals": "^0.2.4",
+    "xmas-tree": "^1.0.3",
     "yup": "^0.32.8"
   },
   "scripts": {
-    "setup": "rimraf ./node_modules && rimraf ./yarn.lock && yarn install --force",
+    "setup": "rimraf ./node_modules && rimraf ./yarn.lock && rimraf ./package-lock.json && yarn install --force",
     "start": "set PORT=3010 && react-scripts start",
     "build-fast": "react-scripts build",
     "build": "npx ts-node --project tsconfig.node.json ./scripts/sitemap-builder.ts && yarn build-fast",
