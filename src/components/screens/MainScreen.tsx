@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import { Theme as customTheme } from '../../theme/custom-theme';
-import { StyledLink } from '../atoms/StyledLink';
-import { Path as ContactPath } from './ContactScreen';
+import { EventContext } from '../../contexts';
+import GiftEvent from '../../store/model/gift-event';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -22,13 +22,18 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 export const MainScreen = function () {
-  // const { getParticipantsAmount } = useContext(EventContext);
-  // const [wizardInProgress] = useState<boolean>(getParticipantsAmount() > 0);
+  const { startEvent } = useContext(EventContext);
+  const [event, setEvent] = useState<GiftEvent | undefined>(undefined);
 
   return (
     <CenteredDiv>
+      {!event && (
       <Button
         variant="outlined"
+        onClick={async () => {
+          const result = await startEvent();
+          setEvent(result);
+        }}
         style={{
           fontSize: '40px',
           backgroundColor: 'grey',
@@ -39,24 +44,17 @@ export const MainScreen = function () {
         <div
           style={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             gap: '15px',
           }}
         >
-          <StyledLink
-            className="pointerOverEffect"
-            to={ContactPath}
-          >
-            Let&apos;s begin
-          </StyledLink>
-          {/* <Link to="contact">Let&apos;s begin</Link> */}
+          <p>START</p>
         </div>
       </Button>
+      )}
+      {event && (
+        <p>{event.eventId}</p>
+      )}
     </CenteredDiv>
-  // // getParticipantsAmount() > 0 || wizardInProgress ? (
-  //   <div>1</div>
-  // // ) : (
-  // //   <div>2</div>
-  // // )
   );
 };

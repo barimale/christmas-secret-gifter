@@ -1,3 +1,3 @@
 export * from './event-state';
-export * from './event';
+export * from './gift-event';
 export * from './participant';

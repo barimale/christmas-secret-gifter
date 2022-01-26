@@ -8,10 +8,10 @@
 import EventState from './event-state';
 import Participant from './participant';
 
-interface Event {
+interface GiftEvent {
   eventId: string | null | undefined;
   orginizerId: number;
   state: EventState;
   participants: Participant[];
 }
-export default Event;
+export default GiftEvent;
