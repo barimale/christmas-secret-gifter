@@ -7,7 +7,7 @@ import sizeMe from 'react-sizeme';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import MenuWithItems from '../organisms/menu/menu-mobile/MenuWithItems';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
-import { Path as MainPath } from '../screens/ContactScreen';
+import { Path as MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
 import { Theme } from '../../theme/custom-theme';
 

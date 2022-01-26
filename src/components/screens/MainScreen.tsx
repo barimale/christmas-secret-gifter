@@ -3,8 +3,8 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import { Theme as customTheme } from '../../theme/custom-theme';
-import ConsoledChristmasTree from '../organisms/ConsoledChristmasTree';
-// import ChristmassTreeImage from '../molecules/ChristmassTreeImage';
+import { StyledLink } from '../atoms/StyledLink';
+import {Path as ContactPath} from './ContactScreen';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -31,9 +31,9 @@ export const MainScreen = function () {
         variant="outlined"
         style={{
           fontSize: '40px',
-          backgroundColor: 'radial-gradient(ellipse at bottom, black  0%, black 100%)',
+          backgroundColor: 'grey',
           boxShadow: `${customTheme.shadows[10]}`,
-          textShadow: '1px 1px darkred',
+          textShadow: '1px 1px white',
         }}
       >
         <div
@@ -43,14 +43,15 @@ export const MainScreen = function () {
             gap: '15px',
           }}
         >
-          {/* <ChristmassTreeImage style={{
-            height: '100px',
-          }}
-          /> */}
-          Let&apos;s begin
+          <StyledLink
+            className="pointerOverEffect"
+            to={ContactPath}
+          >
+            Let&apos;s begin
+          </StyledLink>
+          {/* <Link to="contact">Let&apos;s begin</Link> */}
         </div>
       </Button>
-      <ConsoledChristmasTree />
     </CenteredDiv>
   // // getParticipantsAmount() > 0 || wizardInProgress ? (
   //   <div>1</div>

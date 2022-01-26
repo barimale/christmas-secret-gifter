@@ -11,13 +11,17 @@ const routes = (Routes()?.props.children || [])
     if (Array.isArray(route)) {
       return [
         ...acc,
-        ...route.map((subRoute) => ({ path: subRoute.props?.path })),
+        ...route.map((subRoute) => ({
+          path: subRoute.props?.path,
+        })),
       ];
     }
 
     return [
       ...acc,
-      { path: route.props?.path },
+      {
+        path: route.props?.path,
+      },
     ];
   }, [])
   .filter((route: SitemapRoute) => route.path);
@@ -35,4 +39,5 @@ const buildPath = '../public/sitemap.xml';
 
 fs.writeFileSync(buildPath, xml);
 
+// eslint-disable-next-line no-console
 console.info(`> ✔️ Sitemap successfully generated at ${buildPath}`);

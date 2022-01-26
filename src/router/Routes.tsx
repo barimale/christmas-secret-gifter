@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MainScreen } from '../components/screens/MainScreen';
-import { ContactScreen } from '../components/screens/ContactScreen';
+import { MainScreen, Path as MainPath } from '../components/screens/MainScreen';
+import { ContactScreen, Path as ContactPath } from '../components/screens/ContactScreen';
 
-const Routes = () => (
-  <Switch>
-    <Route path="/" component={MainScreen} />
-    <Route exact path="/contact" component={ContactScreen} />
-    <Route render={() => (<Redirect to="/" />)} />
-  </Switch>
-);
-
-export default Routes;
+export default function Routes () {
+  return (
+    <Switch>
+      <Route exact path={MainPath} render={() => <MainScreen />} />
+      <Route exact path={ContactPath} render={() => <ContactScreen />} />
+      <Route render={() => <Redirect push to={MainPath} />} />
+    </Switch>
+  );
+}
