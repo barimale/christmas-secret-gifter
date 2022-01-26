@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import { Theme as customTheme } from '../../theme/custom-theme';
 import { StyledLink } from '../atoms/StyledLink';
-import {Path as ContactPath} from './ContactScreen';
+import { Path as ContactPath } from './ContactScreen';
 
 export const Path = '/';
 export const Title = 'Events';
