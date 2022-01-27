@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GiftEvent from '../store/model/gift-event';
+import Participant from '../store/model/participant';
 
 export interface AddressDetails {
   firstName: string;
@@ -37,6 +38,8 @@ type Cart = {
     startEvent: () => Promise<GiftEvent | undefined>;
     giftEvent: GiftEvent | undefined;
     restartEvent: () => void;
+    addParticipant: (participant: Participant) => void;
+    participants: Participant[];
 };
 
 const EventContext = React.createContext<Cart>({
@@ -47,6 +50,7 @@ const CART_KEY = '8D61A160-53B4-40F1-A078-4DEEDC4E6CD7';
 const EventContextProvider = (props: any) => {
   const [defaultItems, setDefaultItems] = useState<ItemDetails[]>([]);
   const [event, setEvent] = useState<GiftEvent | undefined>(undefined);
+  const [participants, setParticipants] = useState<Participant[]>([]);
 
   const [addressDetails, setAddressDetails] = useState<AddressDetails>({
   } as AddressDetails);
@@ -96,8 +100,6 @@ const EventContextProvider = (props: any) => {
     // eslint-disable-next-line no-return-await
     startEvent: async () => await axios.post('http://localhost:5020/api/events/create')
       .then((response: any) => {
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(response));
         if (response.status === 200) {
           const { data } = response;
           setEvent(data ?? undefined);
@@ -109,7 +111,27 @@ const EventContextProvider = (props: any) => {
         setEvent(undefined);
         return Promise.reject(event);
       }),
+    // eslint-disable-next-line no-return-await
+    addParticipant: async (participant: Participant) => await axios.post(
+      `http://localhost:5020/api/events/${event?.eventId}/participants/register`,
+      participant,
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          const result = await axios.post(`http://localhost:5020/api/events/${event?.eventId}/participants/all`);
+          if (result.status === 200) {
+            const { data } = result;
+
+            setParticipants(data);
+          }
+
+          return Promise.resolve(participants);
+        }
+        return Promise.reject(participants);
+      })
+      .catch(() => Promise.reject(participants)),
     giftEvent: event,
+    participants,
     restartEvent: () => {
       setEvent(undefined);
     },
