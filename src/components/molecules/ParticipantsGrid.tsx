@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { Grid, IconButton, Tooltip, Typography } from '@material-ui/core';
 import InfoIcon from '@mui/icons-material/Info';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Item } from '../atoms';
 import { EventContext } from '../../contexts';
 import Participant from '../../store/model/participant';
 import AddParticipantModal from '../organisms/AddParticipantModal';
+import EditParticipantModal from '../organisms/EditParticipantModal';
 
 interface ParticipantsGridProps {
   title?: string;
@@ -13,8 +16,9 @@ interface ParticipantsGridProps {
 
 export const ParticipantsGrid = (props: ParticipantsGridProps) => {
   const { title } = props;
-  const { participants } = useContext(EventContext);
+  const { participants, removeParticipant } = useContext(EventContext);
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
+  const [isEditVisible, setIsEditVisible] = useState<boolean>(false);
 
   return (
     <>
@@ -58,8 +62,42 @@ export const ParticipantsGrid = (props: ParticipantsGridProps) => {
           <Grid container spacing={2}>
             {participants.flatMap((p: Participant) => (
               <Grid item xs={8}>
-                <Item>{p.name}</Item>
-                <Item>{p.email}</Item>
+                <Item>
+                  <div style={{
+                    gap: '10px',
+                    display: 'flex',
+                    flexDirection: 'row',
+                  }}
+                  >
+                    <span>Name:</span>
+                    {p.name}
+                    <span>Email:</span>
+                    {p.email}
+                    <span>Exclusions:</span>
+                    {p.excludedOrderIds}
+                    <IconButton>
+                      <EditIcon
+                        fontSize="small"
+                        onClick={() => {
+                          setIsEditVisible(true);
+                        }}
+                      />
+                    </IconButton>
+                    <IconButton onClick={async () => {
+                      await removeParticipant(p);
+                    }}
+                    >
+                      <DeleteForeverIcon fontSize="small" />
+                    </IconButton>
+                    <EditParticipantModal
+                      participant={p}
+                      isDisplayed={isEditVisible}
+                      close={() => {
+                        setIsEditVisible(false);
+                      }}
+                    />
+                  </div>
+                </Item>
               </Grid>
             ))}
           </Grid>

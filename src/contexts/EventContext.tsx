@@ -40,6 +40,8 @@ type Cart = {
     giftEvent: GiftEvent | undefined;
     restartEvent: () => void;
     addParticipant: (participant: Participant, source?: CancelTokenSource) => void;
+    removeParticipant: (participant: Participant, source?: CancelTokenSource) => void;
+    editParticipant: (participant: Participant, source?: CancelTokenSource) => void;
     participants: Participant[];
 };
 
@@ -124,6 +126,61 @@ const EventContextProvider = (props: any) => {
         id: Guid.create().toString(),
         excludedOrderIds: participant.excludedOrderIds,
       },
+      {
+        cancelToken: source?.token,
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          const result = await axios.get(
+            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            {
+              cancelToken: source?.token,
+            },
+          );
+          if (result.status === 200) {
+            const { data } = result;
+
+            setParticipants(data);
+          }
+
+          return Promise.resolve(participants);
+        }
+        return Promise.reject(participants);
+      })
+      .catch(() => Promise.reject(participants)),
+    editParticipant: async (participant: Participant, source?
+    // eslint-disable-next-line no-return-await
+          : CancelTokenSource) => await axios.put(
+      `http://localhost:5020/api/events/${event?.eventId}/participants/${participant.id}`,
+      participant,
+      {
+        cancelToken: source?.token,
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          const result = await axios.get(
+            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            {
+              cancelToken: source?.token,
+            },
+          );
+          if (result.status === 200) {
+            const { data } = result;
+
+            setParticipants(data);
+          }
+
+          return Promise.resolve(participants);
+        }
+        return Promise.reject(participants);
+      })
+      .catch(() => Promise.reject(participants)),
+    removeParticipant: async (participant: Participant, source?
+    // eslint-disable-next-line no-return-await
+          : CancelTokenSource) => await axios.delete(
+      `http://localhost:5020/api/events/${event?.eventId}/participants/${participant.id}`,
       {
         cancelToken: source?.token,
       },
