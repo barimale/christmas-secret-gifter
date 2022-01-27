@@ -35,6 +35,8 @@ type Cart = {
     decrementByOne: (item: ItemDetails) => void;
     isPhysicalItemIncluded: () => boolean;
     startEvent: () => Promise<GiftEvent | undefined>;
+    giftEvent: GiftEvent | undefined;
+    restartEvent: () => void;
 };
 
 const EventContext = React.createContext<Cart>({
@@ -107,6 +109,10 @@ const EventContextProvider = (props: any) => {
         setEvent(undefined);
         return Promise.reject(event);
       }),
+    giftEvent: event,
+    restartEvent: () => {
+      setEvent(undefined);
+    },
     setOrderStatus: (value: string) => {
       setOrderStatus(value);
     },
