@@ -111,7 +111,7 @@ export const ExclusionsField = (props: ExclusionsFieldProps) => {
                 <ListItemIcon>
                   <Checkbox checked={selected.indexOf(option) > -1} />
                 </ListItemIcon>
-                <ListItemText primary={option} />
+                <ListItemText primary={option.name ?? ''} />
               </MenuItem>
             ))}
           </Select>
