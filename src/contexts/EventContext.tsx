@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { CancelTokenSource } from 'axios';
 import GiftEvent from '../store/model/gift-event';
 import Participant from '../store/model/participant';
 
@@ -40,6 +40,7 @@ type Cart = {
     restartEvent: () => void;
     addParticipant: (participant: Participant) => void;
     participants: Participant[];
+    source: CancelTokenSource;
 };
 
 const EventContext = React.createContext<Cart>({
@@ -55,6 +56,17 @@ const EventContextProvider = (props: any) => {
   const [addressDetails, setAddressDetails] = useState<AddressDetails>({
   } as AddressDetails);
   const [orderStatus, setOrderStatus] = useState<string>('');
+
+  const cancelToken = axios.CancelToken;
+  const source = cancelToken.source();
+
+  useEffect(() => () => {
+    source.cancel('Axios request cancelled');
+
+    // return () => {
+    //   source.cancel('Axios request cancelled');
+    // };
+  }, []);
 
   useEffect(() => {
     const cartContent = localStorage.getItem(CART_KEY);
@@ -75,6 +87,7 @@ const EventContextProvider = (props: any) => {
       setAddressDetails({
       } as AddressDetails);
     },
+    source,
     getCount: () => defaultItems.length,
     add: (data: ItemDetails) => {
       const copied = Object.assign({

@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { Grid, IconButton, Tooltip, Typography } from '@material-ui/core';
 import InfoIcon from '@mui/icons-material/Info';
 import { Item } from '../atoms';
 import { EventContext } from '../../contexts';
 import Participant from '../../store/model/participant';
+import AddParticipantModal from '../organisms/AddParticipantModal';
 
 interface ParticipantsGridProps {
   title?: string;
@@ -13,6 +14,7 @@ interface ParticipantsGridProps {
 export const ParticipantsGrid = (props: ParticipantsGridProps) => {
   const { title } = props;
   const { participants } = useContext(EventContext);
+  const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
 
   return (
     <div style={{
@@ -29,6 +31,7 @@ export const ParticipantsGrid = (props: ParticipantsGridProps) => {
         gap: '20px',
         justifyContent: 'space-between',
         alignItems: 'center',
+        borderBottom: '1px solid lightgrey',
       }}
       >
         <Tooltip title={title ?? ''}>
@@ -42,9 +45,18 @@ export const ParticipantsGrid = (props: ParticipantsGridProps) => {
           style={{
             borderRadius: '0px',
           }}
+          onClick={() => {
+            setIsAddVisible(true);
+          }}
         >
           <AddIcon />
         </IconButton>
+        <AddParticipantModal
+          isDisplayed={isAddVisible}
+          close={() => {
+            setIsAddVisible(false);
+          }}
+        />
       </div>
       {participants.length > 0 ? (
         <Grid container spacing={2}>
@@ -56,7 +68,10 @@ export const ParticipantsGrid = (props: ParticipantsGridProps) => {
           ))}
         </Grid>
       ) : (
-        <Typography>
+        <Typography style={{
+          padding: '20px',
+        }}
+        >
           No participants defined yet.
         </Typography>
       )}
