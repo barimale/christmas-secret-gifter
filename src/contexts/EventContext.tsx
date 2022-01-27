@@ -120,6 +120,7 @@ const EventContextProvider = (props: any) => {
         name: participant.name,
         email: participant.email,
         orderId: participant.orderId,
+        eventId: event?.eventId,
         id: Guid.create().toString(),
         excludedOrderIds: participant.excludedOrderIds,
       },

@@ -10,6 +10,7 @@ interface Participant {
   orderId: number;
   name: string | null | undefined;
   email: string | null | undefined;
+  eventId: string | null | undefined;
   excludedOrderIds: number[];
 }
 export default Participant;
