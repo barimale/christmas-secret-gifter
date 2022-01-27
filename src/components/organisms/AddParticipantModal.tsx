@@ -5,7 +5,8 @@ import { useTheme, makeStyles, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, Button, CircularProgress } from '@material-ui/core';
 import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
@@ -114,15 +115,35 @@ const AddForm = (props: AddFormProps) => {
   const { close } = props;
   const [sendingInProgress, setSendingInProgress] = useState<boolean>(false);
   const theme = useTheme();
-  const { addParticipant, source } = useContext(EventContext);
+  const { addParticipant, participants } = useContext(EventContext);
+
+  const cancelToken = axios.CancelToken;
+  const source = cancelToken.source();
+
+  const theHighestIndex = participants.length > 0
+    // eslint-disable-next-line prefer-spread
+    ? Math.max.apply(Math, participants.map((o) => o.orderId))
+    : 0;
 
   const [initialValues] = useState<Participant>({
+    excludedOrderIds: [theHighestIndex + 1],
+    id: '',
+    orderId: theHighestIndex + 1,
+    name: '',
+    email: '',
   } as Participant);
+
+  useEffect(() => () => {
+    // source.cancel('Axios request cancelled');
+    // return () => {
+    //   source.cancel('Axios request cancelled');
+    // };
+  }, []);
 
   const onSubmit = async (value: Participant) => {
     try {
       setSendingInProgress(true);
-      await addParticipant(value);
+      await addParticipant(value, source);
       close();
     } catch (thrown: any) {
       // eslint-disable-next-line no-console
@@ -134,7 +155,7 @@ const AddForm = (props: AddFormProps) => {
 
   const onCancel = () => {
     try {
-      source.cancel();
+      // source.cancel();
     } finally {
       setSendingInProgress(false);
       close();

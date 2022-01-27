@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button } from '@material-ui/core';
 import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
-import { ParticipantsGrid } from '../molecules/ParticipantsGrid';
+import { ParticipantsGrid } from '../molecules';
 
 export const DefineParticipants = () => {
   const { giftEvent, restartEvent } = useContext(EventContext);

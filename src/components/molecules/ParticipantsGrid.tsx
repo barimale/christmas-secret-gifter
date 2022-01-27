@@ -17,64 +17,67 @@ export const ParticipantsGrid = (props: ParticipantsGridProps) => {
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'whitesmoke',
-      padding: '20px',
-      paddingTop: '0px',
-    }}
-    >
+    <>
       <div style={{
         display: 'flex',
-        flexDirection: 'row',
-        gap: '20px',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderBottom: '1px solid lightgrey',
+        flexDirection: 'column',
+        backgroundColor: 'whitesmoke',
+        padding: '20px',
+        paddingTop: '0px',
       }}
       >
-        <Tooltip title={title ?? ''}>
-          <IconButton>
-            <InfoIcon fontSize="small" />
-          </IconButton>
-        </Tooltip>
-        <span>Add Participants To List</span>
-        <IconButton
-          className="pointerOverEffect"
-          style={{
-            borderRadius: '0px',
-          }}
-          onClick={() => {
-            setIsAddVisible(true);
-          }}
-        >
-          <AddIcon />
-        </IconButton>
-        <AddParticipantModal
-          isDisplayed={isAddVisible}
-          close={() => {
-            setIsAddVisible(false);
-          }}
-        />
-      </div>
-      {participants.length > 0 ? (
-        <Grid container spacing={2}>
-          {participants.flatMap((p: Participant) => (
-            <Grid item xs={8}>
-              <Item>{p.name}</Item>
-              <Item>{p.email}</Item>
-            </Grid>
-          ))}
-        </Grid>
-      ) : (
-        <Typography style={{
-          padding: '20px',
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '20px',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: '1px solid lightgrey',
         }}
         >
-          No participants defined yet.
-        </Typography>
-      )}
-    </div>
+          <Tooltip title={title ?? ''}>
+            <IconButton>
+              <InfoIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <span>Add Participants To List</span>
+          <IconButton
+            className="pointerOverEffect"
+            style={{
+              borderRadius: '0px',
+            }}
+            onClick={() => {
+              setIsAddVisible(true);
+            }}
+          >
+            <p>{isAddVisible}</p>
+            <AddIcon />
+          </IconButton>
+        </div>
+        {participants.length > 0 ? (
+          <Grid container spacing={2}>
+            {participants.flatMap((p: Participant) => (
+              <Grid item xs={8}>
+                <Item>{p.name}</Item>
+                <Item>{p.email}</Item>
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Typography style={{
+            padding: '20px',
+          }}
+          >
+            No participants defined yet.
+          </Typography>
+        )}
+      </div>
+      <AddParticipantModal
+        isDisplayed={isAddVisible}
+        close={() => {
+          setIsAddVisible(false);
+        }}
+      />
+    </>
   );
 };

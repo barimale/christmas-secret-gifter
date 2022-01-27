@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios, { CancelTokenSource } from 'axios';
+import { Guid } from 'guid-typescript';
 import GiftEvent from '../store/model/gift-event';
 import Participant from '../store/model/participant';
 
@@ -38,9 +39,8 @@ type Cart = {
     startEvent: () => Promise<GiftEvent | undefined>;
     giftEvent: GiftEvent | undefined;
     restartEvent: () => void;
-    addParticipant: (participant: Participant) => void;
+    addParticipant: (participant: Participant, source?: CancelTokenSource) => void;
     participants: Participant[];
-    source: CancelTokenSource;
 };
 
 const EventContext = React.createContext<Cart>({
@@ -56,17 +56,6 @@ const EventContextProvider = (props: any) => {
   const [addressDetails, setAddressDetails] = useState<AddressDetails>({
   } as AddressDetails);
   const [orderStatus, setOrderStatus] = useState<string>('');
-
-  const cancelToken = axios.CancelToken;
-  const source = cancelToken.source();
-
-  useEffect(() => () => {
-    source.cancel('Axios request cancelled');
-
-    // return () => {
-    //   source.cancel('Axios request cancelled');
-    // };
-  }, []);
 
   useEffect(() => {
     const cartContent = localStorage.getItem(CART_KEY);
@@ -87,7 +76,6 @@ const EventContextProvider = (props: any) => {
       setAddressDetails({
       } as AddressDetails);
     },
-    source,
     getCount: () => defaultItems.length,
     add: (data: ItemDetails) => {
       const copied = Object.assign({
@@ -124,14 +112,29 @@ const EventContextProvider = (props: any) => {
         setEvent(undefined);
         return Promise.reject(event);
       }),
+    addParticipant: async (participant: Participant, source?
     // eslint-disable-next-line no-return-await
-    addParticipant: async (participant: Participant) => await axios.post(
+      : CancelTokenSource) => await axios.post(
       `http://localhost:5020/api/events/${event?.eventId}/participants/register`,
-      participant,
+      {
+        name: participant.name,
+        email: participant.email,
+        orderId: participant.orderId,
+        id: Guid.create().toString(),
+        excludedOrderIds: participant.excludedOrderIds,
+      },
+      {
+        cancelToken: source?.token,
+      },
     )
       .then(async (response: any) => {
         if (response.status === 200) {
-          const result = await axios.post(`http://localhost:5020/api/events/${event?.eventId}/participants/all`);
+          const result = await axios.get(
+            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            {
+              cancelToken: source?.token,
+            },
+          );
           if (result.status === 200) {
             const { data } = result;
 

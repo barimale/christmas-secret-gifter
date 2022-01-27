@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/no-unused-prop-types */
 import ReactDOMServer from 'react-dom/server';
