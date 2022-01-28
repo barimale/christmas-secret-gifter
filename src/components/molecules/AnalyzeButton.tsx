@@ -24,8 +24,6 @@ export const AnalyzeButton = (props: Props) => {
         setIsInProgress(false);
       }}
       style={{
-        fontSize: '40px',
-        backgroundColor: 'grey',
         boxShadow: `${customTheme.shadows[10]}`,
         textShadow: '1px 1px white',
       }}
@@ -37,7 +35,7 @@ export const AnalyzeButton = (props: Props) => {
           gap: '15px',
         }}
       >
-        <p>START</p>
+        <p>PAIR!</p>
       </div>
     </Button>
   );

@@ -12,7 +12,7 @@ import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
-import { EmailField, ExclusionsField, ModalTitle, NameField } from '../molecules';
+import { EmailField, ModalTitle, NameField } from '../molecules';
 import Participant from '../../store/model/participant';
 
 const useStyles = makeStyles(() => createStyles({
@@ -241,14 +241,9 @@ const EditForm = (props: EditFormProps) => {
   );
 };
 
-const EditFormContent = (props: FormikProps<Participant>) => {
-  const { participants } = useContext(EventContext);
-
-  return (
-    <>
-      <NameField {...props} />
-      <EmailField {...props} />
-      <ExclusionsField {...props} participants={participants} />
-    </>
-  );
-};
+const EditFormContent = (props: FormikProps<Participant>) => (
+  <>
+    <NameField {...props} />
+    <EmailField {...props} />
+  </>
+);
