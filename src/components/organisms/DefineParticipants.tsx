@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { EventContext } from '../../contexts';
-import { ParticipantsGrid } from '../molecules';
+import ParticipantsGrid from '../molecules/ParticipantsGrid';
 
 const DefineParticipants = () => {
   const { giftEvent } = useContext(EventContext);
