@@ -51,6 +51,8 @@ export const Participants = ({ maxHeight }: Props) => {
               <TableCell align="left">Id</TableCell>
               <TableCell>Name</TableCell>
               <TableCell align="right">Email</TableCell>
+              <TableCell>EventId</TableCell>
+              <TableCell>MyId</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -70,6 +72,8 @@ export const Participants = ({ maxHeight }: Props) => {
                   {p.name}
                 </TableCell>
                 <TableCell align="right">{p.email}</TableCell>
+                <TableCell align="right">{p.eventId}</TableCell>
+                <TableCell align="right">{p.id}</TableCell>
                 <TableCell align="right">
                   <IconButton>
                     <EditIcon

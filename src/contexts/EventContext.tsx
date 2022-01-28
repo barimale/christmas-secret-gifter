@@ -41,7 +41,7 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(event);
       }),
     // eslint-disable-next-line no-return-await
-    analyze: async () => await axios.post(`http://localhost:5020/api/events/${event?.eventId}/execute`)
+    analyze: async () => await axios.post(`http://localhost:5020/api/events/${event?.id}/execute`)
       .then((response: any) => {
         if (response.status === 200) {
           const { data } = response;
@@ -57,12 +57,12 @@ const EventContextProvider = (props: any) => {
     addParticipant: async (participant: Participant, source?
     // eslint-disable-next-line no-return-await
       : CancelTokenSource) => await axios.post(
-      `http://localhost:5020/api/events/${event?.eventId}/participants/register`,
+      `http://localhost:5020/api/events/${event?.id}/participants/register`,
       {
         name: participant.name,
         email: participant.email,
         orderId: participant.orderId,
-        eventId: event?.eventId,
+        eventId: event?.id,
         id: Guid.create().toString(),
         excludedOrderIds: participant.excludedOrderIds,
       },
@@ -73,7 +73,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            `http://localhost:5020/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
             },
@@ -92,7 +92,7 @@ const EventContextProvider = (props: any) => {
     editParticipant: async (participant: Participant, source?
     // eslint-disable-next-line no-return-await
           : CancelTokenSource) => await axios.put(
-      `http://localhost:5020/api/events/${event?.eventId}/participants/${participant.id}`,
+      `http://localhost:5020/api/events/${event?.id}/participants/${participant.id}`,
       participant,
       {
         cancelToken: source?.token,
@@ -101,7 +101,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            `http://localhost:5020/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
             },
@@ -120,7 +120,7 @@ const EventContextProvider = (props: any) => {
     removeParticipant: async (participant: Participant, source?
     // eslint-disable-next-line no-return-await
           : CancelTokenSource) => await axios.delete(
-      `http://localhost:5020/api/events/${event?.eventId}/participants/${participant.id}`,
+      `http://localhost:5020/api/events/${event?.id}/participants/${participant.id}`,
       {
         cancelToken: source?.token,
       },
@@ -128,7 +128,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `http://localhost:5020/api/events/${event?.eventId}/participants/all`,
+            `http://localhost:5020/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
             },

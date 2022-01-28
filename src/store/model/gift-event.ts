@@ -10,7 +10,6 @@ import Participant from './participant';
 
 interface GiftEvent {
   id: string | null | undefined;
-  eventId: string | null | undefined;
   orginizerId: number;
   state: EventState;
   participants: Participant[];

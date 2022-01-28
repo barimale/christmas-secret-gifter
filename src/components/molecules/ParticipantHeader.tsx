@@ -22,7 +22,7 @@ const ParticipantHeader = () => {
         borderBottom: '1px solid lightgrey',
       }}
       >
-        <Tooltip title={giftEvent?.eventId ?? ''}>
+        <Tooltip title={giftEvent?.id ?? ''}>
           <IconButton>
             <InfoIcon fontSize="small" />
           </IconButton>
