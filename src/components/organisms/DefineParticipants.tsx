@@ -7,7 +7,7 @@ const DefineParticipants = () => {
 
   return (
     giftEvent ? (
-      <ParticipantsGrid title={giftEvent.eventId ?? undefined} />
+      <ParticipantsGrid />
     ) : (
       <p>Something went wrong...</p>
     )

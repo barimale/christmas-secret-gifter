@@ -5,12 +5,7 @@ import { EventContext } from '../../contexts';
 import { Participants } from './Participants';
 import ParticipantHeader from './ParticipantHeader';
 
-export interface ParticipantsGridProps {
-  title?: string;
-}
-
-const ParticipantsGrid = (props: ParticipantsGridProps) => {
-  const { title } = props;
+const ParticipantsGrid = () => {
   const { participants } = useContext(EventContext);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
 
@@ -31,7 +26,6 @@ const ParticipantsGrid = (props: ParticipantsGridProps) => {
         }}
         >
           <ParticipantHeader
-            title={title}
             onSize={(size: any) => {
               setHeaderHeight(size.height || 0);
             }}

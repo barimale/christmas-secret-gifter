@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { IconButton, Tooltip } from '@material-ui/core';
 import InfoIcon from '@mui/icons-material/Info';
 import sizeMe from 'react-sizeme';
 import AddParticipantModal from '../organisms/AddParticipantModal';
-import { ParticipantsGridProps } from './ParticipantsGrid';
+import { EventContext } from '../../contexts';
 
-const ParticipantHeader = ({ title }: ParticipantsGridProps) => {
+const ParticipantHeader = () => {
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
+  const { giftEvent } = useContext(EventContext);
 
   return (
     <>
@@ -15,19 +16,18 @@ const ParticipantHeader = ({ title }: ParticipantsGridProps) => {
         display: 'flex',
         flexDirection: 'row',
         gap: '20px',
+        width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1px solid lightgrey',
       }}
       >
-        <Tooltip title={title ?? ''}>
+        <Tooltip title={giftEvent?.eventId ?? ''}>
           <IconButton>
             <InfoIcon fontSize="small" />
           </IconButton>
         </Tooltip>
-        <span>Add Participants To List</span>
         <IconButton
-          className="pointerOverEffect"
           style={{
             borderRadius: '0px',
           }}
@@ -35,7 +35,7 @@ const ParticipantHeader = ({ title }: ParticipantsGridProps) => {
             setIsAddVisible(true);
           }}
         >
-          <p>{isAddVisible}</p>
+          <p>ADD PARTICIPANT</p>
           <AddIcon />
         </IconButton>
       </div>

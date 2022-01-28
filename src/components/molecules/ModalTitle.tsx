@@ -25,6 +25,7 @@ export const ModalTitle = (props: ModalTitleProps) => {
           alignContent: 'center',
           paddingTop: '10px',
           paddingBottom: '10px',
+          backgroundColor: 'black',
           borderLeft: `20px solid ${theme.palette.primary.main}`,
         }}
         >

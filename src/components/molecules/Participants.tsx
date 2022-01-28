@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,6 +20,13 @@ interface Props{
 export const Participants = ({ maxHeight }: Props) => {
   const { participants, removeParticipant } = useContext(EventContext);
   const [isEditVisible, setIsEditVisible] = useState<boolean>(false);
+  const [toBeEdited, setToBeEdited] = useState<Participant | undefined>(undefined);
+
+  useEffect(() => {
+    if (!isEditVisible) {
+      setToBeEdited(undefined);
+    }
+  }, [isEditVisible]);
 
   return (
     <Paper sx={{
@@ -66,6 +73,7 @@ export const Participants = ({ maxHeight }: Props) => {
                     <EditIcon
                       fontSize="small"
                       onClick={() => {
+                        setToBeEdited(p);
                         setIsEditVisible(true);
                       }}
                     />
@@ -76,19 +84,19 @@ export const Participants = ({ maxHeight }: Props) => {
                   >
                     <DeleteForeverIcon fontSize="small" />
                   </IconButton>
-                  <EditParticipantModal
-                    participant={p}
-                    isDisplayed={isEditVisible}
-                    close={() => {
-                      setIsEditVisible(false);
-                    }}
-                  />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <EditParticipantModal
+        participant={toBeEdited}
+        isDisplayed={isEditVisible}
+        close={() => {
+          setIsEditVisible(false);
+        }}
+      />
     </Paper>
   );
 };
