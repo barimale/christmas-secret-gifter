@@ -48,6 +48,7 @@ export const Participants = ({ maxHeight }: Props) => {
         >
           <TableHead>
             <TableRow>
+              <TableCell align="left">Id</TableCell>
               <TableCell>Name</TableCell>
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Actions</TableCell>
@@ -64,6 +65,7 @@ export const Participants = ({ maxHeight }: Props) => {
                   },
                 }}
               >
+                <TableCell align="left">{p.orderId}</TableCell>
                 <TableCell component="th" scope="row">
                   {p.name}
                 </TableCell>
