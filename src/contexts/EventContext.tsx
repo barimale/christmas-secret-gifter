@@ -207,6 +207,7 @@ const EventContextProvider = (props: any) => {
     giftEvent: event,
     participants,
     restartEvent: () => {
+      setParticipants([]);
       setEvent(undefined);
     },
     setOrderStatus: (value: string) => {
