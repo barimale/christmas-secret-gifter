@@ -36,7 +36,6 @@ export const ModalTitle = (props: ModalTitleProps) => {
               WebkitTapHighlightColor: 'transparent',
               fontSize: context === DeviceType.isDesktopOrLaptop ? '30px' : '20px',
               textAlign: 'left',
-              fontFamily: 'Signoria-Bold',
               width: '100%',
               paddingLeft: context === DeviceType.isDesktopOrLaptop ? '32px' : '12px',
               textShadow: '1px 1px black',

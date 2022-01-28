@@ -225,7 +225,7 @@ const EditForm = (props: EditFormProps) => {
                     )}
                     {sendingInProgress === false && (
                       <>
-                        Add
+                        SAVE
                       </>
                     )}
                   </Button>

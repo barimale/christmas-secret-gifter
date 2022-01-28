@@ -4,7 +4,7 @@ import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
 import { ParticipantsGrid } from '../molecules';
 
-export const DefineParticipants = () => {
+const DefineParticipants = () => {
   const { giftEvent, restartEvent } = useContext(EventContext);
   const [isInProgress, setIsInProgress] = useState<boolean>(false);
 
@@ -43,3 +43,5 @@ export const DefineParticipants = () => {
     </>
   );
 };
+
+export default DefineParticipants;

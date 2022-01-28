@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CenteredDiv from '../templates/CenteredDiv';
 import { EventContext } from '../../contexts';
-import { DefineParticipants } from '../organisms/DefineParticipants';
 import { StartButton } from '../molecules';
+import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -30,7 +30,7 @@ export const MainScreen = function () {
         <StartButton />
       )}
       {giftEvent && (
-        <DefineParticipants />
+        <ConfiguratorStepper />
       )}
     </CenteredDiv>
   );
