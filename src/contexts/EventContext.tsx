@@ -4,6 +4,7 @@ import axios, { CancelTokenSource } from 'axios';
 import { Guid } from 'guid-typescript';
 import GiftEvent from '../store/model/gift-event';
 import Participant from '../store/model/participant';
+import AlgorithmResponse from '../store/model/algorithm-response';
 
 export interface AddressDetails {
   firstName: string;
@@ -43,6 +44,7 @@ type Cart = {
     removeParticipant: (participant: Participant, source?: CancelTokenSource) => void;
     editParticipant: (participant: Participant, source?: CancelTokenSource) => void;
     participants: Participant[];
+    analyze: () => Promise<AlgorithmResponse | undefined>;
 };
 
 const EventContext = React.createContext<Cart>({
@@ -114,6 +116,20 @@ const EventContextProvider = (props: any) => {
         setEvent(undefined);
         return Promise.reject(event);
       }),
+    // eslint-disable-next-line no-return-await
+    analyze: async () => await axios.post(`http://localhost:5020/api/events/${event?.eventId}/execute`)
+      .then((response: any) => {
+        if (response.status === 200) {
+          const { data } = response;
+          const mapped = data as AlgorithmResponse;
+          return Promise.resolve(mapped);
+        }
+
+        // eslint-disable-next-line prefer-promise-reject-errors
+        return Promise.reject(undefined);
+      })
+      // eslint-disable-next-line prefer-promise-reject-errors
+      .catch(() => Promise.reject(undefined)),
     addParticipant: async (participant: Participant, source?
     // eslint-disable-next-line no-return-await
       : CancelTokenSource) => await axios.post(

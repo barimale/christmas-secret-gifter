@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -26,11 +26,6 @@ const ExclusionMatrix = () => {
         forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.orderId === pp.orderId,
       } as ParticipantExclusion)))),
   );
-
-  useEffect(() => {
-    // eslint-disable-next-line no-alert
-    alert(JSON.stringify(exclusions));
-  }, [exclusions]);
 
   async function handleChange (forOrderId: number, orderId: number, checked: boolean) {
     const newExclusions = Array.from(exclusions);
