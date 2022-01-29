@@ -38,10 +38,10 @@ export const useNodeEmailClient = () => {
 
   const sendByNodeOnce = async (address: string, title: string, message: string, captcha: string)
   : Promise<string> => {
-    const url = 'https://utilities-mailer.herokuapp.com/send-email';
+    const url = 'https://christmas-secret-gifter-mailer.herokuapp.com/send-email';
     try {
       const params = new URLSearchParams();
-      params.append('serviceid', 'service_08vey2h');
+      params.append('serviceid', 'service_08vey2o');
       params.append('apikey', 'odkrywajcie-mailer-ajdfnhajdfnaf-Password@2020');
       params.append('to', address);
       params.append('subject', title);

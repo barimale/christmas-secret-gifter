@@ -2,7 +2,6 @@
 /* eslint-disable camelcase */
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
-import { Guid } from 'guid-typescript';
 import { useNodeEmailClient } from './useNodeEmailClient';
 
 const templateHtml = `
@@ -24,21 +23,8 @@ const templateHtml = `
 export const useEmailClient = () => {
   const { sendByNode } = useNodeEmailClient();
 
-  const send = async (address: string, title: string, captcha: string): Promise<string> => {
-    const ownerAddress = 'kontakt@odkrywajcie.pl';
-
+  const send = async (toCustomerParams: ToGifterParams): Promise<'success' | 'error'> => {
     try {
-      const id = Guid.create().toString();
-
-      const toCustomerParams: ToGifterParams = {
-        from_name: ownerAddress,
-        to_name: address,
-        title,
-        reply_to: ownerAddress,
-        forName: id,
-        gRecaptchaResponse: captcha,
-      };
-
       const toCustomerMail = ReactDOMServer
         .renderToStaticMarkup(React.createElement(ToCustomerTemplate, toCustomerParams, null));
 
@@ -67,7 +53,8 @@ export const useEmailClient = () => {
   };
 };
 
-type ToGifterParams = {
+export type ToGifterParams = {
+  participantId: string;
   from_name: string;
   to_name: string;
   title: string;
