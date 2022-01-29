@@ -85,7 +85,7 @@ const AddParticipantModalContent = (props: AddParticipantModalProps) => {
                 alignItems: 'stretch',
               }}
               >
-                <ModalTitle title="Add item" close={close} />
+                <ModalTitle title="Register Participant" close={close} />
                 <AddForm close={close} />
               </div>
             </Fade>

@@ -19,7 +19,7 @@ export default function ConfiguratorStepper () {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = ConfiguratorSteps;
   const maxSteps = steps.length;
-  const { restartEvent } = useContext(EventContext);
+  const { restartEvent, participants } = useContext(EventContext);
   const [isInProgress, setIsInProgress] = useState<boolean>(false);
 
   const handleNext = () => {
@@ -55,10 +55,21 @@ export default function ConfiguratorStepper () {
         </Typography>
       </Paper>
       <Box sx={{
-        height: 400, minWidth: 600, width: '100%',
+        height: 440, minWidth: 600, width: '100%',
       }}
       >
-        {steps[activeStep].description}
+        <div
+          style={{
+            paddingTop: '10px',
+            paddingLeft: '20px',
+            paddingRight: '20px',
+            paddingBottom: '10px',
+            backgroundColor: `${theme.palette.primary.main}`,
+            color: `${theme.palette.common.white}`,
+          }}
+        >
+          {steps[activeStep].description}
+        </div>
         <Suspense fallback={(
           <CenteredDiv>
             <CircularProgress color="secondary" />
@@ -78,7 +89,8 @@ export default function ConfiguratorStepper () {
             className="pointerOverEffect"
             size="small"
             onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
+            disabled={(activeStep === maxSteps - 1)
+                || (activeStep === 0 && participants.length < 2)}
           >
             Next
             {theme.direction === 'rtl' ? (

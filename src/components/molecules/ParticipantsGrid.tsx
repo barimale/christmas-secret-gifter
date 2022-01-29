@@ -46,10 +46,7 @@ const ParticipantsGrid = () => {
               flexDirection: 'column',
               gap: '20px',
             }}
-            >
-              <span>No participants defined yet.</span>
-              <span>Start with adding them - You need to define at least two of them to generate matching.</span>
-            </Typography>
+            />
           )}
         </div>
       )}

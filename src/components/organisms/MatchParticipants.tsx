@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Typography } from '@material-ui/core';
 import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
 import { EventContext } from '../../contexts/EventContext';
 import AlgorithmResponse from '../../store/model/algorithm-response';
 import LoadingInProgress from '../molecules/LoadingInProgress';
@@ -53,29 +57,56 @@ const MatchParticipants = () => {
             <LoadingInProgress />
             )}
             {response && (
-            <Typography
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '20px',
-              }}
-            >
-              <span>
-                <b>Analysis result:</b>
-                {response.analysisStatus}
-              </span>
-              {response.isError && (
-              <span>
-                Negative cause:
-                {response.reason}
-              </span>
-              )}
-              {!response.isError && (
-                response.pairs.flatMap((r) => (
-                  <span>{`${getName(r.fromIndex)} is going to buy a gift for ${getName(r.toIndex)}`}</span>
-                ))
-              )}
-            </Typography>
+              <TableContainer
+                component={Paper}
+                sx={{
+                //   maxHeight,
+                }}
+              >
+                <Table
+                  stickyHeader
+                  aria-label="simple table"
+                  size="small"
+                >
+                  <TableBody>
+                    <TableRow
+                      key={1}
+                      sx={{
+                        '&:last-child td, &:last-child th': {
+                          border: 0,
+                        },
+                      }}
+                    >
+                      <TableCell align="left">Analysis status:</TableCell>
+                      <TableCell align="left">{response.analysisStatus}</TableCell>
+                    </TableRow>
+                    {!response.isError && (
+                    <TableRow
+                      key={2}
+                      sx={{
+                        '&:last-child td, &:last-child th': {
+                          border: 0,
+                        },
+                      }}
+                    >
+                      <TableCell align="left">Who is gifting Who:</TableCell>
+                      <TableCell
+                        align="left"
+                        style={{
+                          display: 'flex', flexDirection: 'column', gap: '10px',
+                        }}
+                      >
+                        {!response.isError && (
+                          response.pairs.flatMap((r) => (
+                            <span>{`${getName(r.fromIndex)} is going to buy a gift for ${getName(r.toIndex)}`}</span>
+                          ))
+                        )}
+                      </TableCell>
+                    </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
             )}
           </>
         ) : (

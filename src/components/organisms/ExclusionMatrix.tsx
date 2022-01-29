@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
-
+import Tooltip from '@mui/material/Tooltip';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -87,17 +87,19 @@ const ExclusionMatrix = () => {
                 <TableCell align="left">{p.name}</TableCell>
                 {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
                   <TableCell>
-                    <Checkbox
-                      disabled={p.orderId === pp.orderId}
-                      key={`${p.orderId}-${pp.orderId}`}
-                      checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}
-                      onChange={(e: any, checked: boolean) => {
-                        handleChange(p.orderId, pp.orderId, checked);
-                      }}
-                      inputProps={{
-                        'aria-label': 'controlled',
-                      }}
-                    />
+                    <Tooltip title="As a person from the left You can exclude a person from the top">
+                      <Checkbox
+                        disabled={p.orderId === pp.orderId}
+                        key={`${p.orderId}-${pp.orderId}`}
+                        checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}
+                        onChange={(e: any, checked: boolean) => {
+                          handleChange(p.orderId, pp.orderId, checked);
+                        }}
+                        inputProps={{
+                          'aria-label': 'controlled',
+                        }}
+                      />
+                    </Tooltip>
                   </TableCell>
                 ))}
               </TableRow>
