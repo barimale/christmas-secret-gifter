@@ -45,10 +45,16 @@ export default function ConfiguratorStepper () {
           alignItems: 'center',
           height: 50,
           pl: 2,
-          bgcolor: 'background.default',
+          bgcolor: 'black',
+          color: 'white',
         }}
       >
-        <Typography>{steps[activeStep].label}</Typography>
+        <Typography style={{
+          fontSize: '20px',
+        }}
+        >
+          {steps[activeStep].label}
+        </Typography>
       </Paper>
       <Box sx={{
         height: 400, minWidth: 600, width: '100%',
@@ -70,6 +76,7 @@ export default function ConfiguratorStepper () {
         activeStep={activeStep}
         nextButton={(
           <Button
+            className="pointerOverEffect"
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
@@ -83,7 +90,12 @@ export default function ConfiguratorStepper () {
           </Button>
         )}
         backButton={(
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button
+            className="pointerOverEffect"
+            size="small"
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
             {theme.direction === 'rtl' ? (
               <KeyboardArrowRight />
             ) : (

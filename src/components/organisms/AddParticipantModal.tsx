@@ -68,7 +68,7 @@ const AddParticipantModalContent = (props: AddParticipantModalProps) => {
             boxShadow={10}
             style={{
               height: 'auto',
-              width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '60%' : '90%',
+              width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '40%' : '90%',
             }}
           >
             <Fade

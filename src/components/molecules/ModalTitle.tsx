@@ -7,7 +7,7 @@ import { DeviceContextConsumer, DeviceType } from '../../contexts';
 
 type ModalTitleProps = {
     title: string;
-    close: () => void;
+    close?: () => void;
 }
 
 export const ModalTitle = (props: ModalTitleProps) => {
@@ -44,10 +44,13 @@ export const ModalTitle = (props: ModalTitleProps) => {
           >
             {props.title}
           </Typography>
+          {props.close !== undefined && (
           <IconButton
             className="pointerOverEffect"
             onClick={async () => {
-              props.close();
+              if (props.close !== undefined) {
+                props.close();
+              }
             }}
           >
             <ClearIcon style={{
@@ -55,6 +58,7 @@ export const ModalTitle = (props: ModalTitleProps) => {
             }}
             />
           </IconButton>
+          )}
         </div>
       )}
     </DeviceContextConsumer>

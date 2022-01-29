@@ -6,7 +6,7 @@ import { MyTextField } from '../atoms';
 import Participant from '../../store/model/participant';
 
 const defaultXs = 12;
-const defaultSm = 6;
+const defaultSm = 12;
 
 export const NameField = (props: FormikProps<Participant>) => (
   <DeviceContextConsumer>

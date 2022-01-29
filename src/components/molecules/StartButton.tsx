@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from '@material-ui/core';
+import ParkIcon from '@mui/icons-material/Park';
 import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
 
@@ -8,26 +9,24 @@ export const StartButton = function () {
 
   return (
     <Button
-      variant="outlined"
+      className="pointerOverEffect"
+      variant="contained"
+      color="secondary"
       onClick={async () => {
         await startEvent();
       }}
       style={{
         fontSize: '40px',
-        backgroundColor: 'grey',
         boxShadow: `${customTheme.shadows[10]}`,
-        textShadow: '1px 1px white',
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '20px',
+        paddingLeft: '30px',
+        paddingRight: '30px',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '15px',
-        }}
-      >
-        <p>START</p>
-      </div>
+      <ParkIcon fontSize="large" />
+      <p>START</p>
     </Button>
   );
 };
