@@ -23,7 +23,7 @@ const ExclusionMatrix = () => {
   const [exclusions, setExclusions] = useState<ParticipantExclusion[]>(
     participants.flatMap((p:Participant) => (
       participants.flatMap((pp:Participant) => ({
-        forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.orderId === pp.orderId,
+        forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
       } as ParticipantExclusion)))),
   );
 
@@ -36,7 +36,7 @@ const ExclusionMatrix = () => {
 
     const toBeUpdated = participants.find((ppp) => ppp.orderId === forOrderId);
     if (toBeUpdated !== undefined) {
-      toBeUpdated.excludedOrderIds = newExclusions.filter((pp) => pp.forOrderId === forOrderId).flatMap((s) => s.orderId);
+      toBeUpdated.excludedOrderIds = newExclusions.filter((pp) => pp.forOrderId === forOrderId && pp.isChecked).flatMap((s) => s.orderId);
       await editParticipant(toBeUpdated);
     }
 
@@ -64,7 +64,7 @@ const ExclusionMatrix = () => {
           <TableHead>
             <TableRow>
               <TableCell align="left" />
-              {participants.flatMap((p : Participant) => (
+              {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
                 <TableCell align="left">{p.name}</TableCell>
               ))}
             </TableRow>
@@ -81,7 +81,7 @@ const ExclusionMatrix = () => {
                 }}
               >
                 <TableCell align="left">{p.name}</TableCell>
-                {participants?.map((pp: Participant) => (
+                {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
                   <TableCell>
                     <Checkbox
                       disabled={p.orderId === pp.orderId}
