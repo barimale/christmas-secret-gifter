@@ -1,8 +1,9 @@
+/* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import sizeMe, { SizeMe } from 'react-sizeme';
 import { EventContext } from '../../contexts';
-import { Participants } from './Participants';
+import Participants from './Participants';
 import ParticipantHeader from './ParticipantHeader';
 
 const ParticipantsGrid = () => {
@@ -41,9 +42,13 @@ const ParticipantsGrid = () => {
           ) : (
             <Typography style={{
               padding: '20px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
             }}
             >
-              No participants defined yet.
+              <span>No participants defined yet.</span>
+              <span>Start with adding them - You need to define at least two of them to generate matching.</span>
             </Typography>
           )}
         </div>

@@ -17,7 +17,7 @@ interface Props{
     maxHeight: number;
 }
 
-export const Participants = ({ maxHeight }: Props) => {
+const Participants = ({ maxHeight }: Props) => {
   const { participants, removeParticipant } = useContext(EventContext);
   const [isEditVisible, setIsEditVisible] = useState<boolean>(false);
   const [toBeEdited, setToBeEdited] = useState<Participant | undefined>(undefined);
@@ -102,3 +102,5 @@ export const Participants = ({ maxHeight }: Props) => {
     </Paper>
   );
 };
+
+export default Participants;

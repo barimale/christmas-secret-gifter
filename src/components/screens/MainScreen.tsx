@@ -1,9 +1,8 @@
 /* eslint-disable arrow-body-style */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CenteredDiv from '../templates/CenteredDiv';
 import { EventContext } from '../../contexts';
-import { StartButton } from '../molecules';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 
 export const Path = '/';
@@ -22,13 +21,20 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 export const MainScreen = function () {
-  const { giftEvent } = useContext(EventContext);
+  const { giftEvent, startEvent } = useContext(EventContext);
+
+  useEffect(() => {
+    startEvent();
+  }, []);
+
+  useEffect(() => {
+    if (giftEvent === undefined) {
+      startEvent();
+    }
+  }, [giftEvent]);
 
   return (
     <CenteredDiv>
-      {!giftEvent && (
-        <StartButton />
-      )}
       {giftEvent && (
         <ConfiguratorStepper />
       )}
