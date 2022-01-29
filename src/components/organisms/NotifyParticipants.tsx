@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow'; import Participant from '../../store/model/participant';
 import { EventContext } from '../../contexts/EventContext';
-import { NotifyParticipantRow } from './NotifyParticipantRow';
+import { NotifyParticipantRow } from '../molecules/NotifyParticipantRow';
 
 const NotifyParticipants = () => {
   const { participants } = useContext(EventContext);
