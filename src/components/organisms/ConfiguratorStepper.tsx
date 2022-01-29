@@ -34,7 +34,7 @@ export default function ConfiguratorStepper () {
 
   return (
     <Box sx={{
-      maxWidth: 400, flexGrow: 1,
+      maxWidth: 800, flexGrow: 1,
     }}
     >
       <Paper
@@ -51,7 +51,7 @@ export default function ConfiguratorStepper () {
         <Typography>{steps[activeStep].label}</Typography>
       </Paper>
       <Box sx={{
-        height: 255, maxWidth: 400, width: '100%',
+        height: 400, minWidth: 600, width: '100%',
       }}
       >
         <Suspense fallback={(

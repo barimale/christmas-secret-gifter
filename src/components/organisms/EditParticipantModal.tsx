@@ -104,10 +104,8 @@ const EditSchema = Yup.object().shape({
     .required('Field is required')
     .min(2, 'Field has to be at least 2 signs long')
     .max(50, 'Field cannot be longer than 50 signs'),
-  email: Yup.string()
-    .required('Field is required')
-    .min(2, 'Field has to be at least 2 signs long')
-    .max(50, 'Field cannot be longer than 50 signs'),
+  email: Yup.string().email()
+    .required('Field is required'),
 });
 
 type EditFormProps = {
