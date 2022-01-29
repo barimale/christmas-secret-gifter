@@ -42,9 +42,18 @@ const EventContextProvider = (props: any) => {
     return undefined;
   }
 
+  function getParticipantId (index: number): string | undefined | null {
+    const found = participants.find((p) => p.orderId === index);
+    if (found !== undefined) {
+      return found.id;
+    }
+    return undefined;
+  }
+
   function MapToMailDetails (): ToGifterParams[] {
     const details = analysisResult?.pairs.flatMap((p: Pair) => {
       const detail = {
+        participantId: getParticipantId(p.fromIndex),
         from_name: 'mateusz.wolnica@gmail.com',
         to_name: getName(p.fromIndex),
         title: 'Christmas Secret Gifter - pairing results!',

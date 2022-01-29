@@ -42,7 +42,9 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
       }
     }
 
-    SendAsync();
+    if (mailStatus.status !== 'success' && mailStatus.status !== 'error') {
+      SendAsync();
+    }
   }, [mailStatus]);
 
   return (
