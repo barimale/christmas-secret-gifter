@@ -8,5 +8,6 @@ export * from './ExclusionMatrix';
 export * from './Footer';
 export * from './Header';
 export * from './MatchParticipants';
+export * from '../molecules/NotifyParticipantRow';
 export * from './NotifyParticipants';
 export * from './rules';

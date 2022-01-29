@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Paper from '@mui/material/Paper';
 import { Typography } from '@material-ui/core';
+import Paper from '@mui/material/Paper';
 import { EventContext } from '../../contexts/EventContext';
 import AlgorithmResponse from '../../store/model/algorithm-response';
 import LoadingInProgress from '../molecules/LoadingInProgress';
@@ -32,30 +32,43 @@ const MatchParticipants = () => {
   }
 
   return (
-    <Paper
-      sx={{
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'whitesmoke',
+      padding: '20px',
+      height: '100%',
+      paddingTop: '20px',
+      paddingBottom: '0px',
+    }}
+    >
+      <Paper sx={{
         width: '100%',
         overflow: 'hidden',
-        height: '100%',
       }}
-    >
-      {participants.length > 0 ? (
-        <>
-          {(response === undefined || isInProgress) && (
-          <LoadingInProgress />
-          )}
-          {response && (
+      >
+        {participants.length > 0 ? (
+          <>
+            {(response === undefined || isInProgress) && (
+            <LoadingInProgress />
+            )}
+            {response && (
             <Typography
               style={{
-                border: response.isError ? '2px solid red' : '1px solid green',
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '20px',
               }}
             >
-              <span>{response.analysisStatus}</span>
+              <span>
+                <b>Analysis result:</b>
+                {response.analysisStatus}
+              </span>
               {response.isError && (
-              <span>{response.reason}</span>
+              <span>
+                Negative cause:
+                {response.reason}
+              </span>
               )}
               {!response.isError && (
                 response.pairs.flatMap((r) => (
@@ -63,12 +76,13 @@ const MatchParticipants = () => {
                 ))
               )}
             </Typography>
-          )}
-        </>
-      ) : (
-        <p>Something went wrong</p>
-      )}
-    </Paper>
+            )}
+          </>
+        ) : (
+          <p>Something went wrong</p>
+        )}
+      </Paper>
+    </div>
   );
 };
 

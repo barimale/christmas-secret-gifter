@@ -44,16 +44,20 @@ const ExclusionMatrix = () => {
   }
 
   return (
-    <Paper sx={{
-      width: '100%',
-      overflow: 'hidden',
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'whitesmoke',
+      padding: '20px',
       height: '100%',
+      paddingTop: '20px',
+      paddingBottom: '0px',
     }}
     >
       <TableContainer
         component={Paper}
         sx={{
-        //   maxHeight,
+          //   maxHeight,
         }}
       >
         <Table
@@ -101,7 +105,7 @@ const ExclusionMatrix = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </div>
   );
 };
 

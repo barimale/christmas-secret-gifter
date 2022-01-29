@@ -8,7 +8,7 @@ const NotifyParticipantsLazy = lazy(() => import('../organisms/NotifyParticipant
 export const ConfiguratorSteps = [
   {
     label: 'Add Participants To List',
-    description: 'Description',
+    description: '',
     component: <DefineParticipantsLazy />,
   },
   {

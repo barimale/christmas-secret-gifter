@@ -1,14 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
-import { IconButton, Tooltip } from '@material-ui/core';
-import InfoIcon from '@mui/icons-material/Info';
+import { IconButton } from '@material-ui/core';
 import sizeMe from 'react-sizeme';
 import AddParticipantModal from '../organisms/AddParticipantModal';
-import { EventContext } from '../../contexts';
 
 const ParticipantHeader = () => {
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
-  const { giftEvent } = useContext(EventContext);
 
   return (
     <>
@@ -22,11 +19,6 @@ const ParticipantHeader = () => {
         borderBottom: '1px solid lightgrey',
       }}
       >
-        <Tooltip title={giftEvent?.id ?? ''}>
-          <IconButton>
-            <InfoIcon fontSize="small" />
-          </IconButton>
-        </Tooltip>
         <IconButton
           style={{
             borderRadius: '0px',
@@ -35,8 +27,7 @@ const ParticipantHeader = () => {
             setIsAddVisible(true);
           }}
         >
-          <p>ADD PARTICIPANT</p>
-          <AddIcon />
+          <AddIcon color="primary" />
         </IconButton>
       </div>
       <AddParticipantModal

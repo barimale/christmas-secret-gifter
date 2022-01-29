@@ -12,8 +12,6 @@ import { Suspense, useContext, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
-
-import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
 
 export default function ConfiguratorStepper () {
@@ -34,7 +32,7 @@ export default function ConfiguratorStepper () {
 
   return (
     <Box sx={{
-      maxWidth: 800, flexGrow: 1,
+      maxWidth: 800, flexGrow: 1, backgroundColor: 'whitesmoke',
     }}
     >
       <Paper
@@ -60,6 +58,7 @@ export default function ConfiguratorStepper () {
         height: 400, minWidth: 600, width: '100%',
       }}
       >
+        {steps[activeStep].description}
         <Suspense fallback={(
           <CenteredDiv>
             <CircularProgress color="secondary" />
@@ -106,29 +105,16 @@ export default function ConfiguratorStepper () {
         )}
       />
       <Button
-        variant="outlined"
+        className="pointerOverEffect"
+        size="small"
         disabled={isInProgress}
         onClick={async () => {
           setIsInProgress(true);
           restartEvent();
           setIsInProgress(false);
         }}
-        style={{
-          fontSize: '10px',
-          backgroundColor: 'grey',
-          boxShadow: `${customTheme.shadows[10]}`,
-          textShadow: '1px 1px white',
-        }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '15px',
-          }}
-        >
-          <p>Restart</p>
-        </div>
+        Restart
       </Button>
     </Box>
   );

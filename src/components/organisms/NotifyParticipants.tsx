@@ -13,12 +13,15 @@ const NotifyParticipants = () => {
   const { participants } = useContext(EventContext);
 
   return (
-    <Paper
-      sx={{
-        width: '100%',
-        overflow: 'hidden',
-        height: '100%',
-      }}
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'whitesmoke',
+      padding: '20px',
+      height: '100%',
+      paddingTop: '20px',
+      paddingBottom: '0px',
+    }}
     >
       <TableContainer
         component={Paper}
@@ -46,7 +49,7 @@ const NotifyParticipants = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from '@material-ui/core';
-import ParkIcon from '@mui/icons-material/Park';
+import { Button, Typography } from '@material-ui/core';
 import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
 
@@ -18,15 +17,22 @@ export const StartButton = function () {
       style={{
         fontSize: '40px',
         boxShadow: `${customTheme.shadows[10]}`,
+        textShadow: '1px 1px white',
         display: 'flex',
         flexDirection: 'row',
-        gap: '20px',
         paddingLeft: '30px',
         paddingRight: '30px',
+        border: '8px solid green',
+        padding: '30px ',
       }}
     >
-      <ParkIcon fontSize="large" />
-      <p>START</p>
+      <Typography
+        style={{
+          fontSize: '30px',
+        }}
+      >
+        Let&apos;s begin
+      </Typography>
     </Button>
   );
 };

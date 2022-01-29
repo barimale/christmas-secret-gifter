@@ -20,5 +20,10 @@ export const Theme = createTheme({
         overflowX: 'unset',
       },
     },
+    MuiCheckbox: {
+      checked: {
+        color: '#1f8c31 !important',
+      },
+    },
   },
 });

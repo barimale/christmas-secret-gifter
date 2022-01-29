@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import sizeMe from 'react-sizeme';
+import ParkIcon from '@mui/icons-material/Park';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import MenuWithItems from '../organisms/menu/menu-mobile/MenuWithItems';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
@@ -66,6 +67,7 @@ const TopMenu = function () {
                   className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
                   to={MainPath}
                 >
+                  <ParkIcon fontSize="large" />
                   {'Christmas Secret Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
