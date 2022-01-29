@@ -8,4 +8,5 @@ export * from './ExclusionMatrix';
 export * from './Footer';
 export * from './Header';
 export * from './MatchParticipants';
+export * from './NotifyParticipants';
 export * from './rules';

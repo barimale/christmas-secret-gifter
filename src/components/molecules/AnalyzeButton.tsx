@@ -35,7 +35,7 @@ export const AnalyzeButton = (props: Props) => {
           gap: '15px',
         }}
       >
-        <p>PAIR!</p>
+        <p>Refresh!</p>
       </div>
     </Button>
   );

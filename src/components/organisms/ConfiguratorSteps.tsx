@@ -3,6 +3,7 @@ import React, { lazy } from 'react';
 const DefineParticipantsLazy = lazy(() => import('../organisms/DefineParticipants'));
 const ExclusionMatrixLazy = lazy(() => import('../organisms/ExclusionMatrix'));
 const MatchParticipantsLazy = lazy(() => import('../organisms/MatchParticipants'));
+const NotifyParticipantsLazy = lazy(() => import('../organisms/NotifyParticipants'));
 
 export const ConfiguratorSteps = [
   {
@@ -19,5 +20,10 @@ export const ConfiguratorSteps = [
     label: 'Match Participants',
     description: 'Description',
     component: <MatchParticipantsLazy />,
+  },
+  {
+    label: 'Notify Participants',
+    description: 'Description',
+    component: <NotifyParticipantsLazy />,
   },
 ];
