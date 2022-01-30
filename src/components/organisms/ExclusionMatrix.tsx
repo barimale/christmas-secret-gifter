@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -42,6 +42,15 @@ const ExclusionMatrix = () => {
         forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
       } as ParticipantExclusion)))),
   );
+
+  useEffect(() => {
+    setExclusions(
+      participants.flatMap((p:Participant) => (
+        participants.flatMap((pp:Participant) => ({
+          forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
+        } as ParticipantExclusion)))),
+    );
+  }, [participants]);
 
   async function handleChange (forOrderId: number, orderId: number, checked: boolean) {
     const newExclusions = Array.from(exclusions);
