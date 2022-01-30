@@ -49,7 +49,7 @@
   },
   "scripts": {
     "setup": "rimraf ./node_modules && rimraf ./yarn.lock && rimraf ./package-lock.json && yarn install --force",
-    "start": "set PORT=3010 && react-scripts start",
+    "start": "set PORT=3010 && react-scripts start  .env.development",
     "build-fast": "react-scripts build",
     "build": "npx ts-node --project tsconfig.node.json ./scripts/sitemap-builder.ts && yarn build-fast",
     "test": "react-scripts test",
