@@ -79,7 +79,13 @@ const EventContextProvider = (props: any) => {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const eventContext: EventManager = ({
     // eslint-disable-next-line no-return-await
-    startEvent: async () => await axios.post(`${backendUrl}/api/events/create`)
+    startEvent: async () => await axios.post(`${backendUrl}/api/events/create`, {
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
+    })
       .then((response: any) => {
         if (response.status === 200) {
           const { data } = response;
@@ -93,7 +99,13 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(event);
       }),
     // eslint-disable-next-line no-return-await
-    analyze: async () => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`)
+    analyze: async () => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`, {
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
+    })
       .then((response: any) => {
         if (response.status === 200) {
           const { data } = response;
@@ -127,6 +139,10 @@ const EventContextProvider = (props: any) => {
       },
       {
         cancelToken: source?.token,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
       },
     )
       .then(async (response: any) => {
@@ -135,6 +151,10 @@ const EventContextProvider = (props: any) => {
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+              },
             },
           );
           if (result.status === 200) {
@@ -155,6 +175,10 @@ const EventContextProvider = (props: any) => {
       participant,
       {
         cancelToken: source?.token,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
       },
     )
       .then(async (response: any) => {
@@ -163,6 +187,10 @@ const EventContextProvider = (props: any) => {
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+              },
             },
           );
           if (result.status === 200) {
@@ -182,6 +210,10 @@ const EventContextProvider = (props: any) => {
       `${backendUrl}/api/events/${event?.id}/participants/${participant.id}`,
       {
         cancelToken: source?.token,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
       },
     )
       .then(async (response: any) => {
@@ -190,6 +222,10 @@ const EventContextProvider = (props: any) => {
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
               cancelToken: source?.token,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+              },
             },
           );
           if (result.status === 200) {
