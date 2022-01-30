@@ -42,7 +42,7 @@ const MatchParticipants = () => {
       flexDirection: 'column',
       backgroundColor: 'whitesmoke',
       padding: '20px',
-      height: '100%',
+      height: '75%',
       paddingTop: '20px',
       paddingBottom: '0px',
     }}

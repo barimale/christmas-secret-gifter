@@ -1,9 +1,10 @@
 /* eslint-disable arrow-body-style */
 import React, { useContext, useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
-import { EventContext } from '../../contexts';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
+import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -34,10 +35,24 @@ export const MainScreen = function () {
   }, [giftEvent]);
 
   return (
-    <CenteredDiv>
-      {giftEvent && (
-        <ConfiguratorStepper />
+    <DeviceContextConsumer>
+      {(context) => (
+        <CenteredDiv>
+          {giftEvent && (
+          <ConfiguratorStepper />
+          )}
+          {!giftEvent && (
+          <Typography style={{
+            color: 'white',
+            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+              ? '40px' : '20px',
+          }}
+          >
+            Please wait a moment. Event creation in progress...
+          </Typography>
+          )}
+        </CenteredDiv>
       )}
-    </CenteredDiv>
+    </DeviceContextConsumer>
   );
 };

@@ -13,7 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
-import { EventContext } from '../../contexts';
+import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 
 const GoldButton = withStyles({
   root: {
@@ -43,103 +43,114 @@ export default function ConfiguratorStepper () {
   };
 
   return (
-    <Box sx={{
-      maxWidth: 800, flexGrow: 1, backgroundColor: 'whitesmoke',
-    }}
-    >
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          bgcolor: 'black',
-          color: 'white',
-        }}
-      >
-        <Typography style={{
-          fontSize: '20px',
+    <DeviceContextConsumer>
+      {(context) => (
+        <Box sx={{
+          maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+            ? 800 : window.innerWidth * 0.8,
+          flexGrow: 1,
+          backgroundColor: 'whitesmoke',
         }}
         >
-          {steps[activeStep].label}
-        </Typography>
-      </Paper>
-      <Box sx={{
-        height: 440, minWidth: 600, width: '100%',
-      }}
-      >
-        <div
-          style={{
-            paddingTop: '10px',
-            paddingLeft: '20px',
-            paddingRight: '20px',
-            paddingBottom: '15px',
-            backgroundColor: '#1f8c31',
-            color: `${theme.palette.common.white}`,
+          <Paper
+            square
+            elevation={0}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              height: 50,
+              pl: 2,
+              bgcolor: 'black',
+              color: 'white',
+            }}
+          >
+            <Typography style={{
+              fontSize: '20px',
+            }}
+            >
+              {steps[activeStep].label}
+            </Typography>
+          </Paper>
+          <Box sx={{
+            height: context.valueOf() === DeviceType.isDesktopOrLaptop
+              ? 440 : window.innerHeight * 0.60,
+            minWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+              ? 600 : window.innerWidth * 0.75,
+            width: '100%',
           }}
-        >
-          {steps[activeStep].description}
-        </div>
-        <Suspense fallback={(
-          <CenteredDiv>
-            <CircularProgress color="secondary" />
-          </CenteredDiv>
+          >
+            <div
+              style={{
+                paddingTop: '10px',
+                paddingLeft: '20px',
+                paddingRight: '20px',
+                paddingBottom: '15px',
+                backgroundColor: '#1f8c31',
+                color: `${theme.palette.common.white}`,
+              }}
+            >
+              {steps[activeStep].description}
+            </div>
+            <Suspense fallback={(
+              <CenteredDiv>
+                <CircularProgress color="secondary" />
+              </CenteredDiv>
           )}
-        >
-          {steps[activeStep].component}
-        </Suspense>
-      </Box>
-      <MobileStepper
-        variant="text"
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={(
-          <GoldButton
-            className="pointerOverEffect"
-            size="small"
-            onClick={handleNext}
-            disabled={(activeStep === maxSteps - 1)
+            >
+              {steps[activeStep].component}
+            </Suspense>
+          </Box>
+          <MobileStepper
+            variant="text"
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            nextButton={(
+              <GoldButton
+                className="pointerOverEffect"
+                size="small"
+                onClick={handleNext}
+                disabled={(activeStep === maxSteps - 1)
                 || (activeStep === 0 && participants.length < 2)}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </GoldButton>
+              >
+                Next
+                {theme.direction === 'rtl' ? (
+                  <KeyboardArrowLeft />
+                ) : (
+                  <KeyboardArrowRight />
+                )}
+              </GoldButton>
         )}
-        backButton={(
+            backButton={(
+              <GoldButton
+                className="pointerOverEffect"
+                size="small"
+                onClick={handleBack}
+                disabled={activeStep === 0}
+              >
+                {theme.direction === 'rtl' ? (
+                  <KeyboardArrowRight />
+                ) : (
+                  <KeyboardArrowLeft />
+                )}
+                Back
+              </GoldButton>
+        )}
+          />
           <GoldButton
             className="pointerOverEffect"
             size="small"
-            onClick={handleBack}
-            disabled={activeStep === 0}
+            disabled={isInProgress}
+            onClick={async () => {
+              setIsInProgress(true);
+              restartEvent();
+              setIsInProgress(false);
+            }}
           >
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
+            Restart
           </GoldButton>
-        )}
-      />
-      <GoldButton
-        className="pointerOverEffect"
-        size="small"
-        disabled={isInProgress}
-        onClick={async () => {
-          setIsInProgress(true);
-          restartEvent();
-          setIsInProgress(false);
-        }}
-      >
-        Restart
-      </GoldButton>
-    </Box>
+        </Box>
+      )}
+    </DeviceContextConsumer>
   );
 }

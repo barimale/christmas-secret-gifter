@@ -3,6 +3,8 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import SyncProblemIcon from '@mui/icons-material/SyncProblem';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import ReportIcon from '@mui/icons-material/Report';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import Participant from '../../store/model/participant';
@@ -26,24 +28,22 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
     status: 'pending',
   });
 
-  useEffect(() => {
-    async function SendAsync () {
-      const detail = sendMailDetails
-        .find((p: ToGifterParams) => p.participantId === props.participant.id);
-      if (detail !== undefined) {
-        setMailStatus({
-          status: 'inprogress',
-        });
-        detail.gRecaptchaResponse = captcha;
-        const status: 'success' | 'error' | 'inprogress' | 'pending' = await send(detail);
-        // eslint-disable-next-line no-alert
-        alert(JSON.stringify(status));
-        setMailStatus({
-          status,
-        });
-      }
+  async function SendAsync () {
+    const detail = sendMailDetails
+      .find((p: ToGifterParams) => p.participantId === props.participant.id);
+    if (detail !== undefined) {
+      setMailStatus({
+        status: 'inprogress',
+      });
+      detail.gRecaptchaResponse = captcha;
+      const status: 'success' | 'error' | 'inprogress' | 'pending' = await send(detail);
+      setMailStatus({
+        status,
+      });
     }
+  }
 
+  useEffect(() => {
     if (mailStatus.status !== 'success' && mailStatus.status !== 'error') {
       SendAsync();
     }
@@ -65,18 +65,25 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
       </TableCell>
       <TableCell align="right">{participant.email}</TableCell>
       <TableCell align="right">
-        {mailStatus.status === 'inprogress' && (
-          <SyncProblemIcon />
-        )}
-        {mailStatus.status === 'success' && (
-          <ThumbUpAltIcon />
-        )}
-        {mailStatus.status === 'error' && (
-          <ReportIcon />
-        )}
-        {mailStatus.status === 'pending' && (
-          <PendingActionsIcon />
-        )}
+        <Tooltip title={mailStatus.status}>
+          <IconButton onClick={async () => {
+            await SendAsync();
+          }}
+          >
+            {mailStatus.status === 'inprogress' && (
+            <SyncProblemIcon />
+            )}
+            {mailStatus.status === 'success' && (
+            <ThumbUpAltIcon />
+            )}
+            {mailStatus.status === 'error' && (
+            <ReportIcon />
+            )}
+            {mailStatus.status === 'pending' && (
+            <PendingActionsIcon />
+            )}
+          </IconButton>
+        </Tooltip>
       </TableCell>
     </TableRow>
   );
