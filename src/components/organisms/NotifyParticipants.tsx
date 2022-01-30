@@ -1,16 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow'; import Participant from '../../store/model/participant';
+import TableRow from '@mui/material/TableRow'; import ReCAPTCHA from 'react-google-recaptcha';
+import Participant from '../../store/model/participant';
 import { EventContext } from '../../contexts/EventContext';
 import { NotifyParticipantRow } from '../molecules/NotifyParticipantRow';
 
 const NotifyParticipants = () => {
   const { participants } = useContext(EventContext);
+  const [isCaptchaAgreed, setIsCaptchaAgreed] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  let captcha : ReCAPTCHA | null = null;
+
+  useEffect(() => {
+    if (captcha !== null) {
+      captcha.reset();
+    }
+  }, []);
 
   return (
     <div style={{
@@ -23,32 +34,57 @@ const NotifyParticipants = () => {
       paddingBottom: '0px',
     }}
     >
-      <TableContainer
-        component={Paper}
-        sx={{
-          // maxHeight,
+      {!isCaptchaAgreed ? (
+        <div style={{
+          display: 'inline-block',
         }}
-      >
-        <Table
-          stickyHeader
-          aria-label="simple table"
-          size="small"
         >
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Id</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Email</TableCell>
-              <TableCell align="right">Status</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {participants?.map((p: Participant) => (
-              <NotifyParticipantRow participant={p} captcha="" />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          <ReCAPTCHA
+            ref={(el) => { captcha = el; }}
+            hl="PL"
+            sitekey="6Ld1vkceAAAAAImBNnWg0TTYf80V3ly9NPs4gth8"
+            onChange={(token: string | null) => {
+              setCaptchaToken(token);
+              setIsCaptchaAgreed(true);
+            }}
+            onExpired={() => {
+              setIsCaptchaAgreed(false);
+              setCaptchaToken(null);
+            }}
+            onErrored={() => {
+              setIsCaptchaAgreed(false);
+              setCaptchaToken(null);
+            }}
+          />
+        </div>
+      ) : (
+        <TableContainer
+          component={Paper}
+          sx={{
+          // maxHeight,
+          }}
+        >
+          <Table
+            stickyHeader
+            aria-label="simple table"
+            size="small"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">Id</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell align="right">Email</TableCell>
+                <TableCell align="right">Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {participants?.map((p: Participant) => (
+                <NotifyParticipantRow participant={p} captcha={captchaToken ?? ''} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };
