@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import sizeMe from 'react-sizeme';
 import ParkIcon from '@mui/icons-material/Park';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
-import MenuWithItems from '../organisms/menu/menu-mobile/MenuWithItems';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
 import { Path as MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
@@ -49,9 +48,6 @@ const TopMenu = function () {
               paddingRight: context === DeviceType.isDesktopOrLaptop ? '32px' : '10px',
             }}
             >
-              {context === DeviceType.isTabletOrMobile && (
-              <MenuWithItems />
-              )}
               <Typography
                 variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
                 className={classes.title}
@@ -59,15 +55,23 @@ const TopMenu = function () {
                 style={{
                   color: `${Theme.palette.common.white}`,
                   WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '32px',
+                  fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '24px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignContent: 'center',
                 }}
               >
                 <StyledLink
                   className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
                   to={MainPath}
                 >
-                  <ParkIcon fontSize="large" />
+                  <ParkIcon
+                    fontSize={context === DeviceType.isDesktopOrLaptop ? 'large' : 'small'}
+                    style={{
+                      paddingRight: '10px',
+                    }}
+                  />
                   {'Christmas Secret Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
