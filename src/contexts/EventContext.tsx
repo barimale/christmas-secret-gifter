@@ -63,12 +63,12 @@ const EventContextProvider = (props: any) => {
   function MapToMailDetails (): ToGifterParams[] {
     const details = analysisResult?.pairs.flatMap((p: Pair) => {
       const detail = {
-        participantId: getParticipantId(p.fromIndex),
-        from_name: getEmail(p.fromIndex),
-        to_name: getEmail(p.toIndex),
+        participantId: getParticipantId(p.fromIndex + 1),
+        from_name: getEmail(p.fromIndex + 1),
+        to_name: getEmail(p.toIndex + 1),
         title: 'Christmas Secret Gifter - pairing results!',
-        forName: getName(p.toIndex),
-        reply_to: 'mateusz.wolnica@gmail.com',
+        forName: getName(p.toIndex + 1),
+        reply_to: '',
         gRecaptchaResponse: '',
       } as ToGifterParams;
       return detail;

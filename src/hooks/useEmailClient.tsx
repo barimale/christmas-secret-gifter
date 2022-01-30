@@ -80,10 +80,10 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
       Happy Christmas,
     </p>
     <p>
-      <a href="https://odkrywajcie.pl" target="_blank" rel="noreferrer">
+      <a href="https://christmas-secret-gifter.web.app" target="_blank" rel="noreferrer">
         <img
-          src="https://odkrywajcie.pl/logo-small.png"
-          alt="odkrywajcie.pl"
+          src="https://christmas-secret-gifter.web.app/logo-small.png"
+          alt="https://christmas-secret-gifter.web.app/logo-small.png"
           style={{
             height: '100', objectFit: 'scale-down',
           }}
