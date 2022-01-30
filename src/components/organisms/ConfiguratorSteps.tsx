@@ -23,7 +23,7 @@ export const ConfiguratorSteps = [
   },
   {
     label: 'Notify Participants',
-    description: 'Results of pairing are send to participants here. Each participant is informed about the person he/she has to buy a gift. Results are confidential. Only You - as an organizator of the event - have access to all of them. It is the last step - so Marry Christmas and Happy Shopping! :)',
+    description: 'Results of pairing are send to participants here. Each participant is informed about the person he/she has to buy a gift. Results are confidential. Only You - as an organizator of the event - have access to all of them. It is the last step - so Merry Christmas and Happy Shopping! :)',
     component: <NotifyParticipantsLazy />,
   },
 ];

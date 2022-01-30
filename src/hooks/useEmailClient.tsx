@@ -77,7 +77,7 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
     <p>You are going to buy a gift for:</p>
     <p><b>{props.forName}</b></p>
     <p>
-      Happy Christmas,
+      Merry Christmas,
     </p>
     <p>
       <a href="https://christmas-secret-gifter.web.app" target="_blank" rel="noreferrer">
