@@ -36,6 +36,8 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
         });
         detail.gRecaptchaResponse = captcha;
         const status: 'success' | 'error' | 'inprogress' | 'pending' = await send(detail);
+        // eslint-disable-next-line no-alert
+        alert(JSON.stringify(status));
         setMailStatus({
           status,
         });
@@ -45,7 +47,7 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
     if (mailStatus.status !== 'success' && mailStatus.status !== 'error') {
       SendAsync();
     }
-  }, [mailStatus]);
+  }, []);
 
   return (
     <TableRow

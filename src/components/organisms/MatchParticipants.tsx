@@ -5,9 +5,10 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { EventContext } from '../../contexts/EventContext';
 import AlgorithmResponse from '../../store/model/algorithm-response';
-import LoadingInProgress from '../molecules/LoadingInProgress';
+import CenteredDiv from '../templates/CenteredDiv';
 
 const MatchParticipants = () => {
   const { participants, analyze } = useContext(EventContext);
@@ -54,7 +55,9 @@ const MatchParticipants = () => {
         {participants.length > 0 ? (
           <>
             {(response === undefined || isInProgress) && (
-            <LoadingInProgress />
+            <CenteredDiv>
+              <CircularProgress color="secondary" />
+            </CenteredDiv>
             )}
             {response && (
               <TableContainer

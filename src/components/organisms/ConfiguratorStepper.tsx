@@ -10,9 +10,21 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { Suspense, useContext, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { withStyles } from '@material-ui/core/styles';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
 import { EventContext } from '../../contexts';
+
+const GoldButton = withStyles({
+  root: {
+    color: '#bdad31 !important',
+    '&$disabled': {
+      color: 'lightgrey !important',
+    },
+  },
+  disabled: {
+  },
+})(Button);
 
 export default function ConfiguratorStepper () {
   const theme = useTheme();
@@ -85,12 +97,9 @@ export default function ConfiguratorStepper () {
         position="static"
         activeStep={activeStep}
         nextButton={(
-          <Button
+          <GoldButton
             className="pointerOverEffect"
             size="small"
-            style={{
-              color: '#bdad31',
-            }}
             onClick={handleNext}
             disabled={(activeStep === maxSteps - 1)
                 || (activeStep === 0 && participants.length < 2)}
@@ -101,15 +110,12 @@ export default function ConfiguratorStepper () {
             ) : (
               <KeyboardArrowRight />
             )}
-          </Button>
+          </GoldButton>
         )}
         backButton={(
-          <Button
+          <GoldButton
             className="pointerOverEffect"
             size="small"
-            style={{
-              color: '#bdad31',
-            }}
             onClick={handleBack}
             disabled={activeStep === 0}
           >
@@ -119,15 +125,12 @@ export default function ConfiguratorStepper () {
               <KeyboardArrowLeft />
             )}
             Back
-          </Button>
+          </GoldButton>
         )}
       />
-      <Button
+      <GoldButton
         className="pointerOverEffect"
         size="small"
-        style={{
-          color: '#bdad31',
-        }}
         disabled={isInProgress}
         onClick={async () => {
           setIsInProgress(true);
@@ -136,7 +139,7 @@ export default function ConfiguratorStepper () {
         }}
       >
         Restart
-      </Button>
+      </GoldButton>
     </Box>
   );
 }

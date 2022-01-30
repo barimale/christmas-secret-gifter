@@ -13,13 +13,13 @@ import { withStyles } from '@material-ui/core/styles';
 import { EventContext } from '../../contexts';
 import Participant from '../../store/model/participant';
 
-const GreenCheckbox = withStyles({
+const GoldCheckbox = withStyles({
   root: {
     '&$checked': {
       color: '#bdad31 !important',
     },
     '&$disabled': {
-      color: 'grey !important',
+      color: 'lightgrey !important',
     },
   },
   checked: {
@@ -104,7 +104,7 @@ const ExclusionMatrix = () => {
                 {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
                   <TableCell>
                     <Tooltip title="As a person from the left You can exclude a person from the top">
-                      <GreenCheckbox
+                      <GoldCheckbox
                         disabled={p.orderId === pp.orderId}
                         key={`${p.orderId}-${pp.orderId}`}
                         checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}
