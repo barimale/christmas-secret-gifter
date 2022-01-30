@@ -63,8 +63,8 @@ export default function ConfiguratorStepper () {
             paddingTop: '10px',
             paddingLeft: '20px',
             paddingRight: '20px',
-            paddingBottom: '10px',
-            backgroundColor: `${theme.palette.primary.main}`,
+            paddingBottom: '15px',
+            backgroundColor: '#1f8c31',
             color: `${theme.palette.common.white}`,
           }}
         >
@@ -88,6 +88,9 @@ export default function ConfiguratorStepper () {
           <Button
             className="pointerOverEffect"
             size="small"
+            style={{
+              color: '#bdad31',
+            }}
             onClick={handleNext}
             disabled={(activeStep === maxSteps - 1)
                 || (activeStep === 0 && participants.length < 2)}
@@ -104,6 +107,9 @@ export default function ConfiguratorStepper () {
           <Button
             className="pointerOverEffect"
             size="small"
+            style={{
+              color: '#bdad31',
+            }}
             onClick={handleBack}
             disabled={activeStep === 0}
           >
@@ -119,6 +125,9 @@ export default function ConfiguratorStepper () {
       <Button
         className="pointerOverEffect"
         size="small"
+        style={{
+          color: '#bdad31',
+        }}
         disabled={isInProgress}
         onClick={async () => {
           setIsInProgress(true);

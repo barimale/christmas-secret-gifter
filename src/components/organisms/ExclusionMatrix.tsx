@@ -9,8 +9,24 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
 import { EventContext } from '../../contexts';
 import Participant from '../../store/model/participant';
+
+const GreenCheckbox = withStyles({
+  root: {
+    '&$checked': {
+      color: '#bdad31 !important',
+    },
+    '&$disabled': {
+      color: 'grey !important',
+    },
+  },
+  checked: {
+  },
+  disabled: {
+  },
+})(Checkbox);
 
 interface ParticipantExclusion {
     forOrderId: number;
@@ -88,7 +104,7 @@ const ExclusionMatrix = () => {
                 {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
                   <TableCell>
                     <Tooltip title="As a person from the left You can exclude a person from the top">
-                      <Checkbox
+                      <GreenCheckbox
                         disabled={p.orderId === pp.orderId}
                         key={`${p.orderId}-${pp.orderId}`}
                         checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}

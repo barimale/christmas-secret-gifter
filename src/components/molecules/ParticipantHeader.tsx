@@ -22,12 +22,13 @@ const ParticipantHeader = () => {
         <IconButton
           style={{
             borderRadius: '0px',
+            color: '#bdad31',
           }}
           onClick={() => {
             setIsAddVisible(true);
           }}
         >
-          <AddIcon color="primary" />
+          <AddIcon />
         </IconButton>
       </div>
       <AddParticipantModal
