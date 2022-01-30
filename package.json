@@ -51,10 +51,10 @@
     "setup": "rimraf ./node_modules && rimraf ./yarn.lock && rimraf ./package-lock.json && yarn install --force",
     "start": "set PORT=3010 && react-scripts start  .env.development",
     "build-fast": "react-scripts build",
-    "build": "npx ts-node --project tsconfig.node.json ./scripts/sitemap-builder.ts && yarn build-fast",
+    "build": "npm run sitemap && yarn build-fast",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sitemap": "npx ts-node --project tsconfig.node.json ./src/tools/sitemap-builder.ts",
+    "sitemap": "npx ts-node --project tsconfig.node.json ./tools/sitemap-builder.ts",
     "deploy": "yarn build && firebase deploy"
   },
   "eslintConfig": {

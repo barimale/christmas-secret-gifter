@@ -35,7 +35,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>
 `;
 
-const buildPath = '../public/sitemap.xml';
+const buildPath = './public/sitemap.xml';
 
 fs.writeFileSync(buildPath, xml);
 
