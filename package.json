@@ -54,7 +54,7 @@
     "build": "npx ts-node --project tsconfig.node.json ./scripts/sitemap-builder.ts && yarn build-fast",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sitemap": "npx ts-node --project tsconfig.node.json ./src/sitemap-builder.ts",
+    "sitemap": "npx ts-node --project tsconfig.node.json ./src/tools/sitemap-builder.ts",
     "deploy": "yarn build && firebase deploy"
   },
   "eslintConfig": {

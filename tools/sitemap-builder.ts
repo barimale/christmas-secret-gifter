@@ -4,7 +4,7 @@ import Routes from '../src/router/Routes';
 interface RouterRoute { props: { path: string } }
 interface SitemapRoute { path: string }
 
-const PUBLIC_URL = 'https://odkrywajcie.pl';
+const PUBLIC_URL = 'https://christmas-secret-gifter.web.app';
 
 const routes = (Routes()?.props.children || [])
   .reduce((acc: SitemapRoute[], route: RouterRoute) => {
