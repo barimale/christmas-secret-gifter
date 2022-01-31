@@ -41,7 +41,7 @@ const NotifyParticipants = () => {
         >
           <ReCAPTCHA
             ref={(el) => { captcha = el; }}
-            hl="PL"
+            hl="en-GB"
             sitekey="6Ld1vkceAAAAAImBNnWg0TTYf80V3ly9NPs4gth8"
             onChange={(token: string | null) => {
               setCaptchaToken(token);
