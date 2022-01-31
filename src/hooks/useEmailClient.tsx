@@ -85,7 +85,7 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
           src="https://christmas-secret-gifter.web.app/logo-small.png"
           alt="https://christmas-secret-gifter.web.app/logo-small.png"
           style={{
-            height: '100', objectFit: 'scale-down',
+            height: '50px', objectFit: 'scale-down',
           }}
         />
       </a>
