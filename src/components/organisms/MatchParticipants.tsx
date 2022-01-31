@@ -123,9 +123,15 @@ const MatchParticipants = () => {
                           }}
                         >
                           {!response.isError && (
-                            <ol>
+                            <ol style={{
+                              fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                            }}
+                            >
                               {response.pairs.flatMap((r) => (
-                                <li>
+                                <li style={{
+                                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                }}
+                                >
                                   <span
                                     style={{
                                       fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
