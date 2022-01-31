@@ -67,7 +67,7 @@ const EventContextProvider = (props: any) => {
         from_name: getEmail(p.fromIndex + 1),
         to_name: getEmail(p.toIndex + 1),
         title: 'Christmas Secret Gifter - pairing results!',
-        forName: getName(p.toIndex + 1),
+        forName: getName(p.fromIndex + 1),
         reply_to: '',
         gRecaptchaResponse: '',
       } as ToGifterParams;
