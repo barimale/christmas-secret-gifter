@@ -19,7 +19,19 @@ export default function ContactScreenContent () {
             display: 'flex', flexDirection: 'column', justifyContent: 'end',
           }}
           >
-            {'https://github.com/barimale'.toUpperCase()}
+            <a
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                cursor: 'pointer',
+              }}
+              href="https://github.com/barimale"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {'https://github.com/barimale'.toUpperCase()}
+
+            </a>
           </div>
 
         </div>

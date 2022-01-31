@@ -59,13 +59,13 @@ export default function ConfiguratorStepper () {
               display: 'flex',
               alignItems: 'center',
               height: 50,
-              pl: 2,
               bgcolor: 'black',
               color: 'white',
             }}
           >
             <Typography style={{
-              fontSize: '20px',
+              fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '30px' : '20px',
+              paddingLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
             }}
             >
               {steps[activeStep].label}
@@ -81,11 +81,14 @@ export default function ConfiguratorStepper () {
           >
             <div
               style={{
-                paddingTop: '10px',
-                paddingLeft: '20px',
-                paddingRight: '20px',
-                paddingBottom: '15px',
+                paddingTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
+                paddingLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
+                paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
+                paddingBottom: context.valueOf() === DeviceType.isDesktopOrLaptop ? '15px' : '10px',
                 backgroundColor: '#1f8c31',
+                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? '16px' : '10px',
+                textAlign: 'justify',
                 color: `${theme.palette.common.white}`,
               }}
             >

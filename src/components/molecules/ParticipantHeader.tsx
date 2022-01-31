@@ -23,6 +23,7 @@ const ParticipantHeader = () => {
           style={{
             borderRadius: '0px',
             color: '#bdad31',
+            marginBottom: '1px',
           }}
           onClick={() => {
             setIsAddVisible(true);

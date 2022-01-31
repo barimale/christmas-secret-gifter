@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { EventContext } from '../../contexts/EventContext';
+import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import AlgorithmResponse from '../../store/model/algorithm-response';
 import CenteredDiv from '../templates/CenteredDiv';
 
@@ -37,86 +37,122 @@ const MatchParticipants = () => {
   }
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'whitesmoke',
-      padding: '20px',
-      height: '75%',
-      paddingTop: '20px',
-      paddingBottom: '0px',
-    }}
-    >
-      <Paper sx={{
-        width: '100%',
-        overflow: 'hidden',
-      }}
-      >
-        {participants.length > 0 ? (
-          <>
-            {(response === undefined || isInProgress) && (
-            <CenteredDiv>
-              <CircularProgress color="secondary" />
-            </CenteredDiv>
-            )}
-            {response && (
-              <TableContainer
-                component={Paper}
-                sx={{
-                //   maxHeight,
-                }}
-              >
-                <Table
-                  stickyHeader
-                  aria-label="simple table"
-                  size="small"
+    <DeviceContextConsumer>
+      {(context) => (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: 'whitesmoke',
+          padding: '20px',
+          height: '75%',
+          paddingTop: '20px',
+          paddingBottom: '0px',
+        }}
+        >
+          <Paper sx={{
+            width: '100%',
+            overflow: 'hidden',
+          }}
+          >
+            {participants.length > 0 ? (
+              <>
+                {(response === undefined || isInProgress) && (
+                <CenteredDiv>
+                  <CircularProgress color="secondary" />
+                </CenteredDiv>
+                )}
+                {response && (
+                <TableContainer
+                  component={Paper}
+                  sx={{
+                    //   maxHeight,
+                  }}
                 >
-                  <TableBody>
-                    <TableRow
-                      key={1}
-                      sx={{
-                        '&:last-child td, &:last-child th': {
-                          border: 0,
-                        },
-                      }}
-                    >
-                      <TableCell align="left">Analysis status:</TableCell>
-                      <TableCell align="left">{response.analysisStatus}</TableCell>
-                    </TableRow>
-                    {!response.isError && (
-                    <TableRow
-                      key={2}
-                      sx={{
-                        '&:last-child td, &:last-child th': {
-                          border: 0,
-                        },
-                      }}
-                    >
-                      <TableCell align="left">Who is gifting Who:</TableCell>
-                      <TableCell
-                        align="left"
-                        style={{
-                          display: 'flex', flexDirection: 'column', gap: '10px',
+                  <Table
+                    stickyHeader
+                    aria-label="simple table"
+                    size="small"
+                  >
+                    <TableBody>
+                      <TableRow
+                        key={1}
+                        sx={{
+                          '&:last-child td, &:last-child th': {
+                            border: 0,
+                          },
                         }}
                       >
-                        {!response.isError && (
-                          response.pairs.flatMap((r) => (
-                            <span>{`${getName(r.fromIndex)} is going to buy a gift for ${getName(r.toIndex)}`}</span>
-                          ))
-                        )}
-                      </TableCell>
-                    </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                        <TableCell
+                          align="left"
+                          style={{
+                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '14px',
+                          }}
+                        >
+                          <b>Analysis status:</b>
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          style={{
+                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
+                          }}
+                        >
+                          {response.analysisStatus}
+                        </TableCell>
+                      </TableRow>
+                      {!response.isError && (
+                      <TableRow
+                        key={2}
+                        sx={{
+                          '&:last-child td, &:last-child th': {
+                            border: 0,
+                          },
+                        }}
+                      >
+                        <TableCell
+                          align="left"
+                          style={{
+                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '14px',
+                          }}
+                        >
+                          <b>Who is gifting Who:</b>
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          style={{
+                            display: 'flex', flexDirection: 'column', gap: '10px',
+                          }}
+                        >
+                          {!response.isError && (
+                            <ul>
+                              {response.pairs.flatMap((r) => (
+                                <li>
+                                  <span
+                                    style={{
+                                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
+                                    }}
+                                  >
+                                    {`${getName(r.fromIndex)} is going to buy a gift for ${getName(r.toIndex)}`}
+
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                )}
+              </>
+            ) : (
+              <p>Something went wrong</p>
             )}
-          </>
-        ) : (
-          <p>Something went wrong</p>
-        )}
-      </Paper>
-    </div>
+          </Paper>
+        </div>
+      )}
+    </DeviceContextConsumer>
   );
 };
 

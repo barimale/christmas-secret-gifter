@@ -48,7 +48,7 @@ export const MainScreen = function () {
               ? '40px' : '20px',
           }}
           >
-            Please wait a moment. Event creation in progress...
+            Please wait a moment. Event creation is in progress...
           </Typography>
           )}
         </CenteredDiv>

@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useStyles } from './styles';
+import { Path as ContactPath } from '../../screens/ContactScreen';
 
 const Footer = () => {
   const classes = useStyles();
@@ -14,9 +16,26 @@ const Footer = () => {
         width: '100%',
       }}
     >
-      <div className={classes.title}>
+      <div
+        className={classes.title}
+        style={{
+          display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly',
+        }}
+      >
         <span>
-          &copy; 2021 - Christmas Secret Gifter
+          &copy; 2022 - Christmas Secret Gifter
+        </span>
+        <span>
+          <Link
+            to={ContactPath}
+            style={{
+              color: 'white',
+              textDecoration: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            Contact
+          </Link>
         </span>
       </div>
     </footer>
