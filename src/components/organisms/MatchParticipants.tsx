@@ -114,7 +114,7 @@ const MatchParticipants = () => {
                             fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '14px',
                           }}
                         >
-                          <b>Who is gifting Who:</b>
+                          <b>Who is going to buy a gift to whom:</b>
                         </TableCell>
                         <TableCell
                           align="left"
@@ -123,20 +123,19 @@ const MatchParticipants = () => {
                           }}
                         >
                           {!response.isError && (
-                            <ul>
+                            <ol>
                               {response.pairs.flatMap((r) => (
                                 <li>
                                   <span
                                     style={{
-                                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
+                                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
                                     }}
                                   >
-                                    {`${getName(r.fromIndex)} is going to buy a gift for ${getName(r.toIndex)}`}
-
+                                    {`${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}`}
                                   </span>
                                 </li>
                               ))}
-                            </ul>
+                            </ol>
                           )}
                         </TableCell>
                       </TableRow>
