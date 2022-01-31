@@ -27,7 +27,6 @@ const MatchParticipants = () => {
   }, []);
 
   function getName (orderId: number): string | undefined | null {
-    // const found = participants.find((p) => p.orderId === orderId);
     const found = participants[orderId];
 
     if (found !== undefined) {

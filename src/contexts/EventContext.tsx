@@ -37,7 +37,7 @@ const EventContextProvider = (props: any) => {
   const [sendMailDetails, setSendMailDetails] = useState<ToGifterParams[]>([]);
 
   function getName (index: number): string | undefined | null {
-    const found = participants.find((p) => p.orderId === index);
+    const found = participants[index];
     if (found !== undefined) {
       return found.name;
     }
@@ -45,7 +45,7 @@ const EventContextProvider = (props: any) => {
   }
 
   function getEmail (index: number): string | undefined | null {
-    const found = participants.find((p) => p.orderId === index);
+    const found = participants[index];
     if (found !== undefined) {
       return found.email;
     }
@@ -53,7 +53,7 @@ const EventContextProvider = (props: any) => {
   }
 
   function getParticipantId (index: number): string | undefined | null {
-    const found = participants.find((p) => p.orderId === index);
+    const found = participants[index];
     if (found !== undefined) {
       return found.id;
     }
@@ -63,11 +63,11 @@ const EventContextProvider = (props: any) => {
   function MapToMailDetails (): ToGifterParams[] {
     const details = analysisResult?.pairs.flatMap((p: Pair) => {
       const detail = {
-        participantId: getParticipantId(p.fromIndex + 1),
-        from_name: getEmail(p.fromIndex + 1),
-        to_name: getEmail(p.toIndex + 1),
+        participantId: getParticipantId(p.fromIndex),
+        from_name: getEmail(p.fromIndex),
+        to_name: getName(p.toIndex),
         title: 'Christmas Secret Gifter - pairing results!',
-        forName: getName(p.fromIndex + 1),
+        forName: getName(p.toIndex),
         reply_to: '',
         gRecaptchaResponse: '',
       } as ToGifterParams;

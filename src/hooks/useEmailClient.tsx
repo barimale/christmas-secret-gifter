@@ -31,7 +31,7 @@ export const useEmailClient = () => {
       const customerTemplateResult = templateHtml.replace('%CONTENT%', toCustomerMail);
 
       return await sendByNode(
-        toCustomerParams.to_name,
+        toCustomerParams.from_name,
         toCustomerParams.title,
         customerTemplateResult,
         toCustomerParams.gRecaptchaResponse,
@@ -71,11 +71,11 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
     >
       Hi
       {' '}
-      {props.to_name}
+      {props.from_name}
       ,
     </p>
     <p>You are going to buy a gift for:</p>
-    <p><b>{props.forName}</b></p>
+    <p><b>{props.to_name}</b></p>
     <p>
       Merry Christmas,
     </p>
