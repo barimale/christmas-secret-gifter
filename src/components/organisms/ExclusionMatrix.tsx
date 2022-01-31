@@ -94,7 +94,7 @@ const ExclusionMatrix = () => {
             <TableRow>
               <TableCell align="left" />
               {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
-                <TableCell align="left">{p.name}</TableCell>
+                <TableCell align="center">{p.name}</TableCell>
               ))}
             </TableRow>
           </TableHead>
@@ -111,7 +111,7 @@ const ExclusionMatrix = () => {
               >
                 <TableCell align="left">{p.name}</TableCell>
                 {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
-                  <TableCell>
+                  <TableCell align="center">
                     <Tooltip title="As a person from the left You can exclude a person from the top">
                       <GoldCheckbox
                         disabled={p.orderId === pp.orderId}
