@@ -1,4 +1,5 @@
 export * from './AnalyzeButton';
+export * from './GiftIcon';
 export * from './EmailField';
 export * from './ExclusionsField';
 export * from './LoadingInProgress';
