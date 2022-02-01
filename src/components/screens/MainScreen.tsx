@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React, { useContext, useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
 import { Typography } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
@@ -42,17 +43,36 @@ export const MainScreen = function () {
           <ConfiguratorStepper />
           )}
           {!giftEvent && (
-          <Typography style={{
-            color: 'white',
-            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? '40px' : '20px',
-          }}
-          >
-            Please wait a moment. Event creation is in progress...
-          </Typography>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+            }}
+            >
+              <AnimatedGiftIcon height={context.valueOf() === DeviceType.isDesktopOrLaptop
+                ? '300px' : '100px'}
+              />
+              <Typography style={{
+                color: 'white',
+                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? '40px' : '20px',
+              }}
+              >
+                Please wait a moment. Event creation is in progress...
+              </Typography>
+            </div>
           )}
         </CenteredDiv>
       )}
     </DeviceContextConsumer>
+  );
+};
+
+const AnimatedGiftIcon = ({ height }: any) => {
+  return (
+    <RedeemTwoToneIcon style={{
+      height, width: 'auto',
+    }}
+    />
   );
 };
