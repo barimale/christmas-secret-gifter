@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
-import { GiftIcon } from '../molecules/GiftIcon';
+import { GiftIcon } from '../atoms/GiftIcon';
 
 export const Path = '/';
 export const Title = 'Events';

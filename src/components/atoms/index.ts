@@ -1,3 +1,4 @@
+export * from './GiftIcon';
 export * from './Image';
 export * from './Item';
 export * from './MyTextField';
