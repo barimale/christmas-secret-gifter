@@ -1,11 +1,11 @@
 /* eslint-disable arrow-body-style */
 import React, { useContext, useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
 import { Typography } from '@material-ui/core';
 import CenteredDiv from '../templates/CenteredDiv';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
+import { GiftIcon } from '../molecules/GiftIcon';
 
 export const Path = '/';
 export const Title = 'Events';
@@ -49,7 +49,7 @@ export const MainScreen = function () {
               gap: '20px',
             }}
             >
-              <AnimatedGiftIcon height={context.valueOf() === DeviceType.isDesktopOrLaptop
+              <GiftIcon height={context.valueOf() === DeviceType.isDesktopOrLaptop
                 ? '300px' : '100px'}
               />
               <Typography style={{
@@ -65,14 +65,5 @@ export const MainScreen = function () {
         </CenteredDiv>
       )}
     </DeviceContextConsumer>
-  );
-};
-
-const AnimatedGiftIcon = ({ height }: any) => {
-  return (
-    <RedeemTwoToneIcon style={{
-      height, width: 'auto',
-    }}
-    />
   );
 };
