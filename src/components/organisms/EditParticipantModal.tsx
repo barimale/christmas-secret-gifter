@@ -165,7 +165,7 @@ const EditForm = (props: EditFormProps) => {
               style={{
                 padding: '32px',
                 paddingTop: '0px',
-                width: '100%',
+                // width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignContent: 'center',
@@ -193,6 +193,7 @@ const EditForm = (props: EditFormProps) => {
                       borderRadius: '0px',
                       marginTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '7px',
                       fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '14px',
+                      color: 'white',
                     }}
                     onClick={() => {
                       onCancel();
