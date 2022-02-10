@@ -206,6 +206,7 @@ const AddForm = (props: AddFormProps) => {
                       borderRadius: '0px',
                       marginTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '7px',
                       fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '14px',
+                      color: 'white',
                     }}
                     onClick={() => {
                       onCancel();
