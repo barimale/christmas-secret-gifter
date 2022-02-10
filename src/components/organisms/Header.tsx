@@ -70,11 +70,13 @@ const TopMenu = function () {
                     fontSize={context === DeviceType.isDesktopOrLaptop ? 'large' : 'small'}
                     style={{
                       paddingRight: context === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
-                      color: 'red',
+                      color: 'green',
                       marginBottom: context === DeviceType.isDesktopOrLaptop ? '-2px' : '-1px',
                     }}
                   />
-                  {'Christmas Secret Gifter'.toLocaleUpperCase()}
+                  {'Christmas '.toLocaleUpperCase()}
+                  {'Secret '.toLocaleUpperCase()}
+                  {'Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
               {context === DeviceType.isDesktopOrLaptop && (
