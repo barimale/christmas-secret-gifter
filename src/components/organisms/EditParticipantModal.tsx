@@ -165,7 +165,6 @@ const EditForm = (props: EditFormProps) => {
               style={{
                 padding: '32px',
                 paddingTop: '0px',
-                // width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignContent: 'center',
