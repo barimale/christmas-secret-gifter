@@ -70,6 +70,7 @@ const TopMenu = function () {
                     fontSize={context === DeviceType.isDesktopOrLaptop ? 'large' : 'small'}
                     style={{
                       paddingRight: '10px',
+                      color: 'red',
                     }}
                   />
                   {'Christmas Secret Gifter'.toLocaleUpperCase()}
