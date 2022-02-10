@@ -74,9 +74,7 @@ const TopMenu = function () {
                       marginBottom: context === DeviceType.isDesktopOrLaptop ? '-2px' : '-1px',
                     }}
                   />
-                  {'Christmas '.toLocaleUpperCase()}
-                  {'Secret '.toLocaleUpperCase()}
-                  {'Gifter'.toLocaleUpperCase()}
+                  {'Christmas Secret Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
               {context === DeviceType.isDesktopOrLaptop && (
