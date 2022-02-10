@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -72,6 +73,12 @@ const MatchParticipants = () => {
                     aria-label="simple table"
                     size="small"
                   >
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="left">RESULT</TableCell>
+                        <TableCell />
+                      </TableRow>
+                    </TableHead>
                     <TableBody>
                       <TableRow
                         key={1}
@@ -83,16 +90,15 @@ const MatchParticipants = () => {
                       >
                         <TableCell
                           align="left"
-                          style={{
-                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '14px',
-                          }}
                         >
-                          <b>Analysis status:</b>
+                          Analysis status:
                         </TableCell>
                         <TableCell
                           align="center"
                           style={{
                             fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
+                            color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
+                            backgroundColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'yellow',
                           }}
                         >
                           {response.analysisStatus}
@@ -109,11 +115,8 @@ const MatchParticipants = () => {
                       >
                         <TableCell
                           align="left"
-                          style={{
-                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '14px',
-                          }}
                         >
-                          <b>Who is going to buy a gift to whom:</b>
+                          Who is going to buy a gift to whom:
                         </TableCell>
                         <TableCell
                           align="left"

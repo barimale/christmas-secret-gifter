@@ -69,7 +69,7 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
       </TableCell>
       <TableCell align="right">{participant.email}</TableCell>
       <TableCell align="right">
-        <Tooltip title={mailStatus.status}>
+        <Tooltip title={mailStatus.status === 'inprogress' ? 'in progress' : mailStatus.status}>
           <IconButton onClick={async () => {
             await SendAsync();
           }}

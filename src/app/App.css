@@ -77,3 +77,22 @@
 .pointerOverEffect:hover {
   opacity: 0.6;
 }
+
+.room {
+  display: block;
+}
+
+#hosp {
+  display: block;
+}
+
+
+.line {
+  position: absolute;
+  border-top: 2px solid #ad1b59;    
+  -webkit-transform: rotate(26.5deg);
+     -moz-transform: rotate(26.5deg);
+      -ms-transform: rotate(26.5deg);
+       -o-transform: rotate(26.5deg);
+          transform: rotate(26.5deg);
+}

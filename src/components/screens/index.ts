@@ -1,2 +1,2 @@
-export * as ContactScreen from './ContactScreen';
-export * as MainScreen from './MainScreen';
+export * from './ContactScreen';
+export * from './MainScreen';

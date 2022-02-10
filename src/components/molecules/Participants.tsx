@@ -48,10 +48,10 @@ const Participants = ({ maxHeight }: Props) => {
         >
           <TableHead>
             <TableRow>
-              <TableCell align="left">Id</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Email</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell align="left">ID</TableCell>
+              <TableCell>NAME</TableCell>
+              <TableCell align="right">E-MAIL</TableCell>
+              <TableCell align="right">ACTIONS</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

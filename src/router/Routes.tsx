@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { MainScreen, Path as MainPath } from '../components/screens/MainScreen';
-import { ContactScreen, Path as ContactPath } from '../components/screens/ContactScreen';
+import { MainScreen, MainPath } from '../components/screens/MainScreen';
+import { ContactScreen, ContactPath } from '../components/screens/ContactScreen';
 
 export default function Routes () {
   return (

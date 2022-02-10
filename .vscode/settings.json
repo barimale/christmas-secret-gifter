@@ -14,5 +14,8 @@
         "/src/assets/fonts/Nanum_Gothic",
         "/src/assets/fonts/Sacramento-Regular",
         "/src/components/organisms/ConsoledChristmasTree"
+    ],
+    "exportall.config.relExclusion": [
+        "/src/components"
     ]
 }

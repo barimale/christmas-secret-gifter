@@ -92,7 +92,7 @@ const ExclusionMatrix = () => {
         >
           <TableHead>
             <TableRow>
-              <TableCell align="left" />
+              <TableCell />
               {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
                 <TableCell align="center">{p.name}</TableCell>
               ))}

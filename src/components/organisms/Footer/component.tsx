@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useStyles } from './styles';
-import { Path as ContactPath } from '../../screens/ContactScreen';
+import { ContactPath } from '../../screens/ContactScreen';
 
-const Footer = () => {
+export const Footer = () => {
   const classes = useStyles();
 
   return (
@@ -41,5 +41,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

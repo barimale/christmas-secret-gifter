@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useHistory } from 'react-router-dom';
-import Footer from '../organisms/Footer';
+import { Footer } from '../organisms/Footer';
 import Header from '../organisms/Header';
 import { Theme } from '../../theme/custom-theme';
 

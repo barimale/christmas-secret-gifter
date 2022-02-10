@@ -7,7 +7,7 @@ import sizeMe from 'react-sizeme';
 import ParkIcon from '@mui/icons-material/Park';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import MenuButtons from './menu/menu-desktop/MenuButtons';
-import { Path as MainPath } from '../screens/MainScreen';
+import { MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
 import { Theme } from '../../theme/custom-theme';
 

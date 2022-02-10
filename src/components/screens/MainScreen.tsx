@@ -7,8 +7,8 @@ import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import { GiftIcon } from '../atoms/GiftIcon';
 
-export const Path = '/';
-export const Title = 'Events';
+export const MainPath = '/';
+export const MainTitle = 'Events';
 
 export const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -56,6 +56,8 @@ export const MainScreen = function () {
                 color: 'white',
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? '40px' : '20px',
+                padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? '20px' : '10px',
               }}
               >
                 Please wait a moment. Event creation is in progress...

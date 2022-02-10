@@ -71,11 +71,11 @@ const NotifyParticipants = () => {
           >
             <TableHead>
               <TableRow>
-                <TableCell align="left">Id</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Gift To</TableCell>
-                <TableCell align="right">Email</TableCell>
-                <TableCell align="right">Status</TableCell>
+                <TableCell align="left">ID</TableCell>
+                <TableCell>GIVER</TableCell>
+                <TableCell>GIFTED</TableCell>
+                <TableCell align="right">E-MAIL</TableCell>
+                <TableCell align="right">STATUS</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

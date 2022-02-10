@@ -12,18 +12,18 @@ export const ConfiguratorSteps = [
     component: <DefineParticipantsLazy />,
   },
   {
-    label: 'Exclusions Matrix',
+    label: 'Exclusions Matrix - optional',
     description: 'This step is optional. You can exclude some of participants in case You have no idea what to buy them. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself.',
     component: <ExclusionMatrixLazy />,
   },
   {
     label: 'Match Participants',
-    description: 'Results of pairing are presented here. In case You made too many exclusions in the previous step You might have INFEASIBLE status here, which simply means, that some of participants will not get their gifts. You need to go back to the Exclusions Matrix step and correct data.',
+    description: 'Results of pairing are presented here. In case You made too many exclusions in the previous step You may have INFEASIBLE status here, which simply means, that some of participants will not get their gifts. You need to go back to the Exclusions Matrix step and correct data.',
     component: <MatchParticipantsLazy />,
   },
   {
     label: 'Notify Participants',
-    description: 'Results of pairing are send to participants here. Each participant is informed about the person he/she has to buy a gift. Results are confidential. Only You - as an organizator of the event - have access to all of them. It is the last step - so Merry Christmas and Happy Shopping! :)',
+    description: 'Results of pairing are send to participants here. Each participant is informed about the person he/she has to buy a gift. Results are confidential. Only You - as an Organizator of the event - have access to all of them. It is the last step - so Merry Christmas and Happy Shopping! :)',
     component: <NotifyParticipantsLazy />,
   },
 ];
