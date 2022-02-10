@@ -53,7 +53,6 @@ export const MainScreen = function () {
                 ? '300px' : '100px'}
               />
               <div
-                id={context.valueOf() === DeviceType.isDesktopOrLaptop ? 'content' : 'content-mobile'}
                 style={{
                   padding: context.valueOf() === DeviceType.isDesktopOrLaptop
                     ? '20px' : '2px',
