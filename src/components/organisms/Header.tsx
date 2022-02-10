@@ -69,8 +69,9 @@ const TopMenu = function () {
                   <ParkIcon
                     fontSize={context === DeviceType.isDesktopOrLaptop ? 'large' : 'small'}
                     style={{
-                      paddingRight: '10px',
+                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
                       color: 'red',
+                      marginBottom: context === DeviceType.isDesktopOrLaptop ? '-2px' : '-1px',
                     }}
                   />
                   {'Christmas Secret Gifter'.toLocaleUpperCase()}
