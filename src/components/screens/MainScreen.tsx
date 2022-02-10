@@ -52,16 +52,37 @@ export const MainScreen = function () {
               <GiftIcon height={context.valueOf() === DeviceType.isDesktopOrLaptop
                 ? '300px' : '100px'}
               />
-              <Typography style={{
-                color: 'white',
-                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-                  ? '40px' : '20px',
-                padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-                  ? '20px' : '10px',
-              }}
+              <div
+                id={context.valueOf() === DeviceType.isDesktopOrLaptop ? 'content' : 'content-mobile'}
+                style={{
+                  padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '20px' : '2px',
+                }}
               >
-                Please wait a moment. Event creation is in progress...
-              </Typography>
+                <Typography
+                  style={{
+                    color: 'white',
+                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                      ? '40px' : '20px',
+                    padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                      ? '20px' : '10px',
+                  }}
+                >
+                  Please wait a moment.
+                </Typography>
+                <Typography
+                  style={{
+                    color: 'white',
+                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                      ? '40px' : '20px',
+                    padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                      ? '20px' : '10px',
+                    paddingTop: '0px',
+                  }}
+                >
+                  Event creation is in progress...
+                </Typography>
+              </div>
             </div>
           )}
         </CenteredDiv>
