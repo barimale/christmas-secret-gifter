@@ -77,9 +77,35 @@ export const MainScreen = function () {
                     padding: context.valueOf() === DeviceType.isDesktopOrLaptop
                       ? '20px' : '10px',
                     paddingTop: '0px',
+                    display: 'flex',
+                    flexDirection: 'row',
                   }}
                 >
-                  Event creation is in progress...
+                  Event creation is in progress
+                  <p
+                    className="animate-flicker-first"
+                    style={{
+                      margin: '0px',
+                    }}
+                  >
+                    .
+                  </p>
+                  <p
+                    className="animate-flicker-second"
+                    style={{
+                      margin: '0px',
+                    }}
+                  >
+                    .
+                  </p>
+                  <p
+                    className="animate-flicker-third"
+                    style={{
+                      margin: '0px',
+                    }}
+                  >
+                    .
+                  </p>
                 </Typography>
               </div>
             </div>

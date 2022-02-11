@@ -90,7 +90,6 @@
 #content>:first-child:before {bottom:0;right:0;border-width: 0 3px 3px 0}
 #content>:first-child:after {bottom:0;left:0;border-width: 0 0 3px 3px}
 
-
 #content-mobile {position:relative}
 #content-mobile:before, #content-mobile:after, #content-mobile>:first-child:before, #content-mobile>:first-child:after {
     position:absolute; content:' ';
@@ -102,3 +101,22 @@
 #content-mobile:after {top:0;right:0;border-width: 1px 1px 0 0}
 #content-mobile>:first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
 #content-mobile>:first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}
+
+@keyframes fadeInForFlicker { 
+  from { opacity: 0; } 
+}
+ 
+.animate-flicker-first {
+    animation: fadeInForFlicker 1s infinite alternate;
+    animation-delay: 0s;
+}
+ 
+.animate-flicker-second {
+  animation: fadeInForFlicker 1s infinite alternate;
+  animation-delay: 200ms;
+}
+
+.animate-flicker-third {
+  animation: fadeInForFlicker 1s infinite alternate;
+  animation-delay: 400ms;
+}
