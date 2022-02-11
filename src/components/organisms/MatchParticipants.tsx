@@ -98,7 +98,7 @@ const MatchParticipants = () => {
                           style={{
                             fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
                             color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
-                            backgroundColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'yellow',
+                            backgroundColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'red',
                           }}
                         >
                           {response.analysisStatus}

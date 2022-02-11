@@ -90,6 +90,7 @@ export default function ConfiguratorStepper () {
                   ? '16px' : '10px',
                 textAlign: 'justify',
                 color: `${theme.palette.common.white}`,
+                lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.1',
               }}
             >
               {steps[activeStep].description}

@@ -63,11 +63,11 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
       <TableCell component="th" scope="row">
         {participant.name}
       </TableCell>
-      <TableCell>
+      <TableCell align="left">{participant.email}</TableCell>
+      <TableCell align="right">
         {sendMailDetails
           .find((p: ToGifterParams) => p.participantId === props.participant.id)?.to_name}
       </TableCell>
-      <TableCell align="right">{participant.email}</TableCell>
       <TableCell align="right">
         <Tooltip title={mailStatus.status === 'inprogress' ? 'in progress' : mailStatus.status}>
           <IconButton onClick={async () => {

@@ -73,8 +73,8 @@ const NotifyParticipants = () => {
               <TableRow>
                 <TableCell align="left">ID</TableCell>
                 <TableCell>GIVER</TableCell>
-                <TableCell>GIFTED</TableCell>
-                <TableCell align="right">E-MAIL</TableCell>
+                <TableCell align="left">E-MAIL</TableCell>
+                <TableCell align="right">GIFTED</TableCell>
                 <TableCell align="right">STATUS</TableCell>
               </TableRow>
             </TableHead>
