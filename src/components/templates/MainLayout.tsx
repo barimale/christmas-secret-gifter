@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useHistory } from 'react-router-dom';
 import { Footer } from '../organisms/Footer';
 import Header from '../organisms/Header';
 import { Theme } from '../../theme/custom-theme';
+import { BackgroundColorMode, BackgroundContext } from '../../contexts/BackgroundContext';
 
 const usePrevious = (value: any) => {
   const ref = useRef();
@@ -14,6 +15,9 @@ const usePrevious = (value: any) => {
 };
 
 export const MainLayout = (props : any) => {
+  const basicColor = `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`;
+  const { backgroundColorMode } = useContext(BackgroundContext);
+  const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
   const [paddingTop, setPaddingTop] = useState<number>(10);
   const { innerHeight: height } = window;
   const isPortrait = useMediaQuery({
@@ -37,6 +41,17 @@ export const MainLayout = (props : any) => {
     }
   }, [isPortrait, prevVal]);
 
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('main layout');
+
+    if (backgroundColorMode === BackgroundColorMode.normal) {
+      setBackgroundColor(basicColor);
+    } else {
+      setBackgroundColor('darkred');
+    }
+  }, [backgroundColorMode]);
+
   return (
     <>
       <Header onSize={(size: any) => {
@@ -51,7 +66,8 @@ export const MainLayout = (props : any) => {
           paddingTop,
           marginBottom: `${-paddingTop}px`,
           display: 'inline-flex',
-          background: `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`,
+          background: backgroundColor,
+          transition: 'background 1000ms ease-in-out',
           justifyContent: 'center',
         }}
       >

@@ -6,6 +6,7 @@ import { init } from 'emailjs-com';
 import { CustomMuiThemeProvider } from '../theme/CustomMuiThemeProvider';
 import CenteredDiv from '../components/templates/CenteredDiv';
 import ResourceLoadedApp from './resources-loaded/ResourceLoadedApp';
+import { BackgroundContextProvider } from '../contexts/BackgroundContext';
 
 const App = function () {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -18,13 +19,15 @@ const App = function () {
   return (
     <div className="App">
       <CustomMuiThemeProvider>
-        {isLoading ? (
-          <CenteredDiv>
-            <CircularProgress color="secondary" />
-          </CenteredDiv>
-        ) : (
-          <ResourceLoadedApp />
-        )}
+        <BackgroundContextProvider>
+          {isLoading ? (
+            <CenteredDiv>
+              <CircularProgress color="secondary" />
+            </CenteredDiv>
+          ) : (
+            <ResourceLoadedApp />
+          )}
+        </BackgroundContextProvider>
       </CustomMuiThemeProvider>
     </div>
   );

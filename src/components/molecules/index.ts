@@ -6,6 +6,7 @@ export * from './LoadingInProgress';
 export * from './ModalTitle';
 export * from './NameField';
 export * from './NotifyParticipantRow';
+export * from './PairRow';
 export * from './ParticipantHeader';
 export * from './Participants';
 export * from './ParticipantsGrid';

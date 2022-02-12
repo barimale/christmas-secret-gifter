@@ -10,7 +10,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
-import { EventContext } from '../../contexts';
+import { BackgroundContext, EventContext } from '../../contexts';
+import { BackgroundColorMode } from '../../contexts/BackgroundContext';
 import Participant from '../../store/model/participant';
 
 const GoldCheckbox = withStyles({
@@ -36,12 +37,17 @@ interface ParticipantExclusion {
 
 const ExclusionMatrix = () => {
   const { participants, editParticipant } = useContext(EventContext);
+  const { setBackgroundMode } = useContext(BackgroundContext);
   const [exclusions, setExclusions] = useState<ParticipantExclusion[]>(
     participants.flatMap((p:Participant) => (
       participants.flatMap((pp:Participant) => ({
         forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
       } as ParticipantExclusion)))),
   );
+
+  useEffect(() => {
+    setBackgroundMode(BackgroundColorMode.normal);
+  }, []);
 
   useEffect(() => {
     setExclusions(
