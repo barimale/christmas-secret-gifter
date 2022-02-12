@@ -10,6 +10,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import AlgorithmResponse from '../../store/model/algorithm-response';
 import CenteredDiv from '../templates/CenteredDiv';
+import { CopyPairsToClipboard } from '../molecules/CopyPairsToClipboard';
 
 const MatchParticipants = () => {
   const { participants, analyze } = useContext(EventContext);
@@ -52,6 +53,7 @@ const MatchParticipants = () => {
           <Paper sx={{
             width: '100%',
             overflow: 'hidden',
+            height: (response === undefined || isInProgress) ? '92%' : 'unset',
           }}
           >
             {participants.length > 0 ? (
@@ -121,29 +123,41 @@ const MatchParticipants = () => {
                         <TableCell
                           align="left"
                           style={{
-                            display: 'flex', flexDirection: 'column', gap: '10px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '10px',
+                            maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
                           }}
                         >
                           {!response.isError && (
-                            <ol style={{
-                              fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                            }}
-                            >
-                              {response.pairs.flatMap((r) => (
-                                <li style={{
-                                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                                }}
-                                >
-                                  <span
-                                    style={{
-                                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                                    }}
+                            <>
+                              <CopyPairsToClipboard
+                                content={
+                                response.pairs.flatMap((r) => (
+                                  `${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}\n`))
+                                }
+                              />
+                              <ol style={{
+                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                marginTop: '0px',
+                              }}
+                              >
+                                {response.pairs.flatMap((r) => (
+                                  <li style={{
+                                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                  }}
                                   >
-                                    {`${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}`}
-                                  </span>
-                                </li>
-                              ))}
-                            </ol>
+                                    <span
+                                      style={{
+                                        fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                      }}
+                                    >
+                                      {`${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}`}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ol>
+                            </>
                           )}
                         </TableCell>
                       </TableRow>

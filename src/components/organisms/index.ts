@@ -1,7 +1,6 @@
 export * from './AddParticipantModal';
 export * from './ConfiguratorStepper';
 export * from './ConfiguratorSteps';
-export * from './ConsoledChristmasTree';
 export * from './DefineParticipants';
 export * from './EditParticipantModal';
 export * from './ExclusionMatrix';

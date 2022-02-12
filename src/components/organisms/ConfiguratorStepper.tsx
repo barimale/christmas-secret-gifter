@@ -145,6 +145,9 @@ export default function ConfiguratorStepper () {
             className="pointerOverEffect"
             size="small"
             disabled={isInProgress}
+            style={{
+              padding: '12px',
+            }}
             onClick={async () => {
               setIsInProgress(true);
               restartEvent();

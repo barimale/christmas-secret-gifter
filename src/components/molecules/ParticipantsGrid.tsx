@@ -21,7 +21,7 @@ const ParticipantsGrid = () => {
           flexDirection: 'column',
           backgroundColor: 'whitesmoke',
           padding: '20px',
-          height: '85%',
+          height: '82%',
           paddingTop: '0px',
           paddingBottom: '0px',
         }}
