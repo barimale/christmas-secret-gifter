@@ -48,10 +48,7 @@ export const MainLayout = (props : any) => {
     if (backgroundColorMode === BackgroundColorMode.normal) {
       setBackgroundColor(basicColor);
     } else {
-      setBackgroundColor('black');
-      setTimeout(() => {
-        setBackgroundColor('darkred');
-      });
+      setBackgroundColor('darkred');
     }
   }, [backgroundColorMode]);
 
@@ -70,7 +67,7 @@ export const MainLayout = (props : any) => {
           marginBottom: `${-paddingTop}px`,
           display: 'inline-flex',
           background: backgroundColor,
-          transition: 'background 1000ms ease-in-out',
+          // transition: 'background 50ms linear',
           justifyContent: 'center',
         }}
       >
