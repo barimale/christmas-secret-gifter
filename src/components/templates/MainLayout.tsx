@@ -48,7 +48,10 @@ export const MainLayout = (props : any) => {
     if (backgroundColorMode === BackgroundColorMode.normal) {
       setBackgroundColor(basicColor);
     } else {
-      setBackgroundColor('darkred');
+      setBackgroundColor('black');
+      setTimeout(() => {
+        setBackgroundColor('darkred');
+      });
     }
   }, [backgroundColorMode]);
 

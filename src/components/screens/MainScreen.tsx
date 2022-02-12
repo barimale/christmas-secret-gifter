@@ -49,9 +49,12 @@ export const MainScreen = function () {
               gap: '20px',
             }}
             >
-              <GiftIcon height={context.valueOf() === DeviceType.isDesktopOrLaptop
-                ? '300px' : '100px'}
-              />
+              <div className="rotating">
+                <GiftIcon
+                  height={context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '300px' : '100px'}
+                />
+              </div>
               <div
                 style={{
                   padding: context.valueOf() === DeviceType.isDesktopOrLaptop
