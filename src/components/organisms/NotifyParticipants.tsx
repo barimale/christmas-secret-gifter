@@ -35,7 +35,7 @@ const NotifyParticipants = () => {
           flexDirection: 'column',
           backgroundColor: 'whitesmoke',
           padding: '20px',
-          height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '75%' : '85%',
+          height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '85%',
           paddingTop: '20px',
           paddingBottom: '0px',
         }}

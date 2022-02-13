@@ -62,24 +62,18 @@ const MatchParticipants = () => {
           paddingBottom: '0px',
         }}
         >
-          <Paper sx={{
-            width: '100%',
-            overflow: 'hidden',
-            height: (response === undefined || isInProgress) ? '92%' : 'unset',
-          }}
-          >
-            {participants.length > 0 ? (
-              <>
-                {(response === undefined || isInProgress) && (
+          {participants.length > 0 ? (
+            <>
+              {(response === undefined || isInProgress) && (
                 <CenteredDiv>
                   <CircularProgress color="secondary" />
                 </CenteredDiv>
-                )}
-                {response && (
+              )}
+              {response && (
                 <TableContainer
                   component={Paper}
                   sx={{
-                    //   maxHeight,
+                    // maxHeight: 400,
                   }}
                 >
                   <Table
@@ -90,10 +84,9 @@ const MatchParticipants = () => {
                     <TableHead>
                       <TableRow>
                         <TableCell align="left">RESULT</TableCell>
-                        {!response.isError ? (
-                          <TableCell
-                            align="left"
-                            style={{
+                        <TableCell align="left">
+                          {!response.isError && (
+                            <div style={{
                               display: 'flex',
                               flexDirection: 'row',
                               gap: '10px',
@@ -101,9 +94,7 @@ const MatchParticipants = () => {
                               alignItems: 'center',
                               maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
                             }}
-                          >
-                            {!response.isError && (
-                            <>
+                            >
                               <p style={{
                                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '14px' : '8px',
                                 color: 'black',
@@ -118,12 +109,9 @@ const MatchParticipants = () => {
                                   `${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}\n`))
                                 }
                               />
-                            </>
-                            )}
-                          </TableCell>
-                        ) : (
-                          <TableCell />
-                        )}
+                            </div>
+                          )}
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -197,12 +185,11 @@ const MatchParticipants = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                )}
-              </>
-            ) : (
-              <p>Something went wrong</p>
-            )}
-          </Paper>
+              )}
+            </>
+          ) : (
+            <p>Something went wrong</p>
+          )}
         </div>
       )}
     </DeviceContextConsumer>

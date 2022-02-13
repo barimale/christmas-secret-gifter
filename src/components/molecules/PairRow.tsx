@@ -4,6 +4,7 @@ import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
@@ -86,20 +87,22 @@ export const PairRow = (props: PairRowProps) => {
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '13px' : '10px',
             }}
           >
-            <ListItemAvatar>
-              <Tooltip title={getEmail(pair.fromIndex) ?? ' '}>
-                <Avatar
-                  alt={gifterName}
-                  sx={{
-                    width: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                    height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '10px',
-                    bgcolor: stringToColor(gifterName),
-                  }}
-                  {...stringAvatar(gifterName)}
-                />
-              </Tooltip>
-            </ListItemAvatar>
+            <ListSubheader>
+              <ListItemAvatar>
+                <Tooltip title={getEmail(pair.fromIndex) ?? ' '}>
+                  <Avatar
+                    alt={gifterName}
+                    sx={{
+                      width: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
+                      height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
+                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '10px',
+                      bgcolor: stringToColor(gifterName),
+                    }}
+                    {...stringAvatar(gifterName)}
+                  />
+                </Tooltip>
+              </ListItemAvatar>
+            </ListSubheader>
             <ListItemText
               primaryTypographyProps={{
                 fontWeight: 'bold',
@@ -118,7 +121,7 @@ export const PairRow = (props: PairRowProps) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  {`is going to buy a gift to:   ${getName(pair.toIndex)}`}
+                  {`is going to buy a gift to ${getName(pair.toIndex)}`}
                 </Typography>
               )}
             />

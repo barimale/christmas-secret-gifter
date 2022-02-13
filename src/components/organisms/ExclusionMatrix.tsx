@@ -80,7 +80,7 @@ const ExclusionMatrix = () => {
       flexDirection: 'column',
       backgroundColor: 'whitesmoke',
       padding: '20px',
-      height: '75%',
+      height: '69%',
       paddingTop: '20px',
       paddingBottom: '0px',
     }}
