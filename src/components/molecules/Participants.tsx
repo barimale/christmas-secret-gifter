@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Tooltip from '@material-ui/core/Tooltip';
 import Paper from '@mui/material/Paper';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@mui/icons-material/Edit';
@@ -71,15 +72,17 @@ const Participants = ({ maxHeight }: Props) => {
                 </TableCell>
                 <TableCell align="right">{p.email}</TableCell>
                 <TableCell align="right">
-                  <IconButton>
-                    <EditIcon
-                      fontSize="small"
-                      onClick={() => {
-                        setToBeEdited(p);
-                        setIsEditVisible(true);
-                      }}
-                    />
-                  </IconButton>
+                  <Tooltip title="Edit">
+                    <IconButton>
+                      <EditIcon
+                        fontSize="small"
+                        onClick={() => {
+                          setToBeEdited(p);
+                          setIsEditVisible(true);
+                        }}
+                      />
+                    </IconButton>
+                  </Tooltip>
                   <DeleteActionComponent
                     disabled={false}
                     id={p.id || ''}
