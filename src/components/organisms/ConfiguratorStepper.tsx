@@ -61,6 +61,9 @@ export default function ConfiguratorStepper () {
               height: 50,
               bgcolor: 'black',
               color: 'white',
+              flexDirection: 'row',
+              width: '100%',
+              justifyItems: 'space-evenly',
             }}
           >
             <Typography style={{

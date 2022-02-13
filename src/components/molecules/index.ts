@@ -8,6 +8,7 @@ export * from './LoadingInProgress';
 export * from './ModalTitle';
 export * from './NameField';
 export * from './NotifyParticipantRow';
+export * from './Ornament';
 export * from './PairRow';
 export * from './ParticipantHeader';
 export * from './Participants';
