@@ -74,6 +74,7 @@ const MatchParticipants = () => {
                   component={Paper}
                   sx={{
                     // maxHeight: 400,
+                    height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '92%' : '95%',
                   }}
                 >
                   <Table

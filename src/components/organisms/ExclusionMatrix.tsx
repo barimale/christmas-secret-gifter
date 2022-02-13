@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
-import { BackgroundContext, EventContext } from '../../contexts';
+import { BackgroundContext, DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import { BackgroundColorMode } from '../../contexts/BackgroundContext';
 import Participant from '../../store/model/participant';
 
@@ -75,70 +75,74 @@ const ExclusionMatrix = () => {
   }
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'whitesmoke',
-      padding: '20px',
-      height: '69%',
-      paddingTop: '20px',
-      paddingBottom: '0px',
-    }}
-    >
-      <TableContainer
-        component={Paper}
-        sx={{
-          //   maxHeight,
+    <DeviceContextConsumer>
+      {(context) => (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: 'whitesmoke',
+          padding: '20px',
+          height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '74%',
+          paddingTop: '20px',
+          paddingBottom: '0px',
         }}
-      >
-        <Table
-          stickyHeader
-          aria-label="simple table"
-          size="small"
         >
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
-                <TableCell align="center">{p.name}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {participants?.map((p: Participant) => (
-              <TableRow
-                key={p.name}
-                hover
-                sx={{
-                  '&:last-child td, &:last-child th': {
-                    border: 0,
-                  },
-                }}
-              >
-                <TableCell align="left">{p.name}</TableCell>
-                {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
-                  <TableCell align="center">
-                    <Tooltip title="As a person from the left You can exclude a person from the top">
-                      <GoldCheckbox
-                        disabled={p.orderId === pp.orderId}
-                        key={`${p.orderId}-${pp.orderId}`}
-                        checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}
-                        onChange={(e: any, checked: boolean) => {
-                          handleChange(p.orderId, pp.orderId, checked);
-                        }}
-                        inputProps={{
-                          'aria-label': 'controlled',
-                        }}
-                      />
-                    </Tooltip>
-                  </TableCell>
+          <TableContainer
+            component={Paper}
+            sx={{
+              //   maxHeight,
+            }}
+          >
+            <Table
+              stickyHeader
+              aria-label="simple table"
+              size="small"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell />
+                  {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
+                    <TableCell align="center">{p.name}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {participants?.map((p: Participant) => (
+                  <TableRow
+                    key={p.name}
+                    hover
+                    sx={{
+                      '&:last-child td, &:last-child th': {
+                        border: 0,
+                      },
+                    }}
+                  >
+                    <TableCell align="left">{p.name}</TableCell>
+                    {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((pp: Participant) => (
+                      <TableCell align="center">
+                        <Tooltip title="As a person from the left You can exclude a person from the top">
+                          <GoldCheckbox
+                            disabled={p.orderId === pp.orderId}
+                            key={`${p.orderId}-${pp.orderId}`}
+                            checked={exclusions?.find((s) => s.forOrderId === p.orderId && s.orderId === pp.orderId)?.isChecked}
+                            onChange={(e: any, checked: boolean) => {
+                              handleChange(p.orderId, pp.orderId, checked);
+                            }}
+                            inputProps={{
+                              'aria-label': 'controlled',
+                            }}
+                          />
+                        </Tooltip>
+                      </TableCell>
+                    ))}
+                  </TableRow>
                 ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
+    </DeviceContextConsumer>
   );
 };
 

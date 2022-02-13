@@ -71,6 +71,7 @@ const NotifyParticipants = () => {
               <ReCAPTCHA
                 ref={(el:any) => { captcha = el; }}
                 hl="en-GB"
+                size={context.valueOf() === DeviceType.isDesktopOrLaptop ? 'normal' : 'compact'}
                 sitekey="6Ld1vkceAAAAAImBNnWg0TTYf80V3ly9NPs4gth8"
                 onChange={(token: string | null) => {
                   setCaptchaToken(token);
@@ -91,6 +92,7 @@ const NotifyParticipants = () => {
               component={Paper}
               sx={{
               // maxHeight,
+                height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 'unset' : '88%',
               }}
             >
               <Table
