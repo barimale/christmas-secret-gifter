@@ -147,7 +147,8 @@ const MatchParticipants = () => {
                           style={{
                             fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
                             color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
-                            backgroundColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'lightgrey',
+                            borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'lightgrey',
+                            borderRadius: '10px',
                           }}
                         >
                           {response.analysisStatus}
@@ -159,7 +160,7 @@ const MatchParticipants = () => {
                         key={3}
                         sx={{
                           '&:last-child td, &:last-child th': {
-                            border: 0,
+                            borderBottom: 0,
                           },
                         }}
                       >
@@ -182,13 +183,14 @@ const MatchParticipants = () => {
                           }}
                         >
                           {!response.isError && (
-                            <List style={{
-                              fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                              marginTop: '0px',
-                            }}
+                            <List
+                              style={{
+                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                marginTop: '0px',
+                              }}
                             >
-                                {response.pairs.flatMap((r) => (
-                                  <PairRow pair={r} />
+                                {response.pairs.flatMap((r, index) => (
+                                  <PairRow pair={r} index={index} />
                                 ))}
                             </List>
                           )}

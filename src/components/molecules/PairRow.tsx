@@ -4,18 +4,20 @@ import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import { hexToRgb } from '@material-ui/core';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import Pair from '../../store/model/pair';
+import { RGBToRGBA } from '../../utilities/customTheme';
 
 interface PairRowProps{
   pair: Pair;
+  index: number;
 }
 
 export const PairRow = (props: PairRowProps) => {
-  const { pair } = props;
+  const { pair, index } = props;
   const { participants } = useContext(EventContext);
 
   function getName (orderId: number): string | undefined | null {
@@ -76,33 +78,34 @@ export const PairRow = (props: PairRowProps) => {
   }
 
   const gifterName = getName(pair.fromIndex) ?? '';
+  const gifterColor = stringToColor(gifterName) ?? '';
 
   return (
     <DeviceContextConsumer>
       {(context) => (
         <>
           <ListItem
+            key={index}
             alignItems="flex-start"
             style={{
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '13px' : '10px',
+              backgroundColor: `${RGBToRGBA(hexToRgb(gifterColor), 0.2)}`,
             }}
           >
-            <ListSubheader>
-              <ListItemAvatar>
-                <Tooltip title={getEmail(pair.fromIndex) ?? ' '}>
-                  <Avatar
-                    alt={gifterName}
-                    sx={{
-                      width: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                      height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                      fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '10px',
-                      bgcolor: stringToColor(gifterName),
-                    }}
-                    {...stringAvatar(gifterName)}
-                  />
-                </Tooltip>
-              </ListItemAvatar>
-            </ListSubheader>
+            <ListItemAvatar>
+              <Tooltip title={getEmail(pair.fromIndex) ?? ' '}>
+                <Avatar
+                  alt={gifterName}
+                  sx={{
+                    width: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
+                    height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
+                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '10px',
+                    bgcolor: gifterColor,
+                  }}
+                  {...stringAvatar(gifterName)}
+                />
+              </Tooltip>
+            </ListItemAvatar>
             <ListItemText
               primaryTypographyProps={{
                 fontWeight: 'bold',
@@ -127,7 +130,13 @@ export const PairRow = (props: PairRowProps) => {
             />
           </ListItem>
           {!isLast(pair.fromIndex) && (
-            <Divider variant="inset" component="li" />
+            <Divider
+              variant="inset"
+              component="li"
+              style={{
+                borderColor: 'transparent',
+              }}
+            />
           )}
         </>
       )}

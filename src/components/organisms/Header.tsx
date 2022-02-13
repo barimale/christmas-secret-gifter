@@ -69,7 +69,7 @@ const TopMenu = function () {
                     src="images/neon-tree-small.png"
                     alt="logo"
                     style={{
-                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
+                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '12px' : '6px',
                       // marginBottom: context === DeviceType.isDesktopOrLaptop ? '-1px' : '-1px',
                       height: context === DeviceType.isDesktopOrLaptop ? '38px' : '20px',
                       width: 'auto',

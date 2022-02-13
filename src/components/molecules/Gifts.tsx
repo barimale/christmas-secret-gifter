@@ -20,7 +20,7 @@ export const Gifts = (props: GiftsProps) => (
     }}
     >
       <p style={{
-        color: 'gold',
+        color: 'whitesmoke',
         fontFamily: 'inherit',
         margin: '0px',
         padding: '0px',
@@ -30,7 +30,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        color: 'red',
+        color: 'whitesmoke',
         fontFamily: 'inherit',
         margin: '0px',
         padding: '0px',
@@ -40,7 +40,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        color: 'purple',
+        color: 'whitesmoke',
         fontFamily: 'inherit',
         margin: '0px',
         padding: '0px',
@@ -50,7 +50,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        color: 'white',
+        color: 'whitesmoke',
         fontFamily: 'inherit',
         margin: '0px',
         padding: '0px',
@@ -60,7 +60,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'green',
+        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'whitesmoke',
       }}
       >
         D
