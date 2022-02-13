@@ -52,13 +52,11 @@ const Participants = ({ maxHeight }: Props) => {
               <TableCell
                 align="left"
                 style={{
-                  fontFamily: 'frozbite',
                 }}
               >
                 ID
               </TableCell>
               <TableCell style={{
-                fontFamily: 'frozbite',
               }}
               >
                 NAME
@@ -66,7 +64,6 @@ const Participants = ({ maxHeight }: Props) => {
               <TableCell
                 align="right"
                 style={{
-                  fontFamily: 'frozbite',
                 }}
               >
                 E-MAIL
@@ -74,7 +71,6 @@ const Participants = ({ maxHeight }: Props) => {
               <TableCell
                 align="right"
                 style={{
-                  fontFamily: 'frozbite',
                 }}
               >
                 ACTIONS

@@ -52,11 +52,10 @@ const TopMenu = function () {
                 className={classes.title}
                 align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
                 style={{
-                  color: `${Theme.palette.common.white}`,
+                  color: 'whitesmoke',
                   WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '20px',
+                  fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
-                  fontFamily: 'frozbite',
                   display: 'flex',
                   flexDirection: 'row',
                   alignContent: 'center',
@@ -72,7 +71,7 @@ const TopMenu = function () {
                     style={{
                       paddingRight: context === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                       // marginBottom: context === DeviceType.isDesktopOrLaptop ? '-1px' : '-1px',
-                      height: context === DeviceType.isDesktopOrLaptop ? '45px' : '20px',
+                      height: context === DeviceType.isDesktopOrLaptop ? '38px' : '20px',
                       width: 'auto',
                     }}
                   />

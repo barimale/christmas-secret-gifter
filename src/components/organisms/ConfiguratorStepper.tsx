@@ -70,6 +70,7 @@ export default function ConfiguratorStepper () {
             <Typography style={{
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '30px' : '20px',
               paddingLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
+              color: 'whitesmoke',
             }}
             >
               {steps[activeStep].label}

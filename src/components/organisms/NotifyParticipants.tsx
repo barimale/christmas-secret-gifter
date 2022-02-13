@@ -50,11 +50,11 @@ const NotifyParticipants = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '25px',
-                  border: '3px dotted #FFD700',
+                  border: '3px dotted #00D7FF',
                   justifyContent: 'space-around',
                   fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                     ? '16px' : '10px',
-                  backgroundColor: `${RGBToRGBA(hexToRgb('#FFD700'), 0.2)}`,
+                  backgroundColor: `${RGBToRGBA(hexToRgb('#00D7FF'), 0.2)}`,
                   marginBottom: '20px',
                 }}
               >
@@ -62,7 +62,7 @@ const NotifyParticipants = () => {
                   paddingLeft: '25px',
                   paddingRight: '25px',
                   textAlign: 'justify',
-                  lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.1',
+                  lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.5',
                 }}
                 >
                  By accepting CAPTCHA You agree to send emails to all participants and have a guarantee that mail is not classified as SPAM.
@@ -105,13 +105,11 @@ const NotifyParticipants = () => {
                     <TableCell
                       align="left"
                       style={{
-                        fontFamily: 'frozbite',
                       }}
                     >
 ID
                     </TableCell>
                     <TableCell style={{
-                      fontFamily: 'frozbite',
                     }}
                     >
 GIVER
@@ -119,7 +117,6 @@ GIVER
                     <TableCell
                       align="left"
                       style={{
-                        fontFamily: 'frozbite',
                       }}
                     >
 E-MAIL
@@ -127,7 +124,6 @@ E-MAIL
                     <TableCell
                       align="right"
                       style={{
-                        fontFamily: 'frozbite',
                       }}
                     >
 GIFTED
@@ -135,7 +131,6 @@ GIFTED
                     <TableCell
                       align="right"
                       style={{
-                        fontFamily: 'frozbite',
                       }}
                     >
 STATUS

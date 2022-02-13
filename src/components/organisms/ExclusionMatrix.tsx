@@ -111,7 +111,6 @@ const ExclusionMatrix = () => {
                     <TableCell
                       align="center"
                       style={{
-                        fontFamily: 'frozbite',
                       }}
                     >
                       {p.name}
@@ -137,7 +136,6 @@ const ExclusionMatrix = () => {
                         left: 0,
                         background: 'white',
                         zIndex: 10,
-                        fontFamily: 'frozbite',
                       }}
                     >
                       {p.name}

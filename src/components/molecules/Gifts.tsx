@@ -10,7 +10,7 @@ export const Gifts = (props: GiftsProps) => (
       width: 'auto',
       height: 'auto',
       fontFamily: 'kgChristmasTrees',
-      color: 'red',
+      color: 'whitesmoke',
       gap: '10px',
       display: 'flex',
       flexDirection: 'row',
@@ -20,7 +20,17 @@ export const Gifts = (props: GiftsProps) => (
     }}
     >
       <p style={{
-        color: 'green',
+        color: 'gold',
+        fontFamily: 'inherit',
+        margin: '0px',
+        padding: '0px',
+        height: 'fit-content',
+      }}
+      >
+        D
+      </p>
+      <p style={{
+        color: 'red',
         fontFamily: 'inherit',
         margin: '0px',
         padding: '0px',
@@ -40,16 +50,6 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        color: 'blue',
-        fontFamily: 'inherit',
-        margin: '0px',
-        padding: '0px',
-        height: 'fit-content',
-      }}
-      >
-        D
-      </p>
-      <p style={{
         color: 'white',
         fontFamily: 'inherit',
         margin: '0px',
@@ -60,7 +60,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content',
+        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'green',
       }}
       >
         D

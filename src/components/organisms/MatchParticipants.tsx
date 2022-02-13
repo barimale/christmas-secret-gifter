@@ -87,7 +87,6 @@ const MatchParticipants = () => {
                         <TableCell
                           align="left"
                           style={{
-                            fontFamily: 'frozbite',
                           }}
                         >
                           RESULT
@@ -95,7 +94,6 @@ const MatchParticipants = () => {
                         <TableCell
                           align="left"
                           style={{
-                            fontFamily: 'frozbite',
                           }}
                         >
                           {!response.isError && (
@@ -140,7 +138,6 @@ const MatchParticipants = () => {
                         <TableCell
                           align="left"
                           style={{
-                            fontFamily: 'frozbite',
                           }}
                         >
                           Analysis status:
@@ -171,7 +168,6 @@ const MatchParticipants = () => {
                           rowSpan={2}
                           style={{
                             borderRight: '1px solid rgb(224, 224, 224) !important',
-                            fontFamily: 'frozbite',
                           }}
                         >
                           Who is going to buy a gift to whom:
