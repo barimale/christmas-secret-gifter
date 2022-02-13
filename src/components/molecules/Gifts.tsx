@@ -14,7 +14,7 @@ export const Gifts = (props: GiftsProps) => (
           height: 'auto',
           fontFamily: 'kgChristmasTrees',
           color: 'whitesmoke',
-          gap: '10px',
+          gap: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '4px',
           display: 'flex',
           flexDirection: 'row',
           justifyItems: 'stretch',
