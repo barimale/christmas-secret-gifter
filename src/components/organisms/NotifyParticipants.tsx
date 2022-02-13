@@ -102,11 +102,44 @@ const NotifyParticipants = () => {
               >
                 <TableHead>
                   <TableRow>
-                    <TableCell align="left">ID</TableCell>
-                    <TableCell>GIVER</TableCell>
-                    <TableCell align="left">E-MAIL</TableCell>
-                    <TableCell align="right">GIFTED</TableCell>
-                    <TableCell align="right">STATUS</TableCell>
+                    <TableCell
+                      align="left"
+                      style={{
+                        fontFamily: 'frozbite',
+                      }}
+                    >
+ID
+                    </TableCell>
+                    <TableCell style={{
+                      fontFamily: 'frozbite',
+                    }}
+                    >
+GIVER
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      style={{
+                        fontFamily: 'frozbite',
+                      }}
+                    >
+E-MAIL
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{
+                        fontFamily: 'frozbite',
+                      }}
+                    >
+GIFTED
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      style={{
+                        fontFamily: 'frozbite',
+                      }}
+                    >
+STATUS
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

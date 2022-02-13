@@ -19,19 +19,26 @@ export const Footer = () => {
       <div
         className={classes.title}
         style={{
-          display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly',
+          display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', fontSize: '30px',
         }}
       >
-        <span>
+        <span style={{
+          fontSize: '12px',
+        }}
+        >
           &copy; 2022 - Christmas Secret Gifter
         </span>
-        <span>
+        <span style={{
+          fontSize: '12px',
+        }}
+        >
           <Link
             to={ContactPath}
             style={{
               color: 'white',
               textDecoration: 'none',
               cursor: 'pointer',
+              fontSize: 'inherit',
             }}
           >
             Contact

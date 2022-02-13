@@ -40,6 +40,7 @@ export const ModalTitle = (props: ModalTitleProps) => {
               width: '100%',
               paddingLeft: context === DeviceType.isDesktopOrLaptop ? '32px' : '12px',
               textShadow: '1px 1px black',
+              alignSelf: 'center',
             }}
           >
             {props.title}

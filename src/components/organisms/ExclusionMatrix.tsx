@@ -108,7 +108,14 @@ const ExclusionMatrix = () => {
                   }}
                   />
                   {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
-                    <TableCell align="center">{p.name}</TableCell>
+                    <TableCell
+                      align="center"
+                      style={{
+                        fontFamily: 'frozbite',
+                      }}
+                    >
+                      {p.name}
+                    </TableCell>
                   ))}
                 </TableRow>
               </TableHead>
@@ -130,6 +137,7 @@ const ExclusionMatrix = () => {
                         left: 0,
                         background: 'white',
                         zIndex: 10,
+                        fontFamily: 'frozbite',
                       }}
                     >
                       {p.name}

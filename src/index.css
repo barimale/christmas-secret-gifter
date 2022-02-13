@@ -81,3 +81,23 @@ code {
   font-family: 'NanumGothicRegular';
   src: local('NanumGothicRegular'), url(./assets/fonts/Nanum-Gothic/NanumGothic-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'frozbite';
+  src: local('frozbite'), url(./assets/fonts/frozbite/FROZBITE.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'kgChristmasTrees';
+  src: local('kgChristmasTrees'), url(./assets/fonts/kg-christmas-trees/KGChristmasTrees.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'krystal';
+  src: local('krystal'), url(./assets/fonts/krystal/Krystal.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'holeHearted';
+  src: local('holeHearted'), url(./assets/fonts/krystal/Hole-Hearted.ttf) format('truetype');
+}

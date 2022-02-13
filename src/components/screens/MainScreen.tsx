@@ -68,9 +68,10 @@ export const MainScreen = function () {
                       ? '40px' : '20px',
                     padding: context.valueOf() === DeviceType.isDesktopOrLaptop
                       ? '20px' : '10px',
+                    fontFamily: 'krystal',
                   }}
                 >
-                  Please wait a moment.
+                  Please wait a moment
                 </Typography>
                 <Typography
                   style={{
@@ -82,6 +83,7 @@ export const MainScreen = function () {
                     paddingTop: '0px',
                     display: 'flex',
                     flexDirection: 'row',
+                    fontFamily: 'krystal',
                   }}
                 >
                   Event creation is in progress
@@ -89,6 +91,8 @@ export const MainScreen = function () {
                     className="animate-flicker-first"
                     style={{
                       margin: '0px',
+                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
+                      fontFamily: 'krystal',
                     }}
                   >
                     .
@@ -97,6 +101,8 @@ export const MainScreen = function () {
                     className="animate-flicker-second"
                     style={{
                       margin: '0px',
+                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
+                      fontFamily: 'krystal',
                     }}
                   >
                     .
@@ -105,6 +111,8 @@ export const MainScreen = function () {
                     className="animate-flicker-third"
                     style={{
                       margin: '0px',
+                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
+                      fontFamily: 'krystal',
                     }}
                   >
                     .

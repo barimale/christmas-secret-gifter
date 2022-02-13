@@ -49,10 +49,36 @@ const Participants = ({ maxHeight }: Props) => {
         >
           <TableHead>
             <TableRow>
-              <TableCell align="left">ID</TableCell>
-              <TableCell>NAME</TableCell>
-              <TableCell align="right">E-MAIL</TableCell>
-              <TableCell align="right">ACTIONS</TableCell>
+              <TableCell
+                align="left"
+                style={{
+                  fontFamily: 'frozbite',
+                }}
+              >
+                ID
+              </TableCell>
+              <TableCell style={{
+                fontFamily: 'frozbite',
+              }}
+              >
+                NAME
+              </TableCell>
+              <TableCell
+                align="right"
+                style={{
+                  fontFamily: 'frozbite',
+                }}
+              >
+                E-MAIL
+              </TableCell>
+              <TableCell
+                align="right"
+                style={{
+                  fontFamily: 'frozbite',
+                }}
+              >
+                ACTIONS
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

@@ -12,12 +12,12 @@ export const ConfiguratorSteps = [
     component: <DefineParticipantsLazy />,
   },
   {
-    label: 'Exclusions Matrix - optional',
-    description: 'This step is optional. You can exclude some of participants in case You have no idea what to buy them. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself.',
+    label: 'Exclusions Matrix',
+    description: 'This step is OPTIONAL only. You can exclude some of participants in case You have no idea what to buy them. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself.',
     component: <ExclusionMatrixLazy />,
   },
   {
-    label: 'Match Participants',
+    label: 'Pairing Results',
     description: 'Results of pairing are presented here. In case You made too many exclusions in the previous step You may have INFEASIBLE status here, which simply means, that some of participants will not get their gifts. You need to go back to the Exclusions Matrix step and correct data.',
     component: <MatchParticipantsLazy />,
   },

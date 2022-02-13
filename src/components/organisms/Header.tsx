@@ -54,8 +54,9 @@ const TopMenu = function () {
                 style={{
                   color: `${Theme.palette.common.white}`,
                   WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '24px',
+                  fontSize: context === DeviceType.isDesktopOrLaptop ? '44px' : '20px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
+                  fontFamily: 'frozbite',
                   display: 'flex',
                   flexDirection: 'row',
                   alignContent: 'center',
@@ -69,9 +70,9 @@ const TopMenu = function () {
                     src="images/neon-tree-small.png"
                     alt="logo"
                     style={{
-                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '12px' : '6px',
+                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                       // marginBottom: context === DeviceType.isDesktopOrLaptop ? '-1px' : '-1px',
-                      height: context === DeviceType.isDesktopOrLaptop ? '38px' : '20px',
+                      height: context === DeviceType.isDesktopOrLaptop ? '45px' : '20px',
                       width: 'auto',
                     }}
                   />
