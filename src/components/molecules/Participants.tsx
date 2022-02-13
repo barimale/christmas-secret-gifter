@@ -8,10 +8,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { EventContext } from '../../contexts';
 import Participant from '../../store/model/participant';
 import EditParticipantModal from '../organisms/EditParticipantModal';
+import { DeleteActionComponent } from './DeleteActionComponent';
 
 interface Props{
     maxHeight: number;
@@ -80,12 +80,17 @@ const Participants = ({ maxHeight }: Props) => {
                       }}
                     />
                   </IconButton>
-                  <IconButton onClick={async () => {
-                    await removeParticipant(p);
-                  }}
-                  >
-                    <DeleteForeverIcon fontSize="small" />
-                  </IconButton>
+                  <DeleteActionComponent
+                    disabled={false}
+                    id={p.id || ''}
+                    title="Are You sure?"
+                    question="You are going to delete the participant. This operation cannot be restored."
+                    yesLabel="Yes"
+                    noLabel="No"
+                    onAgreeAction={async () => {
+                      await removeParticipant(p);
+                    }}
+                  />
                 </TableCell>
               </TableRow>
             ))}

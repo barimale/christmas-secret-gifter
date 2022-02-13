@@ -1,5 +1,7 @@
 export * from './AnalyzeButton';
+export * from './ConfirmationDialog';
 export * from './CopyPairsToClipboard';
+export * from './DeleteActionComponent';
 export * from './EmailField';
 export * from './ExclusionsField';
 export * from './LoadingInProgress';
