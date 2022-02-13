@@ -60,7 +60,7 @@ export const Gifts = (props: GiftsProps) => (
         D
       </p>
       <p style={{
-        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'green',
+        fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'grey',
       }}
       >
         D
