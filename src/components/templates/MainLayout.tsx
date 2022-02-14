@@ -17,6 +17,7 @@ const usePrevious = (value: any) => {
 export const MainLayout = (props : any) => {
   const basicColor = `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`;
   const { backgroundColorMode } = useContext(BackgroundContext);
+  // eslint-disable-next-line no-unused-vars
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
   const [paddingTop, setPaddingTop] = useState<number>(10);
   const { innerHeight: height } = window;
@@ -67,7 +68,6 @@ export const MainLayout = (props : any) => {
           marginBottom: `${-paddingTop}px`,
           display: 'inline-flex',
           background: backgroundColor,
-          // transition: 'background 50ms linear',
           justifyContent: 'center',
         }}
       >

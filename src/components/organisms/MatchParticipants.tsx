@@ -52,15 +52,17 @@ const MatchParticipants = () => {
   return (
     <DeviceContextConsumer>
       {(context) => (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundColor: 'whitesmoke',
-          padding: '20px',
-          height: '75%',
-          paddingTop: '20px',
-          paddingBottom: '0px',
-        }}
+        <div
+          id={context === DeviceType.isDesktopOrLaptop ? 'iconedBackground' : 'iconedBackground-mobile'}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: 'whitesmoke',
+            padding: '20px',
+            height: '75%',
+            paddingTop: '20px',
+            paddingBottom: '0px',
+          }}
         >
           {participants.length > 0 ? (
             <>

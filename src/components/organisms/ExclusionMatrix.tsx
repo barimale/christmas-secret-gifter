@@ -77,15 +77,17 @@ const ExclusionMatrix = () => {
   return (
     <DeviceContextConsumer>
       {(context) => (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundColor: 'whitesmoke',
-          padding: '20px',
-          height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '74%',
-          paddingTop: '20px',
-          paddingBottom: '0px',
-        }}
+        <div
+          id={context === DeviceType.isDesktopOrLaptop ? 'iconedBackground' : 'iconedBackground-mobile'}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: 'whitesmoke',
+            padding: '20px',
+            height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '74%',
+            paddingTop: '20px',
+            paddingBottom: '0px',
+          }}
         >
           <TableContainer
             component={Paper}

@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@mui/material/Grid';
 import sizeMe from 'react-sizeme';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
-import MenuButtons from './menu/menu-desktop/MenuButtons';
 import { MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
 import { Theme } from '../../theme/custom-theme';
@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 const TopMenu = function () {
   const classes = useStyles();
+  const sidesProportion = 2;
+  const mainProportion = 8;
 
   return (
     <div
@@ -47,40 +49,62 @@ const TopMenu = function () {
               paddingRight: context === DeviceType.isDesktopOrLaptop ? '32px' : '10px',
             }}
             >
-              <Typography
-                variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
-                className={classes.title}
-                align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
-                style={{
-                  color: 'whitesmoke',
-                  WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
-                  textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignContent: 'center',
-                }}
-              >
-                <StyledLink
-                  className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
-                  to={MainPath}
-                >
-                  <img
-                    src="images/neon-tree-small.png"
-                    alt="logo"
+              <Grid container spacing={2}>
+                <Grid item xs={context !== DeviceType.isDesktopOrLaptop ? sidesProportion : 0}>
+                  <Typography
+                    variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
+                    className={classes.title}
+                    align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
                     style={{
-                      paddingRight: context === DeviceType.isDesktopOrLaptop ? '12px' : '6px',
-                      // marginBottom: context === DeviceType.isDesktopOrLaptop ? '-1px' : '-1px',
-                      height: context === DeviceType.isDesktopOrLaptop ? '38px' : '20px',
-                      width: 'auto',
+                      color: 'whitesmoke',
+                      WebkitTapHighlightColor: 'transparent',
+                      fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
+                      textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignContent: 'center',
                     }}
-                  />
-                  {'Christmas Secret Gifter'.toLocaleUpperCase()}
-                </StyledLink>
-              </Typography>
-              {context === DeviceType.isDesktopOrLaptop && (
-                <MenuButtons />
-              )}
+                  >
+                    <StyledLink
+                      className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
+                      to={MainPath}
+                    >
+                      <img
+                        src="images/neon-tree-small.png"
+                        alt="logo"
+                        style={{
+                          height: context === DeviceType.isDesktopOrLaptop ? '38px' : '40px',
+                          width: 'auto',
+                        }}
+                      />
+                    </StyledLink>
+                  </Typography>
+                </Grid>
+                <Grid item xs={mainProportion}>
+                  <Typography
+                    variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
+                    className={classes.title}
+                    align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
+                    style={{
+                      color: 'whitesmoke',
+                      WebkitTapHighlightColor: 'transparent',
+                      fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
+                      textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignContent: 'center',
+                    }}
+                  >
+                    <StyledLink
+                      className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
+                      to={MainPath}
+                    >
+                      {'Christmas Secret Gifter'.toLocaleUpperCase()}
+                    </StyledLink>
+                  </Typography>
+                </Grid>
+                <Grid item xs={context !== DeviceType.isDesktopOrLaptop ? sidesProportion : 0} />
+              </Grid>
             </Toolbar>
           )}
         </DeviceContextConsumer>

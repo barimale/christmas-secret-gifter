@@ -20,6 +20,7 @@ const ParticipantHeader = () => {
       }}
       >
         <IconButton
+          className="pulse"
           style={{
             borderRadius: '0px',
             color: '#bdad31',

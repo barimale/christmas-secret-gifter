@@ -14,7 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
-import { Gifts } from '../molecules';
 
 const GoldButton = withStyles({
   root: {
@@ -75,10 +74,6 @@ export default function ConfiguratorStepper () {
             >
               {steps[activeStep].label}
             </Typography>
-            <Gifts style={{
-              paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
-            }}
-            />
           </Paper>
           <Box sx={{
             height: context.valueOf() === DeviceType.isDesktopOrLaptop
