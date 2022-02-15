@@ -84,7 +84,7 @@ const ExclusionMatrix = () => {
             flexDirection: 'column',
             backgroundColor: 'whitesmoke',
             padding: '20px',
-            height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '74%',
+            height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '74%' : '74%',
             paddingTop: '20px',
             paddingBottom: '0px',
           }}
@@ -92,7 +92,8 @@ const ExclusionMatrix = () => {
           <TableContainer
             component={Paper}
             sx={{
-              //   maxHeight,
+              marginBottom: '20px !important',
+              height: 'auto',
             }}
           >
             <Table

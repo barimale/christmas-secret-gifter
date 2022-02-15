@@ -20,7 +20,6 @@ const ParticipantHeader = () => {
       }}
       >
         <IconButton
-          className="pulse"
           style={{
             borderRadius: '0px',
             color: '#bdad31',
@@ -30,7 +29,7 @@ const ParticipantHeader = () => {
             setIsAddVisible(true);
           }}
         >
-          <AddIcon />
+          <AddIcon className="pulse" />
         </IconButton>
       </div>
       <AddParticipantModal

@@ -30,16 +30,13 @@ const Participants = ({ maxHeight }: Props) => {
   }, [isEditVisible]);
 
   return (
-    <Paper sx={{
-      width: '100%',
-      overflow: 'hidden',
-      height: '100%',
-    }}
-    >
+    <>
       <TableContainer
         component={Paper}
         sx={{
           maxHeight,
+          marginBottom: '20px !important',
+          height: 'auto',
         }}
       >
         <Table
@@ -129,7 +126,7 @@ const Participants = ({ maxHeight }: Props) => {
           setIsEditVisible(false);
         }}
       />
-    </Paper>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import useOverEffectHook from '../../hooks/useOverEffectHook';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
@@ -29,10 +29,23 @@ export const CopyPairsToClipboard = (props: any) => {
                 width: context === DeviceType.isDesktopOrLaptop ? 'auto' : 'auto',
                 justifyItems: 'left',
                 margin: '0px',
-                padding: '0px',
                 alignSelf: 'end',
+                borderRadius: '0px',
+                padding: '0px',
+                paddingTop: context === DeviceType.isDesktopOrLaptop ? '3px' : '2px',
+                paddingBottom: context === DeviceType.isDesktopOrLaptop ? '3px' : '2px',
               }}
             >
+              <Typography
+                style={{
+                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '14px' : '8px',
+                  color: 'black',
+                  margin: '0px',
+                  paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '8px' : '4px',
+                }}
+              >
+                Copy to Clipboard
+              </Typography>
               <FileCopyIcon fontSize={context === DeviceType.isDesktopOrLaptop ? 'medium' : 'small'} />
             </IconButton>
           )}

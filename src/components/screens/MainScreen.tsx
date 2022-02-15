@@ -54,6 +54,7 @@ export const MainScreen = function () {
                 flexDirection: 'row',
                 gap: '20px',
                 alignItems: 'baseline',
+                justifyContent: context.valueOf() === DeviceType.isDesktopOrLaptop ? 'unset' : 'center',
               }}
               >
                 <div className="shakeMe">

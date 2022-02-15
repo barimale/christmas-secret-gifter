@@ -37,7 +37,7 @@ const NotifyParticipants = () => {
             flexDirection: 'column',
             backgroundColor: 'whitesmoke',
             padding: '20px',
-            height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '69%' : '85%',
+            height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '74%' : '85%',
             paddingTop: '20px',
             paddingBottom: '0px',
           }}
@@ -56,19 +56,26 @@ const NotifyParticipants = () => {
                   justifyContent: 'space-around',
                   fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                     ? '16px' : '10px',
-                  backgroundColor: `${RGBToRGBA(hexToRgb('#00D7FF'), 0.2)}`,
+                  backgroundColor: 'white',
                   marginBottom: '20px',
                 }}
               >
-                <p style={{
-                  paddingLeft: '25px',
-                  paddingRight: '25px',
-                  textAlign: 'justify',
-                  lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.5',
+                <div style={{
+                  backgroundColor: `${RGBToRGBA(hexToRgb('#00D7FF'), 0.1)}`,
+                  padding: '0px',
+                  margin: '0px',
                 }}
                 >
-                 By accepting CAPTCHA You agree to send emails to all participants and have a guarantee that mail is not classified as SPAM.
-                </p>
+                  <p style={{
+                    paddingLeft: '25px',
+                    paddingRight: '25px',
+                    textAlign: 'justify',
+                    lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.5',
+                  }}
+                  >
+                  By accepting CAPTCHA You agree to send emails to all participants and have a guarantee that mail is not classified as SPAM.
+                  </p>
+                </div>
               </div>
               <ReCAPTCHA
                 ref={(el:any) => { captcha = el; }}
@@ -94,7 +101,8 @@ const NotifyParticipants = () => {
               component={Paper}
               sx={{
               // maxHeight,
-                height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 'unset' : '88%',
+                height: 'auto',
+                marginBottom: '20px',
               }}
             >
               <Table

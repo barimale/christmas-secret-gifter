@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import sizeMe, { SizeMe } from 'react-sizeme';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import Participants from './Participants';
@@ -25,7 +25,7 @@ const ParticipantsGrid = () => {
                 flexDirection: 'column',
                 backgroundColor: 'whitesmoke',
                 padding: '20px',
-                height: '82%',
+                height: '84%',
                 paddingTop: '0px',
                 paddingBottom: '0px',
               }}
@@ -36,13 +36,11 @@ const ParticipantsGrid = () => {
                 }}
               />
               {participants.length > 0 ? (
-                <Grid container spacing={2}>
-                  <Participants maxHeight={size?.size?.height !== null
+                <Participants maxHeight={size?.size?.height !== null
                   // eslint-disable-next-line no-unsafe-optional-chaining
-                    ? (size?.size?.height - headerHeight)
-                    : 300}
-                  />
-                </Grid>
+                  ? (size?.size?.height - headerHeight)
+                  : 300}
+                />
               ) : (
                 <Typography style={{
                   padding: '20px',

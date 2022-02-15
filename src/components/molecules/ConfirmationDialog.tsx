@@ -53,8 +53,10 @@ export default function ConfirmationDialog (props: ConfirmationDialogProps) {
             onClick={() => {
               handleClose(true);
             }}
-            color="secondary"
             autoFocus
+            style={{
+              color: 'red',
+            }}
           >
             {yesLabel}
           </Button>

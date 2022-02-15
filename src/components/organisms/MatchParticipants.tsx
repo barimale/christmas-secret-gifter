@@ -59,7 +59,7 @@ const MatchParticipants = () => {
             flexDirection: 'column',
             backgroundColor: 'whitesmoke',
             padding: '20px',
-            height: '75%',
+            height: '74%',
             paddingTop: '20px',
             paddingBottom: '0px',
           }}
@@ -76,7 +76,8 @@ const MatchParticipants = () => {
                   component={Paper}
                   sx={{
                     // maxHeight: 400,
-                    height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '92%' : '95%',
+                    height: '100%',
+                    marginBottom: '20px',
                   }}
                 >
                   <Table
@@ -108,14 +109,6 @@ const MatchParticipants = () => {
                               maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
                             }}
                             >
-                              <p style={{
-                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '14px' : '8px',
-                                color: 'black',
-                                margin: '0px',
-                              }}
-                              >
-                                Copy to Clipboard:
-                              </p>
                               <CopyPairsToClipboard
                                 content={
                                 response.pairs.flatMap((r) => (
@@ -171,6 +164,7 @@ const MatchParticipants = () => {
                           rowSpan={2}
                           style={{
                             borderRight: '1px solid rgb(224, 224, 224) !important',
+                            verticalAlign: 'top',
                           }}
                         >
                           Who is going to buy a gift to whom:
