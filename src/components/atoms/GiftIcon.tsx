@@ -1,9 +1,14 @@
 import React from 'react';
-import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
+import Icon from '@material-ui/core/Icon';
 
 export const GiftIcon = ({ height }: any) => (
-  <RedeemTwoToneIcon style={{
-    height, width: 'auto',
-  }}
-  />
+  <Icon>
+    <img
+      alt="gift"
+      src="/icons/gift.svg"
+      style={{
+        height, width: 'auto',
+      }}
+    />
+  </Icon>
 );
