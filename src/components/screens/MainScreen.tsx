@@ -49,11 +49,33 @@ export const MainScreen = function () {
               gap: '20px',
             }}
             >
-              <div className="rotating">
-                <GiftIcon
-                  height={context.valueOf() === DeviceType.isDesktopOrLaptop
-                    ? '300px' : '100px'}
-                />
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '20px',
+                alignItems: 'baseline',
+              }}
+              >
+                <div className="shakeMe">
+                  <GiftIcon
+                    height={context.valueOf() === DeviceType.isDesktopOrLaptop
+                      ? '300px' : '100px'}
+                  />
+                </div>
+                {context.valueOf() === DeviceType.isDesktopOrLaptop && (
+                  <>
+                    <div className="shakeMe">
+                      <GiftIcon
+                        height="75px"
+                      />
+                    </div>
+                    <div className="shakeMe">
+                      <GiftIcon
+                        height="150px"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               <div
                 style={{
