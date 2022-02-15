@@ -19,6 +19,7 @@ const ParticipantsGrid = () => {
         <DeviceContextConsumer>
           {(context) => (
             <div
+              // eslint-disable-next-line no-nested-ternary
               id={context === DeviceType.isDesktopOrLaptop ? 'iconedBackground' : 'iconedBackground-mobile'}
               style={{
                 display: 'flex',

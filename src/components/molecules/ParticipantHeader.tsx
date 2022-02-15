@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { IconButton } from '@material-ui/core';
 import sizeMe from 'react-sizeme';
 import AddParticipantModal from '../organisms/AddParticipantModal';
+import { EventContext } from '../../contexts';
 
 const ParticipantHeader = () => {
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
+  const { participants } = useContext(EventContext);
+  const [alreadMounted, setAlreadyMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAlreadyMounted(true);
+    }, 4000);
+  }, []);
 
   return (
     <>
@@ -29,7 +38,7 @@ const ParticipantHeader = () => {
             setIsAddVisible(true);
           }}
         >
-          <AddIcon className="pulse" />
+          <AddIcon className={participants.length === 0 && !alreadMounted ? 'pulse' : ''} />
         </IconButton>
       </div>
       <AddParticipantModal
