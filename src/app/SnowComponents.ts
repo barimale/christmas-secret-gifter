@@ -29,11 +29,17 @@ class SnowMaker {
 
   private angle = Math.random();
 
+  private isMobile = window.innerWidth < 768;
+
+  private minFlake: number = this.isMobile ? 80 : 300;
+
+  private maxFlake: number = this.isMobile ? 600 : 130;
+
   private animFrameId: number|null = 0;
 
-  constructor (numOfFlakes = randomInt(300, 600)) {
+  constructor () {
     this.initCanvas();
-    this.generateFlakes(numOfFlakes);
+    this.generateFlakes(randomInt(this.minFlake, this.maxFlake));
     this.attachEvents();
   }
 
