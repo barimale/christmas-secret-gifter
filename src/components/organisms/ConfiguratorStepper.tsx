@@ -50,6 +50,7 @@ export default function ConfiguratorStepper () {
             ? 800 : window.innerWidth * 0.8,
           flexGrow: 1,
           backgroundColor: 'whitesmoke',
+          zIndex: 1000,
         }}
         >
           <Paper

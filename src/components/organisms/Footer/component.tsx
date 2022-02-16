@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import sizeMe from 'react-sizeme';
 import { useStyles } from './styles';
 import { ContactPath } from '../../screens/ContactScreen';
 import { DeviceContextConsumer } from '../../../contexts';
 
-export const Footer = () => {
+const Footer = () => {
   const classes = useStyles();
 
   return (
@@ -49,3 +50,7 @@ export const Footer = () => {
     </DeviceContextConsumer>
   );
 };
+
+export default sizeMe({
+  monitorHeight: true,
+})(Footer);

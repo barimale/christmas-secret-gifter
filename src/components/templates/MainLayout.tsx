@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Footer } from '../organisms/Footer';
+import Footer from '../organisms/Footer/component';
 import Header from '../organisms/Header';
 import { Theme } from '../../theme/custom-theme';
 import { BackgroundColorMode, BackgroundContext } from '../../contexts/BackgroundContext';
+import SnowMaker from '../../app/SnowComponents';
 
 const usePrevious = (value: any) => {
   const ref = useRef();
@@ -14,12 +15,16 @@ const usePrevious = (value: any) => {
   return ref.current;
 };
 
+const snowMaker = new SnowMaker();
+
 export const MainLayout = (props : any) => {
   const basicColor = `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`;
   const { backgroundColorMode } = useContext(BackgroundContext);
   // eslint-disable-next-line no-unused-vars
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
   const [paddingTop, setPaddingTop] = useState<number>(10);
+  const [marginBottom, setMarginBottom] = useState<number>(10);
+
   const { innerHeight: height } = window;
   const isPortrait = useMediaQuery({
     orientation: 'portrait',
@@ -27,6 +32,13 @@ export const MainLayout = (props : any) => {
   const prevVal = usePrevious(isPortrait);
   const location = useLocation();
   const history = useHistory();
+
+  const mainLayoutRef = useRef(null);
+
+  useEffect(() => {
+    document.body.appendChild(snowMaker.canvas);
+    snowMaker.start();
+  }, []);
 
   useEffect(() => {
     history.push(location.pathname);
@@ -53,6 +65,24 @@ export const MainLayout = (props : any) => {
     }
   }, [backgroundColorMode]);
 
+  useEffect(() => {
+    const resizeListener = () => {
+      if (mainLayoutRef.current) {
+        const node = mainLayoutRef.current as any;
+        snowMaker.canvas.height = node.getBoundingClientRect().height;
+        snowMaker.canvas.width = node.getBoundingClientRect().width;
+      }
+    };
+    // set resize listener
+    window.addEventListener('resize', resizeListener);
+
+    // clean up function
+    return () => {
+      // remove resize listener
+      window.removeEventListener('resize', resizeListener);
+    };
+  }, [mainLayoutRef.current]);
+
   return (
     <>
       <Header onSize={(size: any) => {
@@ -60,19 +90,25 @@ export const MainLayout = (props : any) => {
       }}
       />
       <div
+        ref={mainLayoutRef}
+        id="greeting"
         className="main-layout"
         style={{
           height: height - paddingTop,
           width: '100%',
           paddingTop,
-          marginBottom: `${-paddingTop}px`,
+          marginBottom: `${-marginBottom}px`,
           display: 'inline-flex',
           background: backgroundColor,
+          // background: 'radial-gradient(circle at 50% 300px, #0c2656, #000d25 100%), #0c2656',
           justifyContent: 'center',
         }}
       >
         {props.children}
-        <Footer />
+        <Footer onSize={(size: any) => {
+          setMarginBottom(size.height || 0);
+        }}
+        />
       </div>
     </>
   );

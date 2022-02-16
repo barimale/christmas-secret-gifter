@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './Snow.css';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { init } from 'emailjs-com';
