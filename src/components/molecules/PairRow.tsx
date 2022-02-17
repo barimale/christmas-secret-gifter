@@ -133,6 +133,10 @@ export const PairRow = (props: PairRowProps) => {
               />
             </div>
             <ListItemText
+              sx={{
+                justifyContent: 'flex-end',
+                display: 'flex',
+              }}
               primaryTypographyProps={{
                 fontWeight: 'bold',
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
@@ -155,7 +159,6 @@ export const PairRow = (props: PairRowProps) => {
                     textTransform: 'uppercase',
                     width: '100%',
                     textAlign: 'end',
-                    textShadow: '1px 1px white',
                   }}
                   component="span"
                   variant="body2"

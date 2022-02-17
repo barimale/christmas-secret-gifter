@@ -169,6 +169,7 @@ const MatchParticipants = () => {
                               '&:last-child td, &:last-child th': {
                                 borderBottom: 0,
                               },
+                              width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20%' : '30%',
                             }}
                           >
                             <TableCell
