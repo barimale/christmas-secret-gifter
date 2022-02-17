@@ -118,6 +118,9 @@ export default function ConfiguratorStepper () {
               <GoldButton
                 className="pointerOverEffect"
                 size="small"
+                style={{
+                  visibility: activeStep === (maxSteps - 1) ? 'hidden' : 'visible',
+                }}
                 onClick={handleNext}
                 disabled={(activeStep === maxSteps - 1)
                 || (activeStep === 0 && participants.length < 2)
@@ -136,6 +139,9 @@ export default function ConfiguratorStepper () {
                 className="pointerOverEffect"
                 size="small"
                 onClick={handleBack}
+                style={{
+                  visibility: activeStep === 0 ? 'hidden' : 'visible',
+                }}
                 disabled={activeStep === 0}
               >
                 {theme.direction === 'rtl' ? (
