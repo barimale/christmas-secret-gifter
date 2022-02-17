@@ -8,7 +8,6 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import Pair from '../../store/model/pair';
 import { RGBToRGBA } from '../../utilities/customTheme';
-import { Gifts } from './Gifts';
 
 interface PairRowProps{
   pair: Pair;
@@ -52,10 +51,11 @@ export const PairRow = (props: PairRowProps) => {
 
     for (i = 0; i < 3; i += 1) {
       const value = (hash >> (i * 8)) & 0xff;
+      // eslint-disable-next-line no-unused-vars
       color += `00${value.toString(16)}`.substr(-2);
     }
     /* eslint-enable no-bitwise */
-    return color;
+    return '#00FF00'; // color;
   }
 
   const gifterName = getName(pair.fromIndex) ?? '';
@@ -78,6 +78,7 @@ export const PairRow = (props: PairRowProps) => {
                 fontWeight: 'bold',
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
                 textTransform: 'uppercase',
+                maxWidth: '40%',
               }}
               primary={gifterName}
               secondary={(
@@ -96,12 +97,36 @@ export const PairRow = (props: PairRowProps) => {
                 </Typography>
               )}
             />
-            <KeyboardArrowRight style={{
-              height: '80px',
-              width: 'auto',
-              color: 'gray',
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyItems: 'center',
+              marginLeft: '-20px',
             }}
-            />
+            >
+              <KeyboardArrowRight style={{
+                height: '76px',
+                width: 'auto',
+                color: 'pink',
+                marginLeft: '0px',
+              }}
+              />
+              <KeyboardArrowRight style={{
+                height: '60px',
+                width: 'auto',
+                color: 'pink',
+                marginLeft: '-55px',
+              }}
+              />
+              <KeyboardArrowRight style={{
+                height: '47px',
+                width: 'auto',
+                color: 'pink',
+                marginLeft: '-44px',
+              }}
+              />
+            </div>
             <ListItemText
               primaryTypographyProps={{
                 fontWeight: 'bold',
@@ -112,13 +137,8 @@ export const PairRow = (props: PairRowProps) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-end',
+                maxWidth: '40%',
               }}
-              primary={(
-                <Gifts style={{
-                  color: `${gifterColor}`,
-                }}
-                />
-              )}
               secondaryTypographyProps={{
                 align: 'right',
               }}

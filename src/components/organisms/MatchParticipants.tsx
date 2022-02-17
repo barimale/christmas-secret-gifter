@@ -14,6 +14,7 @@ import AlgorithmResponse from '../../store/model/algorithm-response';
 import CenteredDiv from '../templates/CenteredDiv';
 import { CopyPairsToClipboard } from '../molecules/CopyPairsToClipboard';
 import { PairRow } from '../molecules/PairRow';
+import { Gifts } from '../molecules/Gifts';
 
 const MatchParticipants = () => {
   const { participants, analyze } = useContext(EventContext);
@@ -92,7 +93,12 @@ const MatchParticipants = () => {
                           style={{
                           }}
                         >
-                          RESULT
+                          {!response.isError && (
+                            <Gifts style={{
+                              color: 'black',
+                            }}
+                            />
+                          )}
                         </TableCell>
                         <TableCell
                           align="left"
