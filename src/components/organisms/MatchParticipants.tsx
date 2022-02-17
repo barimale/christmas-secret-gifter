@@ -169,7 +169,6 @@ const MatchParticipants = () => {
                               '&:last-child td, &:last-child th': {
                                 borderBottom: 0,
                               },
-                              width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20%' : '30%',
                             }}
                           >
                             <TableCell
@@ -178,6 +177,7 @@ const MatchParticipants = () => {
                               style={{
                                 borderRight: '1px solid rgb(224, 224, 224) !important',
                                 verticalAlign: 'top',
+                                width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20%' : '30%',
                               }}
                             >
                               Who is going to buy a gift to whom:
