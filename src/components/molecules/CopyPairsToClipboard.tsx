@@ -38,7 +38,7 @@ export const CopyPairsToClipboard = (props: any) => {
             >
               <Typography
                 style={{
-                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '14px' : '8px',
+                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '14px' : '11px',
                   color: 'black',
                   margin: '0px',
                   paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '8px' : '4px',
