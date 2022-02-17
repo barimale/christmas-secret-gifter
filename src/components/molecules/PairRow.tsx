@@ -3,11 +3,11 @@ import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import { hexToRgb } from '@material-ui/core';
+// import { hexToRgb } from '@material-ui/core';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import Pair from '../../store/model/pair';
-import { RGBToRGBA } from '../../utilities/customTheme';
+// import { RGBToRGBA } from '../../utilities/customTheme';
 
 interface PairRowProps{
   pair: Pair;
@@ -59,6 +59,7 @@ export const PairRow = (props: PairRowProps) => {
   }
 
   const gifterName = getName(pair.fromIndex) ?? '';
+  // eslint-disable-next-line no-unused-vars
   const gifterColor = stringToColor(gifterName) ?? '';
 
   return (
@@ -70,7 +71,8 @@ export const PairRow = (props: PairRowProps) => {
             alignItems="center"
             style={{
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '13px' : '10px',
-              backgroundColor: `${RGBToRGBA(hexToRgb(gifterColor), 0.2)}`,
+              // backgroundColor: `${RGBToRGBA(hexToRgb(gifterColor), 0.2)}`,
+              border: '1px solid gray',
             }}
           >
             <ListItemText
