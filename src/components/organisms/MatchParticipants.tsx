@@ -142,7 +142,7 @@ const MatchParticipants = () => {
                           style={{
                             fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
                             color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
-                            borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'green' : 'lightgrey',
+                            borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? '#28b829' : 'lightgrey',
                             borderRadius: '10px',
                           }}
                         >

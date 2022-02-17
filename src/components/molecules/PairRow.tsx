@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
-import Tooltip from '@mui/material/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { hexToRgb } from '@material-ui/core';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import Pair from '../../store/model/pair';
 import { RGBToRGBA } from '../../utilities/customTheme';
+import { Gifts } from './Gifts';
 
 interface PairRowProps{
   pair: Pair;
@@ -25,15 +24,6 @@ export const PairRow = (props: PairRowProps) => {
 
     if (found !== undefined) {
       return found.name;
-    }
-    return undefined;
-  }
-
-  function getEmail (orderId: number): string | undefined | null {
-    const found = participants[orderId];
-
-    if (found !== undefined) {
-      return found.email;
     }
     return undefined;
   }
@@ -68,15 +58,6 @@ export const PairRow = (props: PairRowProps) => {
     return color;
   }
 
-  function stringAvatar (name: string) {
-    const splitted = name.split(' ');
-    const firstLettersOnly = splitted.flatMap((p) => p[0]).join('');
-
-    return {
-      children: `${firstLettersOnly.slice(0, 2)}`,
-    };
-  }
-
   const gifterName = getName(pair.fromIndex) ?? '';
   const gifterColor = stringToColor(gifterName) ?? '';
 
@@ -86,30 +67,17 @@ export const PairRow = (props: PairRowProps) => {
         <>
           <ListItem
             key={index}
-            alignItems="flex-start"
+            alignItems="center"
             style={{
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '13px' : '10px',
               backgroundColor: `${RGBToRGBA(hexToRgb(gifterColor), 0.2)}`,
             }}
           >
-            <ListItemAvatar>
-              <Tooltip title={getEmail(pair.fromIndex) ?? ' '}>
-                <Avatar
-                  alt={gifterName}
-                  sx={{
-                    width: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                    height: context.valueOf() === DeviceType.isDesktopOrLaptop ? 36 : 22,
-                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '10px',
-                    bgcolor: gifterColor,
-                  }}
-                  {...stringAvatar(gifterName)}
-                />
-              </Tooltip>
-            </ListItemAvatar>
             <ListItemText
               primaryTypographyProps={{
                 fontWeight: 'bold',
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                textTransform: 'uppercase',
               }}
               primary={gifterName}
               secondary={(
@@ -124,7 +92,50 @@ export const PairRow = (props: PairRowProps) => {
                   variant="body2"
                   color="text.primary"
                 >
-                  {`is going to buy a gift to ${getName(pair.toIndex)}`}
+                  is going to buy a gift to
+                </Typography>
+              )}
+            />
+            <KeyboardArrowRight style={{
+              height: '80px',
+              width: 'auto',
+              color: 'gray',
+            }}
+            />
+            <ListItemText
+              primaryTypographyProps={{
+                fontWeight: 'bold',
+                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                textAlign: 'right',
+                height: '100%',
+                textTransform: 'uppercase',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end',
+              }}
+              primary={(
+                <Gifts style={{
+                  color: `${gifterColor}`,
+                }}
+                />
+              )}
+              secondaryTypographyProps={{
+                align: 'right',
+              }}
+              secondary={(
+                <Typography
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                    textTransform: 'uppercase',
+                    width: '100%',
+                    textAlign: 'end',
+                  }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  {getName(pair.toIndex)}
                 </Typography>
               )}
             />

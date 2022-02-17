@@ -5,6 +5,7 @@ export * from './DeleteActionComponent';
 export * from './EmailField';
 export * from './ExclusionsField';
 export * from './Gifts';
+export * from './InitializationInProgress';
 export * from './LoadingInProgress';
 export * from './ModalTitle';
 export * from './NameField';

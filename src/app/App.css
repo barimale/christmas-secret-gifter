@@ -163,14 +163,14 @@
 }
 
 #iconedBackground {
-  background-image: url("../assets/icons/balloons.svg"), linear-gradient(to bottom,  rgba(255,255,255,0), 40%,rgba(255,255,255,1) 60%);
-  background-size: 60%, 100%;
+  background-image: url("../assets/images/neon-ornament.png"), linear-gradient(to bottom,  rgba(168, 163, 163, 0), 100%,rgba(255,255,255,1) 0%);
+  background-size: 100%, 100%;
   background-repeat: no-repeat, repeat-x;
-  background-position: 70% 40%, 95% 60%;
+  background-position: 80% 70%, 120% 80%;
 }
 
 #iconedBackground-mobile {
-  background-image: url("../assets/icons/balloons.svg"), linear-gradient(to bottom,  rgba(255,255,255,0), 40%,rgba(255,255,255,1) 60%);
+  background-image: url("../assets/images/neon-ornament.png"), linear-gradient(to bottom,  rgba(255,255,255,0), 40%,rgba(255,255,255,1) 60%);
   background-size: 100%, 100%;
   background-repeat: no-repeat, repeat-x;
   background-position: 5% 40%, 95% 60%;
@@ -247,5 +247,36 @@
 
   40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+.neonTextInProgress {
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 60px #0fa;
+  }
+  20%, 24%, 55% {       
+    text-shadow: none;
   }
 }

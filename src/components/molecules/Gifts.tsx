@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DeviceContextConsumer, DeviceType } from '../../contexts';
 
 interface GiftsProps {
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 export const Gifts = (props: GiftsProps) => (
@@ -13,7 +13,7 @@ export const Gifts = (props: GiftsProps) => (
           width: 'auto',
           height: 'auto',
           fontFamily: 'kgChristmasTrees',
-          color: 'whitesmoke',
+          color: 'inherit',
           gap: context.valueOf() === DeviceType.isDesktopOrLaptop ? '10px' : '5px',
           display: 'flex',
           flexDirection: 'row',
@@ -23,7 +23,7 @@ export const Gifts = (props: GiftsProps) => (
         }}
         >
           <p style={{
-            color: 'whitesmoke',
+            color: 'inherit',
             fontFamily: 'inherit',
             margin: '0px',
             padding: '0px',
@@ -33,7 +33,7 @@ export const Gifts = (props: GiftsProps) => (
             D
           </p>
           <p style={{
-            color: 'whitesmoke',
+            color: 'inherit',
             fontFamily: 'inherit',
             margin: '0px',
             padding: '0px',
@@ -43,7 +43,7 @@ export const Gifts = (props: GiftsProps) => (
             D
           </p>
           <p style={{
-            color: 'whitesmoke',
+            color: 'inherit',
             fontFamily: 'inherit',
             margin: '0px',
             padding: '0px',
@@ -53,7 +53,7 @@ export const Gifts = (props: GiftsProps) => (
             D
           </p>
           <p style={{
-            color: 'whitesmoke',
+            color: 'inherit',
             fontFamily: 'inherit',
             margin: '0px',
             padding: '0px',
@@ -63,7 +63,7 @@ export const Gifts = (props: GiftsProps) => (
             D
           </p>
           <p style={{
-            fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'whitesmoke',
+            fontFamily: 'inherit', margin: '0px', padding: '0px', height: 'fit-content', color: 'inherit',
           }}
           >
             D

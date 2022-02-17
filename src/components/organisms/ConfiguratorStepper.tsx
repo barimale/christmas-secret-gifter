@@ -90,7 +90,7 @@ export default function ConfiguratorStepper () {
                 paddingLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                 paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                 paddingBottom: context.valueOf() === DeviceType.isDesktopOrLaptop ? '15px' : '10px',
-                backgroundColor: '#1f8c31',
+                backgroundColor: '#28b829',
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? '16px' : '10px',
                 textAlign: 'justify',

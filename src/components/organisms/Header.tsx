@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +9,7 @@ import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext'
 import { MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
 import { Theme } from '../../theme/custom-theme';
+import { EventContext } from '../../contexts';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TopMenu = function () {
+  const { giftEvent } = useContext(EventContext);
   const classes = useStyles();
   const sidesProportion = 2;
   const mainProportion = 8;
@@ -97,7 +99,10 @@ const TopMenu = function () {
                     }}
                   >
                     <StyledLink
-                      className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
+                      // eslint-disable-next-line no-nested-ternary
+                      className={context === DeviceType.isDesktopOrLaptop
+                        ? ['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : 'neonText')].join(' ')
+                        : (giftEvent === undefined ? 'neonTextInProgress' : 'neonText')}
                       to={MainPath}
                     >
                       {'Christmas Secret Gifter'.toLocaleUpperCase()}

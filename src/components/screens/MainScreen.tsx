@@ -1,11 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 import React, { useContext, useEffect } from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { makeStyles, Theme, createStyles, useTheme } from '@material-ui/core/styles';
 import CenteredDiv from '../templates/CenteredDiv';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
-import { GiftIcon } from '../atoms/GiftIcon';
+import { InitializationInProgress } from '../molecules/InitializationInProgress';
 
 export const MainPath = '/';
 export const MainTitle = 'Events';
@@ -24,6 +24,7 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
 
 export const MainScreen = function () {
   const { giftEvent, startEvent } = useContext(EventContext);
+  const theme = useTheme();
 
   useEffect(() => {
     startEvent();
@@ -49,94 +50,34 @@ export const MainScreen = function () {
               gap: '20px',
             }}
             >
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '20px',
-                alignItems: 'baseline',
-                justifyContent: context.valueOf() === DeviceType.isDesktopOrLaptop ? 'unset' : 'center',
-              }}
-              >
-                <div className="shakeMe">
-                  <GiftIcon
-                    height={context.valueOf() === DeviceType.isDesktopOrLaptop
-                      ? '300px' : '100px'}
-                  />
-                </div>
-                {context.valueOf() === DeviceType.isDesktopOrLaptop && (
-                  <>
-                    <div className="shakeMe">
-                      <GiftIcon
-                        height="75px"
-                      />
-                    </div>
-                    <div className="shakeMe">
-                      <GiftIcon
-                        height="150px"
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
               <div
                 style={{
-                  padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-                    ? '20px' : '2px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '25px',
+                  border: '0px solid #28749b',
+                  // borderTop: `10px solid ${theme.palette.secondary.main}`,
+                  borderLeft: `30px solid ${theme.palette.primary.main}`,
+                  justifyContent: 'space-around',
+                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '16px' : '10px',
+                  backgroundColor: 'black',
+                  marginBottom: '20px',
+                  zIndex: 1000,
+                  boxShadow: `${theme.shadows[0]}`,
                 }}
               >
-                <Typography
-                  style={{
-                    color: 'white',
-                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-                      ? '40px' : '20px',
-                    padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-                      ? '20px' : '10px',
-                  }}
+                <div style={{
+                  backgroundColor: 'transparent',
+                  padding: '0px',
+                  margin: '0px',
+                  color: 'white',
+                }}
                 >
-                  Please wait a moment
-                </Typography>
-                <Typography
-                  style={{
-                    color: 'white',
-                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-                      ? '40px' : '20px',
-                    padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-                      ? '20px' : '10px',
-                    paddingTop: '0px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                  }}
-                >
-                  Event creation is in progress
-                  <p
-                    className="animate-flicker-first"
-                    style={{
-                      margin: '0px',
-                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
-                    }}
-                  >
-                    .
-                  </p>
-                  <p
-                    className="animate-flicker-second"
-                    style={{
-                      margin: '0px',
-                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
-                    }}
-                  >
-                    .
-                  </p>
-                  <p
-                    className="animate-flicker-third"
-                    style={{
-                      margin: '0px',
-                      marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
-                    }}
-                  >
-                    .
-                  </p>
-                </Typography>
+                  <InitializationInProgress />
+                </div>
               </div>
+
             </div>
           )}
         </CenteredDiv>

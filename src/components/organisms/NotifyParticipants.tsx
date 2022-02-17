@@ -52,7 +52,7 @@ const NotifyParticipants = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '25px',
-                  border: '3px dotted #00D7FF',
+                  border: '3px dotted #267096',
                   justifyContent: 'space-around',
                   fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                     ? '16px' : '10px',
@@ -61,7 +61,7 @@ const NotifyParticipants = () => {
                 }}
               >
                 <div style={{
-                  backgroundColor: `${RGBToRGBA(hexToRgb('#00D7FF'), 0.1)}`,
+                  backgroundColor: `${RGBToRGBA(hexToRgb('#267096'), 0.1)}`,
                   padding: '0px',
                   margin: '0px',
                 }}
