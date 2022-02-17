@@ -31,7 +31,7 @@ export default function ConfiguratorStepper () {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = ConfiguratorSteps;
   const maxSteps = steps.length;
-  const { restartEvent, participants } = useContext(EventContext);
+  const { restartEvent, participants, analysisResult } = useContext(EventContext);
   const [isInProgress, setIsInProgress] = useState<boolean>(false);
 
   const handleNext = () => {
@@ -120,7 +120,8 @@ export default function ConfiguratorStepper () {
                 size="small"
                 onClick={handleNext}
                 disabled={(activeStep === maxSteps - 1)
-                || (activeStep === 0 && participants.length < 2)}
+                || (activeStep === 0 && participants.length < 2)
+                || (analysisResult && analysisResult.analysisStatus?.toLocaleLowerCase() === 'infeasible' && activeStep === 2)}
               >
                 Next
                 {theme.direction === 'rtl' ? (

@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-no-useless-fragment */
 import React, { useContext, useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -7,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import List from '@mui/material/List';
+import { hexToRgb } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { BackgroundContext, DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import { BackgroundColorMode } from '../../contexts/BackgroundContext';
@@ -15,6 +18,7 @@ import CenteredDiv from '../templates/CenteredDiv';
 import { CopyPairsToClipboard } from '../molecules/CopyPairsToClipboard';
 import { PairRow } from '../molecules/PairRow';
 import { Gifts } from '../molecules/Gifts';
+import { RGBToRGBA } from '../../utilities/customTheme';
 
 const MatchParticipants = () => {
   const { participants, analyze } = useContext(EventContext);
@@ -73,139 +77,175 @@ const MatchParticipants = () => {
                 </CenteredDiv>
               )}
               {response && (
-                <TableContainer
-                  component={Paper}
-                  sx={{
-                    // maxHeight: 400,
-                    height: '100%',
-                    marginBottom: '20px',
-                  }}
-                >
-                  <Table
-                    stickyHeader
-                    aria-label="simple table"
-                    size="small"
-                  >
-                    <TableHead>
-                      <TableRow>
-                        <TableCell
-                          align="left"
-                          style={{
-                          }}
-                        >
-                          {!response.isError && (
-                            <Gifts style={{
-                              color: 'black',
-                            }}
-                            />
-                          )}
-                        </TableCell>
-                        <TableCell
-                          align="left"
-                          style={{
-                          }}
-                        >
-                          {!response.isError && (
-                            <div style={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              gap: '10px',
-                              justifyContent: 'end',
-                              alignItems: 'center',
-                              maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
-                            }}
+                <>
+                  {(!response.isError || (response.analysisStatus?.toLocaleLowerCase() === 'optimal' && response.analysisStatus?.toLocaleLowerCase() === 'feasible')) ? (
+                    <TableContainer
+                      component={Paper}
+                      sx={{
+                        // maxHeight: 400,
+                        height: '100%',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      <Table
+                        stickyHeader
+                        aria-label="simple table"
+                        size="small"
+                      >
+                        <TableHead>
+                          <TableRow>
+                            <TableCell
+                              align="left"
+                              style={{
+                              }}
                             >
-                              <CopyPairsToClipboard
-                                content={
+                              {!response.isError && (
+                              <Gifts style={{
+                                color: 'black',
+                              }}
+                              />
+                              )}
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              style={{
+                              }}
+                            >
+                              {!response.isError && (
+                              <div style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                gap: '10px',
+                                justifyContent: 'end',
+                                alignItems: 'center',
+                                maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
+                              }}
+                              >
+                                <CopyPairsToClipboard
+                                  content={
                                 response.pairs.flatMap((r) => (
                                   `${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}\n`))
                                 }
-                              />
-                            </div>
-                          )}
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {(response.analysisStatus?.toLocaleLowerCase() !== 'optimal' && response.analysisStatus?.toLocaleLowerCase() !== 'feasible') && (
-                      <TableRow
-                        key={1}
-                        sx={{
-                          '&:last-child td, &:last-child th': {
-                            border: 0,
-                          },
-                        }}
-                      >
-                        <TableCell
-                          align="left"
-                          style={{
-                          }}
-                        >
-                          Analysis status:
-                        </TableCell>
-                        <TableCell
-                          align="center"
-                          style={{
-                            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
-                            color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
-                            borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? '#28b829' : 'lightgrey',
-                            borderRadius: '10px',
-                          }}
-                        >
-                          {response.analysisStatus}
-                        </TableCell>
-                      </TableRow>
-                      )}
-                      {!response.isError && (
-                      <TableRow
-                        key={3}
-                        sx={{
-                          '&:last-child td, &:last-child th': {
-                            borderBottom: 0,
-                          },
-                        }}
-                      >
-                        <TableCell
-                          align="left"
-                          rowSpan={2}
-                          style={{
-                            borderRight: '1px solid rgb(224, 224, 224) !important',
-                            verticalAlign: 'top',
-                          }}
-                        >
-                          Who is going to buy a gift to whom:
-                        </TableCell>
-                        <TableCell
-                          align="left"
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '10px',
-                            maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
-                          }}
-                        >
-                          {!response.isError && (
-                            <List
+                                />
+                              </div>
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {(response.analysisStatus?.toLocaleLowerCase() !== 'optimal' && response.analysisStatus?.toLocaleLowerCase() !== 'feasible') && (
+                          <TableRow
+                            key={1}
+                            sx={{
+                              '&:last-child td, &:last-child th': {
+                                border: 0,
+                              },
+                            }}
+                          >
+                            <TableCell
+                              align="left"
                               style={{
-                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                                marginTop: '0px',
                               }}
                             >
+                              Analysis status:
+                            </TableCell>
+                            <TableCell
+                              align="center"
+                              style={{
+                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
+                                color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
+                                borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? '#28b829' : 'lightgrey',
+                                borderRadius: '10px',
+                              }}
+                            >
+                              {response.analysisStatus}
+                            </TableCell>
+                          </TableRow>
+                          )}
+                          {!response.isError && (
+                          <TableRow
+                            key={3}
+                            sx={{
+                              '&:last-child td, &:last-child th': {
+                                borderBottom: 0,
+                              },
+                            }}
+                          >
+                            <TableCell
+                              align="left"
+                              rowSpan={2}
+                              style={{
+                                borderRight: '1px solid rgb(224, 224, 224) !important',
+                                verticalAlign: 'top',
+                              }}
+                            >
+                              Who is going to buy a gift to whom:
+                            </TableCell>
+                            <TableCell
+                              align="left"
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '10px',
+                                maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
+                              }}
+                            >
+                              {!response.isError && (
+                              <List
+                                style={{
+                                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                  marginTop: '0px',
+                                }}
+                              >
                                 {response.pairs.flatMap((r, index) => (
                                   <PairRow pair={r} index={index} />
                                 ))}
-                            </List>
+                              </List>
+                              )}
+                            </TableCell>
+                          </TableRow>
                           )}
-                        </TableCell>
-                      </TableRow>
-                      )}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  )
+                    : (
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '25px',
+                          border: '3px dotted #8b0000',
+                          justifyContent: 'space-around',
+                          fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                            ? '16px' : '10px',
+                          backgroundColor: 'white',
+                          marginBottom: '20px',
+                        }}
+                      >
+                        <div style={{
+                          backgroundColor: `${RGBToRGBA(hexToRgb('#8b0000'), 0.1)}`,
+                          padding: '0px',
+                          margin: '0px',
+                        }}
+                        >
+                          <p style={{
+                            paddingLeft: '25px',
+                            paddingRight: '25px',
+                            textAlign: 'justify',
+                            lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.5',
+                          }}
+                          >
+                            Solution for such exclusions is not feasible. You need to go back to the previous step and correct data.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                </>
               )}
             </>
           ) : (
-            <p>Something went wrong</p>
+            <p>Something went wrong.</p>
           )}
         </div>
       )}

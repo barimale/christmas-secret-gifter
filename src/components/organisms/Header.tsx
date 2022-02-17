@@ -68,7 +68,7 @@ const TopMenu = function () {
                     }}
                   >
                     <StyledLink
-                      id="rotateOnce"
+                      // id="rotateOnce"
                       className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
                       to={MainPath}
                     >
