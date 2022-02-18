@@ -32,7 +32,7 @@ export const MainScreen = function () {
     startEvent();
     timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-    }, 800);
+    }, 200);
 
     return () => {
       clearInterval(timer);

@@ -1,4 +1,6 @@
 export * from './AnalyzeButton';
+export * from './CircularProgressWithLogo';
+export * from './CircularProgressWithLogoWrapper';
 export * from './ConfirmationDialog';
 export * from './CopyPairsToClipboard';
 export * from './DeleteActionComponent';
