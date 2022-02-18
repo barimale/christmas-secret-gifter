@@ -1,73 +1,82 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import Fade from '@material-ui/core/Fade';
+import { Box, Typography, CircularProgress } from '@material-ui/core';
 import { DeviceContextConsumer, DeviceType } from '../../contexts';
+import { ModalTitle } from './ModalTitle';
 
-export const InitializationInProgress = () => (
+interface Props{
+  progress: number;
+}
+export const InitializationInProgress = (props: Props) => (
   <DeviceContextConsumer>
     {(context) => (
-      <div
+      <Box
+        boxShadow={10}
         style={{
-          padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-            ? '20px' : '2px',
-          color: 'inherit',
+          height: 'auto',
+          width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '40%' : '90%',
+          minHeight: window.innerHeight * 0.5,
+          backgroundColor: 'white',
+          zIndex: 1000,
         }}
       >
-        <Typography
+        <Fade
+          in
           style={{
-            color: 'inherit',
-            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? '40px' : '20px',
-            padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? '20px' : '10px',
+            width: '100%',
+            height: '100%',
           }}
         >
-          Please wait a moment
-        </Typography>
-        <Typography
-          style={{
-            color: 'inherit',
-            fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? '40px' : '20px',
-            padding: context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? '20px' : '10px',
-            paddingTop: '0px',
+          <div style={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
+            alignContent: 'center',
+            alignItems: 'stretch',
+            height: '100%',
           }}
-        >
-          Event creation is in progress
-          <p
-            className="animate-flicker-first"
-            style={{
-              margin: '0px',
-              color: 'inherit',
-              marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
-            }}
           >
-            .
-          </p>
-          <p
-            className="animate-flicker-second"
-            style={{
-              margin: '0px',
-              color: 'inherit',
-              marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
+            <ModalTitle title="Initialization" />
+            <div style={{
+              backgroundColor: 'white',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
-          >
-            .
-          </p>
-          <p
-            className="animate-flicker-third"
-            style={{
-              margin: '0px',
-              color: 'inherit',
-              marginLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '6px' : '3px',
-            }}
-          >
-            .
-          </p>
-        </Typography>
-      </div>
+            >
+              <Typography
+                style={{
+                  color: 'inherit',
+                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '20px' : '12px',
+                  padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '20px' : '10px',
+                  paddingTop: '0px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                }}
+              >
+                Please wait a moment.
+              </Typography>
+              <Typography
+                style={{
+                  color: 'inherit',
+                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '20px' : '12px',
+                  padding: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? '20px' : '10px',
+                  paddingTop: '0px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                }}
+              >
+                Event creation is in progress...
+              </Typography>
+              <CircularProgress variant="determinate" value={props.progress} />
+            </div>
+          </div>
+        </Fade>
+      </Box>
     )}
   </DeviceContextConsumer>
 );

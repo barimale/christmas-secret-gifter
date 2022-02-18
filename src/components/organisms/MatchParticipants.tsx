@@ -82,9 +82,8 @@ const MatchParticipants = () => {
                     <TableContainer
                       component={Paper}
                       sx={{
-                        // maxHeight: 400,
                         height: '100%',
-                        marginBottom: '20px',
+                        marginBottom: '0px',
                       }}
                     >
                       <Table
@@ -118,7 +117,6 @@ const MatchParticipants = () => {
                                 gap: '10px',
                                 justifyContent: 'end',
                                 alignItems: 'center',
-                                maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
                               }}
                               >
                                 <CopyPairsToClipboard
@@ -133,35 +131,17 @@ const MatchParticipants = () => {
                           </TableRow>
                         </TableHead>
                         <TableBody>
-                          {(response.analysisStatus?.toLocaleLowerCase() !== 'optimal' && response.analysisStatus?.toLocaleLowerCase() !== 'feasible') && (
                           <TableRow
-                            key={1}
-                            sx={{
-                              '&:last-child td, &:last-child th': {
-                                border: 0,
-                              },
-                            }}
+                            key={10}
                           >
                             <TableCell
-                              align="left"
-                              style={{
+                              sx={{
                               }}
+                              colSpan={2}
                             >
-                              Analysis status:
-                            </TableCell>
-                            <TableCell
-                              align="center"
-                              style={{
-                                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '12px',
-                                color: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? 'white' : 'black',
-                                borderColor: response.analysisStatus?.toLocaleLowerCase() === 'optimal' || response.analysisStatus?.toLocaleLowerCase() === 'feasible' ? '#28b829' : 'lightgrey',
-                                borderRadius: '10px',
-                              }}
-                            >
-                              {response.analysisStatus}
+                              Who is going to buy a gift to whom:
                             </TableCell>
                           </TableRow>
-                          )}
                           {!response.isError && (
                           <TableRow
                             key={3}
@@ -172,37 +152,26 @@ const MatchParticipants = () => {
                             }}
                           >
                             <TableCell
-                              align="left"
-                              rowSpan={2}
-                              style={{
-                                borderRight: '1px solid rgb(224, 224, 224) !important',
-                                verticalAlign: 'top',
-                                width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20%' : '30%',
-                              }}
-                            >
-                              Who is going to buy a gift to whom:
-                            </TableCell>
-                            <TableCell
-                              align="left"
+                              colSpan={2}
                               style={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: '10px',
-                                maxHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '200px' : '120px',
+                                width: '100%',
                               }}
                             >
-                              {!response.isError && (
                               <List
                                 style={{
                                   fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
                                   marginTop: '0px',
+                                  width: '100%',
+                                  flexGrow: 1,
                                 }}
                               >
                                 {response.pairs.flatMap((r, index) => (
                                   <PairRow pair={r} index={index} />
                                 ))}
                               </List>
-                              )}
                             </TableCell>
                           </TableRow>
                           )}

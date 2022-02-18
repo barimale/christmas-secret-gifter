@@ -75,29 +75,33 @@ export const PairRow = (props: PairRowProps) => {
               // backgroundColor: `${RGBToRGBA(hexToRgb(gifterColor), 0.2)}`,
               backgroundColor: 'whitesmoke',
               border: '1px dotted gray',
+              // maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop ? '80%' : '90%',
             }}
           >
             <ListItemText
-              primaryTypographyProps={{
-                fontWeight: 'bold',
-                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                textTransform: 'uppercase',
+              sx={{
                 maxWidth: '40%',
               }}
-              primary={gifterName}
+              primaryTypographyProps={{
+                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '12px' : '10px',
+                textTransform: 'uppercase',
+              }}
+              primary="GIFTER"
               secondary={(
                 <Typography
                   sx={{
                     display: 'inline',
                   }}
                   style={{
-                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '12px' : '10px',
+                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
                   }}
                   component="span"
                   variant="body2"
                   color="text.primary"
                 >
-                  is going to buy a gift to
+                  {gifterName}
                 </Typography>
               )}
             />
@@ -108,6 +112,7 @@ export const PairRow = (props: PairRowProps) => {
               justifyItems: 'center',
               marginLeft: '-20px',
               opacity: '0.5',
+              maxWidth: '20%',
             }}
             >
               <KeyboardArrowRight style={{
@@ -136,26 +141,28 @@ export const PairRow = (props: PairRowProps) => {
               sx={{
                 justifyContent: 'flex-end',
                 display: 'flex',
+                flexDirection: 'column',
+                maxWidth: '40%',
               }}
               primaryTypographyProps={{
-                fontWeight: 'bold',
-                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '12px' : '10px',
+                textTransform: 'uppercase',
                 textAlign: 'right',
                 height: '100%',
-                textTransform: 'uppercase',
+                justifySelf: 'center',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-end',
-                maxWidth: '30%',
               }}
               secondaryTypographyProps={{
                 align: 'right',
               }}
+              primary="GIFTED"
               secondary={(
                 <Typography
                   style={{
-                    fontWeight: 'bold',
                     fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                    fontWeight: 'bold',
                     textTransform: 'uppercase',
                     width: '100%',
                     textAlign: 'end',

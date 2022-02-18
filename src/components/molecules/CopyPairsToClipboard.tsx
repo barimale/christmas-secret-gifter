@@ -46,7 +46,12 @@ export const CopyPairsToClipboard = (props: any) => {
               >
                 Copy to Clipboard
               </Typography>
-              <FileCopyIcon fontSize={context === DeviceType.isDesktopOrLaptop ? 'medium' : 'small'} />
+              <FileCopyIcon
+                fontSize={context === DeviceType.isDesktopOrLaptop ? 'medium' : 'small'}
+                style={{
+                  color: 'black',
+                }}
+              />
             </IconButton>
           )}
         </CopyToClipboard>
