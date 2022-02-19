@@ -185,7 +185,7 @@ const MatchParticipants = () => {
                           display: 'flex',
                           flexDirection: 'column',
                           gap: '25px',
-                          border: '3px dotted #8b0000',
+                          border: '1px dotted #8b0000',
                           justifyContent: 'space-around',
                           fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                             ? '16px' : '10px',

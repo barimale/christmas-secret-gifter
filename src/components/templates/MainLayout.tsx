@@ -18,7 +18,7 @@ const usePrevious = (value: any) => {
 const snowMaker = new SnowMaker();
 
 export const MainLayout = (props : any) => {
-  const basicColor = `radial-gradient(ellipse at bottom, ${Theme.palette.primary.main}  0%, black 100%)`;
+  const basicColor = `${Theme.palette.common.black}`;
   const { backgroundColorMode } = useContext(BackgroundContext);
   // eslint-disable-next-line no-unused-vars
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
@@ -99,7 +99,7 @@ export const MainLayout = (props : any) => {
           paddingTop,
           marginBottom: `${-marginBottom}px`,
           display: 'inline-flex',
-          background: backgroundColor,
+          backgroundColor,
           // background: 'radial-gradient(circle at 50% 300px, #0c2656, #000d25 100%), #0c2656',
           justifyContent: 'center',
         }}

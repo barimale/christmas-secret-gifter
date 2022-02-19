@@ -32,7 +32,7 @@ export const MainScreen = function () {
     startEvent();
     timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-    }, 200);
+    }, 250);
 
     return () => {
       clearInterval(timer);
@@ -46,7 +46,7 @@ export const MainScreen = function () {
       setProgress(0);
       timer = setInterval(() => {
         setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-      }, 800);
+      }, 250);
     } else {
       clearInterval(timer);
       setProgress(100);
@@ -58,7 +58,7 @@ export const MainScreen = function () {
       {() => (
         <CenteredDiv>
           {giftEvent && progress === 100 && (
-          <ConfiguratorStepper />
+            <ConfiguratorStepper />
           )}
           {!giftEvent && (
             <InitializationInProgress progress={progress} />

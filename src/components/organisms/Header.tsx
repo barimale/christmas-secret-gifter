@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -53,7 +54,7 @@ const TopMenu = function () {
             >
               <Grid container spacing={2}>
                 <Grid item xs={context !== DeviceType.isDesktopOrLaptop ? sidesProportion : 0}>
-                  <Typography
+                  {/* <Typography
                     variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
                     className={classes.title}
                     align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
@@ -81,7 +82,7 @@ const TopMenu = function () {
                         }}
                       />
                     </StyledLink>
-                  </Typography>
+                  </Typography> */}
                 </Grid>
                 <Grid item xs={mainProportion}>
                   <Typography

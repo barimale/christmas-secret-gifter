@@ -13,11 +13,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { BackgroundContext, DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
 import { BackgroundColorMode } from '../../contexts/BackgroundContext';
 import Participant from '../../store/model/participant';
+import { Theme } from '../../theme/custom-theme';
 
 const GoldCheckbox = withStyles({
   root: {
     '&$checked': {
-      color: '#bdad31 !important',
+      color: `${Theme.palette.primary.main} !important`,
     },
     '&$disabled': {
       color: 'lightgrey !important',

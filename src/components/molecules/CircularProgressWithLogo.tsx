@@ -3,6 +3,7 @@ import * as React from 'react';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { DeviceContextConsumer, DeviceType } from '../../contexts';
+import { Theme } from '../../theme/custom-theme';
 
 export const CircularProgressWithLogo = (props: CircularProgressProps & { value: number }) => {
   const circleHeight = 120;
@@ -26,7 +27,7 @@ export const CircularProgressWithLogo = (props: CircularProgressProps & { value:
               svg: {
                 height: context === DeviceType.isDesktopOrLaptop ? circleHeight : mobilecircleHeight,
                 width: 'auto',
-                color: 'gray',
+                color: props.style?.color ?? `${Theme.palette.secondary.main}`,
               },
               alignItems: 'center',
               justifyContent: 'center',
@@ -54,9 +55,7 @@ export const CircularProgressWithLogo = (props: CircularProgressProps & { value:
               fontFamily: 'kgChristmasTrees',
               fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '80px' : '40px',
             }}
-            >
-              D
-            </p>
+            />
           </Box>
         </Box>
       )}

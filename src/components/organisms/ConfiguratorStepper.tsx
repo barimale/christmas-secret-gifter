@@ -14,6 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
+import { Theme } from '../../theme/custom-theme';
 
 const GoldButton = withStyles({
   root: {
@@ -47,7 +48,7 @@ export default function ConfiguratorStepper () {
       {(context) => (
         <Box sx={{
           maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
-            ? 800 : window.innerWidth * 0.8,
+            ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
           flexGrow: 1,
           backgroundColor: 'whitesmoke',
           zIndex: 1000,
@@ -90,7 +91,7 @@ export default function ConfiguratorStepper () {
                 paddingLeft: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                 paddingRight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                 paddingBottom: context.valueOf() === DeviceType.isDesktopOrLaptop ? '15px' : '10px',
-                backgroundColor: '#28b829',
+                backgroundColor: `${Theme.palette.secondary.main}`,
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? '16px' : '10px',
                 textAlign: 'justify',

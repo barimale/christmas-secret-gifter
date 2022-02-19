@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { DeviceContextConsumer, DeviceType } from '../../contexts';
-import { ModalTitle } from './ModalTitle';
 import { CircularProgressWithLogo } from './CircularProgressWithLogo';
 import { CircularProgressWithLogoWrapper } from './CircularProgressWithLogoWrapper';
+import { Theme } from '../../theme/custom-theme';
 
 interface Props{
   progress: number;
@@ -13,11 +13,10 @@ export const InitializationInProgress = (props: Props) => (
   <DeviceContextConsumer>
     {(context) => (
       <Box
-        boxShadow={10}
         style={{
           height: context.valueOf() === DeviceType.isDesktopOrLaptop ? '42%' : '35%',
           width: context.valueOf() === DeviceType.isDesktopOrLaptop ? '30%' : '60%',
-          backgroundColor: 'whitesmoke',
+          backgroundColor: 'transparent',
           zIndex: 1000,
         }}
       >
@@ -29,9 +28,8 @@ export const InitializationInProgress = (props: Props) => (
           height: '100%',
         }}
         >
-          <ModalTitle title="Initialization" />
           <div style={{
-            backgroundColor: 'white',
+            backgroundColor: 'transparent',
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
@@ -45,12 +43,19 @@ export const InitializationInProgress = (props: Props) => (
               <CircularProgressWithLogo
                 value={props.progress}
                 style={{
+                  color: `${Theme.palette.secondary.main}`,
+                  opacity: '0.5',
                 }}
               />
             </CircularProgressWithLogoWrapper>
             <div style={{
               alignSelf: 'center',
               paddingTop: '10px',
+              backgroundColor: 'transparent',
+              width: '100%',
+              display: 'flex',
+              justifyItems: 'center',
+              color: 'whitesmoke',
             }}
             >
               <Typography
@@ -66,10 +71,12 @@ export const InitializationInProgress = (props: Props) => (
                   fontFamily: [
                     'Nanum-Gothic', 'sans-serif',
                   ].join(','),
+                  width: '100%',
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
                 }}
               >
                 Please wait a moment.
-                <br />
                 Event creation is in progress...
               </Typography>
             </div>
