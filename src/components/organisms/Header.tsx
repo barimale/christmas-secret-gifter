@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -53,47 +54,17 @@ const TopMenu = function () {
             }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={context !== DeviceType.isDesktopOrLaptop ? sidesProportion : 0}>
-                  {/* <Typography
-                    variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
-                    className={classes.title}
-                    align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
-                    style={{
-                      color: 'whitesmoke',
-                      WebkitTapHighlightColor: 'transparent',
-                      fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
-                      textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignContent: 'center',
-                    }}
-                  >
-                    <StyledLink
-                      // id="rotateOnce"
-                      className={context === DeviceType.isDesktopOrLaptop ? 'pointerOverEffect' : ''}
-                      to={MainPath}
-                    >
-                      <img
-                        src="images/neon-tree-small.png"
-                        alt="logo"
-                        style={{
-                          height: context === DeviceType.isDesktopOrLaptop ? '38px' : '40px',
-                          width: 'auto',
-                        }}
-                      />
-                    </StyledLink>
-                  </Typography> */}
-                </Grid>
+                <Grid item xs={context !== DeviceType.isDesktopOrLaptop ? sidesProportion : 0} />
                 <Grid item xs={mainProportion}>
                   <Typography
                     variant={context === DeviceType.isDesktopOrLaptop ? 'h4' : 'h4'}
                     className={classes.title}
-                    align={context === DeviceType.isDesktopOrLaptop ? 'left' : 'center'}
+                    align={context === DeviceType.isDesktopOrLaptop ? 'center' : 'center'}
                     style={{
                       color: 'whitesmoke',
                       WebkitTapHighlightColor: 'transparent',
                       fontSize: context === DeviceType.isDesktopOrLaptop ? '48px' : '20px',
-                      textAlign: context === DeviceType.isDesktopOrLaptop ? 'left' : 'center',
+                      textAlign: context === DeviceType.isDesktopOrLaptop ? 'center' : 'center',
                       display: 'flex',
                       flexDirection: 'row',
                       alignContent: 'center',
@@ -101,9 +72,7 @@ const TopMenu = function () {
                   >
                     <StyledLink
                       // eslint-disable-next-line no-nested-ternary
-                      className={context === DeviceType.isDesktopOrLaptop
-                        ? ['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : 'neonText')].join(' ')
-                        : (giftEvent === undefined ? 'neonTextInProgress' : 'neonText')}
+                      className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : (context === DeviceType.isDesktopOrLaptop ? 'neonText' : 'neonTextMobile'))].join(' ')}
                       to={MainPath}
                     >
                       {'Christmas Secret Gifter'.toLocaleUpperCase()}
