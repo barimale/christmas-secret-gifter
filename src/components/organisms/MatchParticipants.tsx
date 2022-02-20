@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useContext, useState, useEffect, ReactNode } from 'react';
@@ -63,20 +65,22 @@ const MatchParticipants = () => {
           );
         }
 
+        const oldWidth = element.style.width;
+        const oldHeight = element.style.height;
         const width = 890.5;
         const height = 94;
+        element.style.width = width.toString() + 'px';
+        element.style.height = height.toString() + 'px';
 
-        return html2canvas(
+        const result = html2canvas(
           element,
           {
-            logging: true,
+            logging: false,
             useCORS: true,
             foreignObjectRendering: false,
             scale: 1,
             width: width * 3,
             height: height * 3,
-            // x: 10,
-            // y: 10,
           },
         )
           .then((asBuffer) => (
@@ -103,6 +107,11 @@ const MatchParticipants = () => {
               </Text>
             </View>
           ));
+
+        element.style.width = oldWidth;
+        element.style.height = oldHeight;
+
+        return result;
       }
 
       // eslint-disable-next-line no-unused-vars
