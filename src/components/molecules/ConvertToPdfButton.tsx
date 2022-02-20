@@ -4,7 +4,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { IconButton, Typography } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
-import { View, Document, Page, StyleSheet, usePDF } from '@react-pdf/renderer';
+import { View, Document, Page, StyleSheet, pdf } from '@react-pdf/renderer'; // usePDF
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import useOverEffectHook from '../../hooks/useOverEffectHook';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
@@ -46,9 +46,6 @@ export const ConvertToPdfButton = (props: any) => {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   // eslint-disable-next-line max-len
   const [fullfiledDocument, setfullfiledDocument] = useState(React.createElement(MyDocument, null, props.content));
-  const [instance, updateInstance] = usePDF({
-    document: fullfiledDocument,
-  });
 
   useEffect(() => {
     setfullfiledDocument(React.createElement(MyDocument, null, props.content));
@@ -59,34 +56,26 @@ export const ConvertToPdfButton = (props: any) => {
       { (context) => (
         <IconButton
           onClick={() => {
-            const link = document.createElement('a');
-            try {
-              setIsGenerating(true);
-              updateInstance();
-              setTimeout(() => {
-                while (instance.loading || instance.url === null) {
-                  // eslint-disable-next-line no-unused-vars
-                  const i = 0;
-                }
-                link.href = instance.url !== null ? instance.url : '';
+            setIsGenerating(true);
+            const newPdfFile = pdf(fullfiledDocument);
+            newPdfFile.updateContainer(fullfiledDocument);
+            newPdfFile.toBlob()
+              .then((blob) => URL.createObjectURL(blob))
+              .then((url) => {
+                const link = document.createElement('a');
+                link.href = url;
                 link.setAttribute(
                   'download',
                   fileName,
                 );
                 document.body.appendChild(link);
                 link.click();
-              }, 500);
-            } finally {
-              link?.parentNode?.removeChild(link);
-              setIsGenerating(false);
-            }
+                link?.parentNode?.removeChild(link);
+              })
+              .finally(() => setIsGenerating(false));
           }}
           ref={hoverRef}
-          disabled={
-            instance.loading.valueOf() === true
-            || isGenerating.valueOf() === true
-            || instance.url === null
-          }
+          disabled={isGenerating.valueOf() === true}
           {...props}
           style={{
             opacity: opacityValue,
@@ -103,7 +92,7 @@ export const ConvertToPdfButton = (props: any) => {
         >
 
           <>
-            {(instance.loading.valueOf() === true || isGenerating.valueOf() === true || instance.url === null) ? (
+            {(isGenerating.valueOf() === true) ? (
               <CircularProgress
                 size={20}
                 thickness={4}

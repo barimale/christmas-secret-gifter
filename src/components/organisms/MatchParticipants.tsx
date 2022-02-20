@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import html2canvas from 'html2canvas';
-import { View, Text, Image, StyleSheet } from '@react-pdf/renderer'; // Image
+import { View, Text, Image, StyleSheet } from '@react-pdf/renderer';
 import List from '@mui/material/List';
 import { hexToRgb } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -21,7 +21,6 @@ import CenteredDiv from '../templates/CenteredDiv';
 import { CopyPairsToClipboard } from '../molecules/CopyPairsToClipboard';
 import { ConvertToPdfButton } from '../molecules/ConvertToPdfButton';
 import { PairRow } from '../molecules/PairRow';
-// import { Gifts } from '../molecules/Gifts';
 import { RGBToRGBA } from '../../utilities/customTheme';
 import PairingResultsRow from '../molecules/PairingResultsRow';
 
@@ -64,14 +63,13 @@ const MatchParticipants = () => {
           );
         }
 
-        const rect = element.getBoundingClientRect();
-        const { width } = rect;
-        const { height } = rect;
+        const width = 890.5;
+        const height = 94;
 
         return html2canvas(
           element,
           {
-            logging: false,
+            logging: true,
             useCORS: true,
             foreignObjectRendering: false,
             scale: 1,
