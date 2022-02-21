@@ -33,6 +33,7 @@ export const InitializationInProgress = (props: Props) => (
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
+            marginTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '50px' : '10px',
           }}
           >
             <CircularProgressWithLogoWrapper style={{
@@ -44,18 +45,19 @@ export const InitializationInProgress = (props: Props) => (
                 value={props.progress}
                 style={{
                   color: `${Theme.palette.secondary.main}`,
-                  opacity: '0.5',
+                  opacity: '0.6',
                 }}
               />
             </CircularProgressWithLogoWrapper>
             <div style={{
               alignSelf: 'center',
-              paddingTop: '10px',
+              paddingTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '50px' : '10px',
               backgroundColor: 'transparent',
               width: '100%',
               display: 'flex',
               justifyItems: 'center',
               color: 'whitesmoke',
+              opacity: '0.9',
             }}
             >
               <Typography
