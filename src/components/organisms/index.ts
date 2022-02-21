@@ -3,6 +3,7 @@ export * from './ConfiguratorStepper';
 export * from './ConfiguratorSteps';
 export * from './DefineParticipants';
 export * from './EditParticipantModal';
+export * from './EmailTemplate';
 export * from './ExclusionMatrix';
 export * from './Footer';
 export * from './Header';

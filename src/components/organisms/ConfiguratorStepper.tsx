@@ -50,7 +50,7 @@ export default function ConfiguratorStepper () {
           {(layoutContext) => (
             <Box sx={{
               maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
-                ? window.innerWidth * 0.7 : window.innerWidth * 0.8,
+                ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
               // flexGrow: 1,
               backgroundColor: 'whitesmoke',
               zIndex: 1000,
@@ -69,6 +69,8 @@ export default function ConfiguratorStepper () {
                   flexDirection: 'row',
                   width: '100%',
                   justifyContent: 'space-between',
+                  maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+                    ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
                 }}
               >
                 <Typography style={{
@@ -83,9 +85,11 @@ export default function ConfiguratorStepper () {
               <Box sx={{
                 height: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? 440 : window.innerHeight * 0.60,
-                minWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
-                  ? 600 : window.innerWidth * 0.75,
+                // minWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+                //   ? 600 : window.innerWidth * 0.75,
                 width: '100%',
+                maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
               }}
               >
                 <div

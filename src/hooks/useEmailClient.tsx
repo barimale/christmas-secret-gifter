@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable camelcase */
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import { useNodeEmailClient } from './useNodeEmailClient';
+import { Theme } from '../theme/custom-theme';
 
 const templateHtml = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -75,7 +78,18 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
       ,
     </p>
     <p>You are going to buy a gift for:</p>
-    <p><b>{props.to_name}</b></p>
+    <p>
+      <b style={{
+        color: `${Theme.palette.primary.light}`,
+      }}
+      >
+        {props.to_name}
+      </b>
+    </p>
+    <p>And remember:</p>
+    <p>
+      “The best of all gifts around any Christmas tree: the presence of a happy family all wrapped up in each other.” – Burton Hills
+    </p>
     <p>
       Merry Christmas,
     </p>

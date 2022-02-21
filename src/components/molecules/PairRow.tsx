@@ -75,7 +75,7 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
               style={{
                 fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '13px' : '10px',
                 backgroundColor: 'whitesmoke',
-                border: `1px dotted ${Theme.palette.primary.main}`,
+                border: `1px dotted ${Theme.palette.secondary.main}`,
                 display: 'flex',
                 justifyContent: 'space-around',
               }}
