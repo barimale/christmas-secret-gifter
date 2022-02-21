@@ -67,7 +67,12 @@ export type ToGifterParams = {
 };
 
 const ToCustomerTemplate = (props: ToGifterParams) => (
-  <div>
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  }}
+  >
     <p style={{
       fontSize: '16px',
     }}
@@ -77,20 +82,37 @@ const ToCustomerTemplate = (props: ToGifterParams) => (
       {props.from_name}
       ,
     </p>
-    <p>You are going to buy a gift for:</p>
+    <p style={{
+      fontSize: '16px',
+    }}
+    >
+      You are going to buy a gift for:
+    </p>
     <p>
       <b style={{
         color: `${Theme.palette.primary.light}`,
+        fontSize: '16px',
       }}
       >
         {props.to_name}
       </b>
     </p>
-    <p>And remember:</p>
-    <p>
+    <p style={{
+      fontSize: '16px',
+    }}
+    >
+      And remember:
+    </p>
+    <p style={{
+      fontSize: '16px',
+    }}
+    >
       “The best of all gifts around any Christmas tree: the presence of a happy family all wrapped up in each other.” – Burton Hills
     </p>
-    <p>
+    <p style={{
+      fontSize: '16px',
+    }}
+    >
       Merry Christmas,
     </p>
     <p>
