@@ -85,9 +85,9 @@ export default function ConfiguratorStepper () {
               <Box sx={{
                 height: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? 440 : window.innerHeight * 0.60,
-                // minWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
-                //   ? 600 : window.innerWidth * 0.75,
-                width: '100%',
+                minWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? window.innerWidth * 0.5 : window.innerWidth * 0.75,
+                width: '100%', // WIP
                 maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
                   ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
               }}
