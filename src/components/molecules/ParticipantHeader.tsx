@@ -4,6 +4,7 @@ import { IconButton } from '@material-ui/core';
 import sizeMe from 'react-sizeme';
 import AddParticipantModal from '../organisms/AddParticipantModal';
 import { EventContext } from '../../contexts';
+import { Theme } from '../../theme/custom-theme';
 
 const ParticipantHeader = () => {
   const [isAddVisible, setIsAddVisible] = useState<boolean>(false);
@@ -31,7 +32,7 @@ const ParticipantHeader = () => {
         <IconButton
           style={{
             borderRadius: '0px',
-            color: '#bdad31',
+            color: `${Theme.palette.primary.main}`,
             marginBottom: '1px',
           }}
           onClick={() => {

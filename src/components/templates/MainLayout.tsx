@@ -6,6 +6,7 @@ import Header from '../organisms/Header';
 import { Theme } from '../../theme/custom-theme';
 import { BackgroundColorMode, BackgroundContext } from '../../contexts/BackgroundContext';
 import SnowMaker from '../../app/SnowComponents';
+import { LayoutContext } from '../../contexts/LayoutContext';
 
 const usePrevious = (value: any) => {
   const ref = useRef();
@@ -20,10 +21,11 @@ const snowMaker = new SnowMaker();
 export const MainLayout = (props : any) => {
   const basicColor = `${Theme.palette.common.black}`;
   const { backgroundColorMode } = useContext(BackgroundContext);
+  const { setFooterMarginBottom } = useContext(LayoutContext);
   // eslint-disable-next-line no-unused-vars
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
   const [paddingTop, setPaddingTop] = useState<number>(10);
-  const [marginBottom, setMarginBottom] = useState<number>(10);
+  const [marginBottom, setMarginBottom] = useState<number>(35);
 
   const { innerHeight: height } = window;
   const isPortrait = useMediaQuery({
@@ -105,11 +107,14 @@ export const MainLayout = (props : any) => {
         }}
       >
         {props.children}
-        <Footer onSize={(size: any) => {
-          setMarginBottom(size.height || 0);
-        }}
-        />
       </div>
+      <Footer onSize={(size: any) => {
+        setMarginBottom(size.height || 0);
+        setFooterMarginBottom(size.height || 35);
+        // eslint-disable-next-line no-console
+        console.log(JSON.stringify(size.height));
+      }}
+      />
     </>
   );
 };

@@ -64,7 +64,7 @@ const TopMenu = function () {
                 style={{
                   color: 'whitesmoke',
                   WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '58px' : '20px',
+                  fontSize: context === DeviceType.isDesktopOrLaptop ? '58px' : '30px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'center' : 'center',
                   display: 'flex',
                   flexDirection: 'row',
@@ -77,8 +77,11 @@ const TopMenu = function () {
                   // eslint-disable-next-line no-nested-ternary
                   className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : (context === DeviceType.isDesktopOrLaptop ? 'neonText' : 'neonTextMobile'))].join(' ')}
                   to={MainPath}
+                  style={{
+                    whiteSpace: 'break-spaces',
+                  }}
                 >
-                  {'Christmas Secret Gifter'.toLocaleUpperCase()}
+                  {context === DeviceType.isDesktopOrLaptop ? 'Christmas Secret Gifter'.toLocaleUpperCase() : 'Christmas\nSecret Gifter'.toLocaleUpperCase()}
                 </StyledLink>
               </Typography>
             </Toolbar>

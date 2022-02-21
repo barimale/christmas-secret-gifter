@@ -23,7 +23,7 @@ const Footer = () => {
           <div
             className={classes.title}
             style={{
-              display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', fontSize: '30px',
+              display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center',
             }}
           >
             <span style={{
