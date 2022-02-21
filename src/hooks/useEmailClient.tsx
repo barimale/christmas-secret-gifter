@@ -67,12 +67,7 @@ export type ToGifterParams = {
 };
 
 const ToCustomerTemplate = (props: ToGifterParams) => (
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  }}
-  >
+  <div>
     <p style={{
       fontSize: '16px',
     }}
