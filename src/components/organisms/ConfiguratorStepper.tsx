@@ -68,6 +68,8 @@ export default function ConfiguratorStepper () {
                   color: 'white',
                   flexDirection: 'row',
                   width: '100%',
+                  paddingTop: context.valueOf() === DeviceType.isDesktopOrLaptop ? '5px' : '0px',
+                  paddingBottom: context.valueOf() === DeviceType.isDesktopOrLaptop ? '5px' : '0px',
                   justifyContent: 'space-between',
                   maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
                     ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
@@ -104,6 +106,7 @@ export default function ConfiguratorStepper () {
                     textAlign: 'justify',
                     color: `${theme.palette.common.white}`,
                     lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.3',
+                    textShadow: '1px 1px black',
                   }}
                 >
                   {steps[activeStep].description}

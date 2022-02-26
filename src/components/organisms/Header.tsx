@@ -70,7 +70,7 @@ const TopMenu = function () {
                   flexDirection: 'row',
                   alignContent: 'center',
                   marginLeft: context === DeviceType.isDesktopOrLaptop ? '-50px' : '0px',
-                  opacity: giftEvent === undefined ? '0.7' : '0.96',
+                  opacity: giftEvent === undefined ? '0.7' : '0.97',
                 }}
               >
                 <StyledLink
