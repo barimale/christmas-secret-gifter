@@ -20,10 +20,6 @@ const Footer = () => {
     setOpen(false);
   };
 
-  const handleTooltipOpen = () => {
-    setOpen(true);
-  };
-
   return (
     <DeviceContextConsumer>
       {(context) => (
