@@ -57,9 +57,6 @@ export const MainLayout = (props : any) => {
   }, [isPortrait, prevVal]);
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('main layout');
-
     if (backgroundColorMode === BackgroundColorMode.normal) {
       setBackgroundColor(basicColor);
     } else {
@@ -111,8 +108,6 @@ export const MainLayout = (props : any) => {
       <Footer onSize={(size: any) => {
         setMarginBottom(size.height || 0);
         setFooterMarginBottom(size.height || 35);
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(size.height));
       }}
       />
     </>

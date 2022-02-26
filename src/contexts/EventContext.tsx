@@ -90,8 +90,6 @@ const EventContextProvider = (props: any) => {
     startEvent: async () => await axios.post(`${backendUrl}/api/events/create`, {
     }, {
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       },
     })
       .then((response: any) => {
@@ -110,8 +108,6 @@ const EventContextProvider = (props: any) => {
     analyze: async () => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`, {
     }, {
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       },
     })
       .then((response: any) => {
@@ -148,8 +144,6 @@ const EventContextProvider = (props: any) => {
       {
         cancelToken: source?.token,
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
       },
     )
@@ -160,8 +154,6 @@ const EventContextProvider = (props: any) => {
             {
               cancelToken: source?.token,
               headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
               },
             },
           );
@@ -184,8 +176,6 @@ const EventContextProvider = (props: any) => {
       {
         cancelToken: source?.token,
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
       },
     )
@@ -196,8 +186,6 @@ const EventContextProvider = (props: any) => {
             {
               cancelToken: source?.token,
               headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
               },
             },
           );
@@ -219,8 +207,6 @@ const EventContextProvider = (props: any) => {
       {
         cancelToken: source?.token,
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
       },
     )
@@ -231,8 +217,6 @@ const EventContextProvider = (props: any) => {
             {
               cancelToken: source?.token,
               headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
               },
             },
           );
