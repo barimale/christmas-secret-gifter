@@ -31,11 +31,13 @@ class SnowMaker {
 
   private isMobile = window.innerWidth < 768;
 
-  private minFlake: number = this.isMobile ? 80 : 300;
+  private minFlake: number = this.isMobile ? 80 : 200;
 
-  private maxFlake: number = this.isMobile ? 600 : 130;
+  private maxFlake: number = this.isMobile ? 130 : 600;
 
   private animFrameId: number|null = 0;
+
+  private snowflakeSizeMax: number = this.isMobile ? 1 : 2;
 
   constructor () {
     this.initCanvas();
@@ -96,7 +98,7 @@ class SnowMaker {
       this.flakes.push({
         x: randomInt(0, this.canvas.width),
         y: randomInt(0, this.canvas.height),
-        radius: random(0.25, 2),
+        radius: random(0.25, this.snowflakeSizeMax),
         sway: random(-0.3, 0.3),
         drop: random(-0.5, 0.5),
       });
