@@ -32,17 +32,35 @@ export default function ContactScreenContent () {
                 color: 'white',
                 textDecoration: 'none',
                 cursor: 'pointer',
+                fontFamily: 'inherit',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+                alignItems: 'baseline',
+                fontSize: 'inherit',
+                paddingRight: '10px',
+                paddingLeft: '10px',
               }}
               href="https://github.com/barimale"
               target="_blank"
               rel="noreferrer"
             >
-              {'https://github.com/barimale'.toUpperCase()}
-
+              {'GitHub'.toUpperCase()}
+              <LaunchIcon
+                style={{
+                  paddingLeft: context === DeviceType.isDesktopOrLaptop ? '6px' : '2px',
+                  height: context === DeviceType.isDesktopOrLaptop ? '32px' : '26px',
+                  width: 'auto',
+                  alignSelf: 'center',
+                  color: 'silver',
+                }}
+              />
             </a>
             <a
               className="pointerOverEffect"
               href="https://en.wikipedia.org/wiki/Christmas_tree"
+              target="_blank"
+              rel="noreferrer"
               style={{
                 color: 'white',
                 textDecoration: 'none',
