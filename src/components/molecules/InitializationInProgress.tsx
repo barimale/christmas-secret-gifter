@@ -76,6 +76,7 @@ export const InitializationInProgress = (props: Props) => (
                   width: '100%',
                   textAlign: 'center',
                   textTransform: 'uppercase',
+                  lineHeight: 1.5,
                 }}
               >
                 Please wait a moment.

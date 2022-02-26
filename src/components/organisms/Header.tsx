@@ -73,16 +73,51 @@ const TopMenu = function () {
                   opacity: giftEvent === undefined ? '0.7' : '0.97',
                 }}
               >
-                <StyledLink
+                {context === DeviceType.isDesktopOrLaptop ? (
+                  <StyledLink
                   // eslint-disable-next-line no-nested-ternary
-                  className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : (context === DeviceType.isDesktopOrLaptop ? 'neonText' : 'neonTextMobile'))].join(' ')}
-                  to={MainPath}
-                  style={{
-                    whiteSpace: 'break-spaces',
-                  }}
-                >
-                  {context === DeviceType.isDesktopOrLaptop ? 'Christmas Secret Gifter'.toLocaleUpperCase() : 'Christmas\nSecret Gifter'.toLocaleUpperCase()}
-                </StyledLink>
+                    className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : (context === DeviceType.isDesktopOrLaptop ? 'neonText' : 'neonTextMobile'))].join(' ')}
+                    to={MainPath}
+                    style={{
+                      whiteSpace: 'break-spaces',
+                    }}
+                  >
+                    {context === DeviceType.isDesktopOrLaptop ? 'Christmas Secret Gifter'.toLocaleUpperCase() : 'Christmas\nSecret Gifter'.toLocaleUpperCase()}
+                  </StyledLink>
+                ) : (
+                  <StyledLink
+                  // eslint-disable-next-line no-nested-ternary
+                    className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : 'neonTextMobile')].join(' ')}
+                    to={MainPath}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      fontSize: 'inherit',
+                      gap: '4px',
+                      padding: '4px',
+                    }}
+                  >
+                    <Typography
+                      style={{
+                        fontSize: 'inherit',
+                        padding: '0px',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {'Christmas'.toLocaleUpperCase()}
+                    </Typography>
+                    <Typography
+                      style={{
+                        fontSize: 'inherit',
+                        padding: '0px',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {'Secret Gifter'.toLocaleUpperCase()}
+                    </Typography>
+                  </StyledLink>
+                )}
               </Typography>
             </Toolbar>
           )}
