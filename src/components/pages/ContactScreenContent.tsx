@@ -35,8 +35,8 @@ export default function ContactScreenContent () {
                 fontFamily: 'inherit',
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                alignItems: 'baseline',
+                justifyContent: 'center',
+                alignItems: 'center',
                 fontSize: 'inherit',
                 paddingRight: '10px',
                 paddingLeft: '10px',
@@ -45,7 +45,7 @@ export default function ContactScreenContent () {
               target="_blank"
               rel="noreferrer"
             >
-              {'GitHub'.toUpperCase()}
+              GitHub
               <LaunchIcon
                 style={{
                   paddingLeft: context === DeviceType.isDesktopOrLaptop ? '6px' : '2px',
@@ -68,8 +68,8 @@ export default function ContactScreenContent () {
                 fontFamily: 'inherit',
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                alignItems: 'baseline',
+                justifyContent: 'center',
+                alignItems: 'center',
                 fontSize: context === DeviceType.isDesktopOrLaptop ? '20px' : '10px',
                 paddingRight: '10px',
                 paddingLeft: '10px',
