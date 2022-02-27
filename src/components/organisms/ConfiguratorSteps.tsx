@@ -18,7 +18,7 @@ export const ConfiguratorSteps = [
   },
   {
     label: 'Matching Participants',
-    description: 'Results of pairing are presented here. In case You made too many exclusions in the previous step You may have INFEASIBLE status here, which means, that some of participants will not get their gifts.',
+    description: 'Results of pairing are presented here. You may get INFEASIBLE status, which means in practice, that some of participants will not be gifted.',
     component: <MatchParticipantsLazy />,
   },
   {
