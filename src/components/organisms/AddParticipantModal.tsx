@@ -131,17 +131,17 @@ const AddForm = (props: AddFormProps) => {
     email: '',
   } as Participant);
 
-  useEffect(() => () => {
-    // source.cancel('Axios request cancelled');
-    // return () => {
-    //   source.cancel('Axios request cancelled');
-    // };
+  // eslint-disable-next-line arrow-body-style
+  useEffect(() => {
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   const onSubmit = async (value: Participant) => {
     try {
       setSendingInProgress(true);
-      await addParticipant(value, source);
+      await addParticipant(value, source.token);
       close();
     } catch (thrown: any) {
       // eslint-disable-next-line no-console
@@ -153,7 +153,7 @@ const AddForm = (props: AddFormProps) => {
 
   const onCancel = () => {
     try {
-      // source.cancel();
+      source.cancel();
     } finally {
       setSendingInProgress(false);
       close();

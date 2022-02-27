@@ -127,7 +127,7 @@ const EditForm = (props: EditFormProps) => {
   const onSubmit = async (value: Participant) => {
     try {
       setSendingInProgress(true);
-      await editParticipant(value, source);
+      await editParticipant(value, source.token);
       close();
     } catch (thrown: any) {
       // eslint-disable-next-line no-console
@@ -139,7 +139,7 @@ const EditForm = (props: EditFormProps) => {
 
   const onCancel = () => {
     try {
-      // source.cancel();
+      source.cancel();
     } finally {
       setSendingInProgress(false);
       close();

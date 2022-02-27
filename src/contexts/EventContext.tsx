@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import axios, { CancelTokenSource } from 'axios';
+import axios, { CancelToken } from 'axios';
 import { Guid } from 'guid-typescript';
 import GiftEvent from '../store/model/gift-event';
 import Participant from '../store/model/participant';
@@ -13,15 +13,21 @@ export interface MailStatus extends ToGifterParams{
 }
 
 type EventManager = {
-    startEvent: () => Promise<GiftEvent | undefined>;
+    startEvent: (cancellationToken?
+        : CancelToken) => Promise<GiftEvent | undefined>;
+    restartEvent: (cancellationToken?
+        : CancelToken) => void;
+    addParticipant: (participant: Participant, cancellationToken?
+      : CancelToken) => void;
+    removeParticipant: (participant: Participant, cancellationToken?
+      : CancelToken) => void;
+    editParticipant: (participant: Participant, cancellationToken?
+      : CancelToken) => void;
+    analyze: (cancellationToken?
+        : CancelToken) => Promise<AlgorithmResponse | undefined>;
     giftEvent: GiftEvent | undefined;
-    restartEvent: () => void;
-    addParticipant: (participant: Participant, source?: CancelTokenSource) => void;
-    removeParticipant: (participant: Participant, source?: CancelTokenSource) => void;
-    editParticipant: (participant: Participant, source?: CancelTokenSource) => void;
-    participants: Participant[];
-    analyze: () => Promise<AlgorithmResponse | undefined>;
     analysisResult: AlgorithmResponse | undefined;
+    participants: Participant[];
     sendMailDetails: ToGifterParams[];
 };
 
@@ -87,8 +93,11 @@ const EventContextProvider = (props: any) => {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const eventContext: EventManager = ({
     // eslint-disable-next-line no-return-await
-    startEvent: async () => await axios.post(`${backendUrl}/api/events/create`, {
+    startEvent: async (cancellationToken?
+    // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.post(`${backendUrl}/api/events/create`, {
     }, {
+      cancelToken: cancellationToken,
       headers: {
       },
     })
@@ -105,8 +114,11 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(event);
       }),
     // eslint-disable-next-line no-return-await
-    analyze: async () => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`, {
+    analyze: async (cancellationToken?
+    // eslint-disable-next-line no-return-await
+        : CancelToken) => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`, {
     }, {
+      cancelToken: cancellationToken,
       headers: {
       },
     })
@@ -129,9 +141,9 @@ const EventContextProvider = (props: any) => {
       }),
     analysisResult,
     sendMailDetails,
-    addParticipant: async (participant: Participant, source?
+    addParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
-      : CancelTokenSource) => await axios.post(
+        : CancelToken) => await axios.post(
       `${backendUrl}/api/events/${event?.id}/participants/register`,
       {
         name: participant.name,
@@ -142,7 +154,7 @@ const EventContextProvider = (props: any) => {
         excludedOrderIds: participant.excludedOrderIds,
       },
       {
-        cancelToken: source?.token,
+        cancelToken: cancellationToken,
         headers: {
         },
       },
@@ -152,7 +164,7 @@ const EventContextProvider = (props: any) => {
           const result = await axios.get(
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
-              cancelToken: source?.token,
+              cancelToken: cancellationToken,
               headers: {
               },
             },
@@ -168,13 +180,13 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(participants);
       })
       .catch(() => Promise.reject(participants)),
-    editParticipant: async (participant: Participant, source?
+    editParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
-          : CancelTokenSource) => await axios.put(
+        : CancelToken) => await axios.put(
       `${backendUrl}/api/events/${event?.id}/participants/${participant.id}`,
       participant,
       {
-        cancelToken: source?.token,
+        cancelToken: cancellationToken,
         headers: {
         },
       },
@@ -184,7 +196,7 @@ const EventContextProvider = (props: any) => {
           const result = await axios.get(
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
-              cancelToken: source?.token,
+              cancelToken: cancellationToken,
               headers: {
               },
             },
@@ -200,12 +212,12 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(participants);
       })
       .catch(() => Promise.reject(participants)),
-    removeParticipant: async (participant: Participant, source?
+    removeParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
-          : CancelTokenSource) => await axios.delete(
+        : CancelToken) => await axios.delete(
       `${backendUrl}/api/events/${event?.id}/participants/${participant.id}`,
       {
-        cancelToken: source?.token,
+        cancelToken: cancellationToken,
         headers: {
         },
       },
@@ -215,7 +227,7 @@ const EventContextProvider = (props: any) => {
           const result = await axios.get(
             `${backendUrl}/api/events/${event?.id}/participants/all`,
             {
-              cancelToken: source?.token,
+              cancelToken: cancellationToken,
               headers: {
               },
             },

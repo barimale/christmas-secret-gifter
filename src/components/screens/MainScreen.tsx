@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CenteredDiv from '../templates/CenteredDiv';
 import ConfiguratorStepper from '../organisms/ConfiguratorStepper';
@@ -27,6 +28,8 @@ let timer: any;
 export const MainScreen = function () {
   const { giftEvent, startEvent } = useContext(EventContext);
   const [progress, setProgress] = React.useState(0);
+  const cancelToken = axios.CancelToken;
+  const source = cancelToken.source();
 
   useEffect(() => {
     startEvent();
@@ -36,12 +39,15 @@ export const MainScreen = function () {
 
     return () => {
       clearInterval(timer);
+      source.cancel();
+      // eslint-disable-next-line no-console
+      console.log('request cancelled');
     };
   }, []);
 
   useEffect(() => {
     if (giftEvent === undefined) {
-      startEvent();
+      startEvent(source.token);
       clearInterval(timer);
       setProgress(0);
       timer = setInterval(() => {

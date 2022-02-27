@@ -9,6 +9,7 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
+import axios from 'axios';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import html2canvas from 'html2canvas';
@@ -40,16 +41,22 @@ const MatchParticipants = () => {
   const ref = React.useRef(null);
   const pairsRef = React.useRef<HTMLElement[]>([]);
   const [nodes, setnodes] = useState<ReactNode[]>([]);
+  const cancelToken = axios.CancelToken;
+  const source = cancelToken.source();
 
   useEffect(() => {
     async function AnalyzeAsync () {
       setIsInProgress(true);
-      const result = await analyze();
+      const result = await analyze(source.token);
       setResponse(result);
       setIsInProgress(false);
     }
 
     AnalyzeAsync();
+
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   useEffect(() => {
