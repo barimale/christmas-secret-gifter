@@ -32,29 +32,13 @@ export default function ContactScreenContent () {
                 color: 'white',
                 textDecoration: 'none',
                 cursor: 'pointer',
-                fontFamily: 'inherit',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontSize: 'inherit',
-                paddingRight: '10px',
-                paddingLeft: '10px',
               }}
               href="https://github.com/barimale"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
-              <LaunchIcon
-                style={{
-                  paddingLeft: context === DeviceType.isDesktopOrLaptop ? '6px' : '2px',
-                  height: context === DeviceType.isDesktopOrLaptop ? '32px' : '26px',
-                  width: 'auto',
-                  alignSelf: 'center',
-                  color: 'silver',
-                }}
-              />
+              {'https://github.com/barimale'.toUpperCase()}
+
             </a>
             <a
               className="pointerOverEffect"
