@@ -144,6 +144,9 @@ const EventContextProvider = (props: any) => {
     sendMailDetails,
     cleanUp: () => {
       setEvent(undefined);
+      setParticipants([]);
+      setAnalysisResult(undefined);
+      setSendMailDetails([]);
     },
     addParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
