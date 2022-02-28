@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,7 +27,16 @@ const useStyles = makeStyles((theme) => ({
 
 const TopMenu = function () {
   const { giftEvent } = useContext(EventContext);
+  const [opacity, setOpacity] = useState<string>(giftEvent !== undefined ? '0.7' : '0.97');
   const classes = useStyles();
+
+  useEffect(() => {
+    if (giftEvent !== undefined) {
+      setOpacity('0.97');
+    } else {
+      setOpacity('0.7');
+    }
+  }, [giftEvent]);
 
   return (
     <div
@@ -70,7 +79,7 @@ const TopMenu = function () {
                   flexDirection: 'row',
                   alignContent: 'center',
                   marginLeft: context === DeviceType.isDesktopOrLaptop ? '-50px' : '0px',
-                  opacity: giftEvent === undefined ? '0.7' : '0.97',
+                  opacity,
                 }}
               >
                 {context === DeviceType.isDesktopOrLaptop ? (
