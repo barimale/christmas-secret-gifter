@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,6 +11,7 @@ import { MainPath } from '../screens/MainScreen';
 import { StyledLink } from '../atoms/StyledLink';
 import { Theme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
+import useOverEffectHook from '../../hooks/useOverEffectHook';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
 const TopMenu = () => {
   const { giftEvent } = useContext(EventContext);
   const classes = useStyles();
+  const hoverRef = useRef(null);
+  const opacityValue = useOverEffectHook(hoverRef);
+  const hoverDesktopRef = useRef(null);
+  const opacityDesktopValue = useOverEffectHook(hoverRef);
 
   return (
     <div
@@ -70,24 +75,28 @@ const TopMenu = () => {
                   flexDirection: 'row',
                   alignContent: 'center',
                   marginLeft: context === DeviceType.isDesktopOrLaptop ? '-50px' : '0px',
+                  opacity: giftEvent === undefined ? '0.67' : '1',
                 }}
               >
                 {context === DeviceType.isDesktopOrLaptop ? (
                   <StyledLink
                   // eslint-disable-next-line no-nested-ternary
-                    className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : (context === DeviceType.isDesktopOrLaptop ? 'neonText' : 'neonTextMobile'))].join(' ')}
+                    className={[(giftEvent === undefined ? 'neonTextInProgress' : 'neonText')].join(' ')}
                     to={MainPath}
+                    ref={hoverDesktopRef}
                     style={{
                       whiteSpace: 'break-spaces',
+                      opacity: opacityDesktopValue,
                     }}
                   >
-                    {context === DeviceType.isDesktopOrLaptop ? 'Christmas Secret Gifter'.toLocaleUpperCase() : 'Christmas\nSecret Gifter'.toLocaleUpperCase()}
+                    {'Christmas Secret Gifter'.toLocaleUpperCase()}
                   </StyledLink>
                 ) : (
                   <StyledLink
                   // eslint-disable-next-line no-nested-ternary
-                    className={['pointerOverEffect', (giftEvent === undefined ? 'neonTextInProgress' : 'neonTextMobile')].join(' ')}
+                    className={[(giftEvent === undefined ? 'neonTextInProgress' : 'neonTextMobile')].join(' ')}
                     to={MainPath}
+                    ref={hoverRef}
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -95,6 +104,7 @@ const TopMenu = () => {
                       fontSize: 'inherit',
                       gap: '4px',
                       padding: '4px',
+                      opacity: opacityValue,
                     }}
                   >
                     <Typography
