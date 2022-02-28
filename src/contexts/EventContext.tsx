@@ -25,6 +25,7 @@ type EventManager = {
       : CancelToken) => void;
     analyze: (cancellationToken?
         : CancelToken) => Promise<AlgorithmResponse | undefined>;
+    cleanUp: () => void;
     giftEvent: GiftEvent | undefined;
     analysisResult: AlgorithmResponse | undefined;
     participants: Participant[];
@@ -141,6 +142,9 @@ const EventContextProvider = (props: any) => {
       }),
     analysisResult,
     sendMailDetails,
+    cleanUp: () => {
+      setEvent(undefined);
+    },
     addParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
         : CancelToken) => await axios.post(

@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme: Theme) => createStyles({
 let timer: any;
 
 export const MainScreen = function () {
-  const { giftEvent, startEvent } = useContext(EventContext);
+  const { giftEvent, startEvent, cleanUp } = useContext(EventContext);
   const [progress, setProgress] = React.useState(0);
 
   useEffect(() => {
@@ -46,6 +46,7 @@ export const MainScreen = function () {
     return () => {
       clearInterval(timer);
       source.cancel();
+      cleanUp();
     };
   }, []);
 
