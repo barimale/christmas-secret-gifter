@@ -28,10 +28,11 @@ let timer: any;
 export const MainScreen = function () {
   const { giftEvent, startEvent } = useContext(EventContext);
   const [progress, setProgress] = React.useState(0);
-  const cancelToken = axios.CancelToken;
-  const source = cancelToken.source();
 
   useEffect(() => {
+    const cancelToken = axios.CancelToken;
+    const source = cancelToken.source();
+
     async function CreateEventAsync () {
       await startEvent(source.token);
     }
@@ -49,6 +50,9 @@ export const MainScreen = function () {
   }, []);
 
   useEffect(() => {
+    const cancelToken = axios.CancelToken;
+    const source = cancelToken.source();
+
     if (giftEvent === undefined) {
       startEvent(source.token);
       clearInterval(timer);
@@ -60,6 +64,11 @@ export const MainScreen = function () {
       clearInterval(timer);
       setProgress(100);
     }
+
+    return () => {
+      clearInterval(timer);
+      source.cancel();
+    };
   }, [giftEvent]);
 
   return (
