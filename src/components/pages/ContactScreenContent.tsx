@@ -28,6 +28,7 @@ export default function ContactScreenContent () {
           }}
           >
             <a
+              className="pointerOverEffect"
               style={{
                 color: 'white',
                 textDecoration: 'none',

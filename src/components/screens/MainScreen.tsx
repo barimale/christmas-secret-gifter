@@ -32,7 +32,12 @@ export const MainScreen = function () {
   const source = cancelToken.source();
 
   useEffect(() => {
-    startEvent();
+    async function CreateEventAsync () {
+      await startEvent(source.token);
+    }
+
+    CreateEventAsync();
+
     timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
     }, 250);
@@ -40,8 +45,6 @@ export const MainScreen = function () {
     return () => {
       clearInterval(timer);
       source.cancel();
-      // eslint-disable-next-line no-console
-      console.log('request cancelled');
     };
   }, []);
 
