@@ -55,7 +55,7 @@ export const InitializationInProgress = (props: Props) => (
               backgroundColor: 'transparent',
               width: '100%',
               display: 'flex',
-              justifyItems: 'center',
+              justifyContent: 'center',
               color: 'whitesmoke',
               opacity: '0.9',
             }}
@@ -73,7 +73,6 @@ export const InitializationInProgress = (props: Props) => (
                   fontFamily: [
                     'Nanum-Gothic', 'sans-serif',
                   ].join(','),
-                  width: '100%',
                   textAlign: 'center',
                   textTransform: 'uppercase',
                   lineHeight: 1.5,

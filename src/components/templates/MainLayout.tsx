@@ -16,8 +16,6 @@ const usePrevious = (value: any) => {
   return ref.current;
 };
 
-const snowMaker = new SnowMaker();
-
 export const MainLayout = (props : any) => {
   const basicColor = `${Theme.palette.common.black}`;
   const { backgroundColorMode } = useContext(BackgroundContext);
@@ -26,6 +24,7 @@ export const MainLayout = (props : any) => {
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
   const [paddingTop, setPaddingTop] = useState<number>(10);
   const [marginBottom, setMarginBottom] = useState<number>(35);
+  const snowMaker = SnowMaker.getInstance();
 
   const { innerHeight: height } = window;
   const isPortrait = useMediaQuery({

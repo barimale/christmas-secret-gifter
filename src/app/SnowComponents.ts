@@ -21,6 +21,8 @@ export interface SnowFlake {
 
 /** The snow maker. */
 class SnowMaker {
+  private static instance: SnowMaker;
+
   readonly canvas = document.createElement('canvas') as HTMLCanvasElement;
 
   private readonly ctx = this.canvas.getContext('2d')!;
@@ -39,10 +41,18 @@ class SnowMaker {
 
   private snowflakeSizeMax: number = this.isMobile ? 1 : 2;
 
-  constructor () {
+  private constructor () {
     this.initCanvas();
     this.generateFlakes(randomInt(this.minFlake, this.maxFlake));
     this.attachEvents();
+  }
+
+  public static getInstance (): SnowMaker {
+    if (!SnowMaker.instance) {
+      SnowMaker.instance = new SnowMaker();
+    }
+
+    return SnowMaker.instance;
   }
 
   /** Start the animation. */
