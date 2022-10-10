@@ -9,6 +9,7 @@ interface ChildProps {
 }
 
 interface Props {
+  // eslint-disable-next-line react/require-default-props
   TooltipProps?: Partial<TooltipProps>;
   children: (props: ChildProps) => React.ReactElement<any>;
 }

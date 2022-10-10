@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import sizeMe from 'react-sizeme';
 import { useStyles } from './styles';
 import { ContactPath } from '../../screens/ContactScreen';
 import { DeviceContextConsumer } from '../../../contexts';
+import { Theme } from '../../../theme/custom-theme';
 
 const Footer = () => {
+  const basicColor = `${Theme.palette.common.black}`;
+  const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
+
   const classes = useStyles();
   return (
     <DeviceContextConsumer>
@@ -20,17 +24,20 @@ const Footer = () => {
             left: 0,
             bottom: 0,
             width: '100%',
+            backgroundColor,
           }}
         >
           <div
             className={classes.title}
             style={{
-              display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             <span style={{
               fontSize: '12px',
-              fontFamily: 'Lora',
             }}
             >
               <Link

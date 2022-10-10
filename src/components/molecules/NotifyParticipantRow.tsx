@@ -60,7 +60,8 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
       }}
     >
       <TableCell align="left">{participant.orderId}</TableCell>
-      <TableCell component="th" scope="row">
+      {/* //TODO: component={<th />} put it below and fix */}
+      <TableCell scope="row">
         {participant.name}
       </TableCell>
       <TableCell align="left">{participant.email}</TableCell>

@@ -1,5 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+export const FontFamily = [
+  'Nanum-Gothic', 'sans-serif',
+].join(',');
+
 export const Theme = createMuiTheme({
   palette: {
     primary: {
@@ -10,9 +14,7 @@ export const Theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: [
-      'Nanum-Gothic', 'sans-serif',
-    ].join(','),
+    fontFamily: FontFamily,
   },
   overrides: {
     MuiTableContainer: {

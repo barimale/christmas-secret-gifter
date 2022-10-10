@@ -48,14 +48,18 @@ export default function ConfiguratorStepper () {
       {(context) => (
         <LayoutContextConsumer>
           {(layoutContext) => (
-            <Box sx={{
-              maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
-                ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
-              // flexGrow: 1,
-              backgroundColor: 'whitesmoke',
-              zIndex: 1000,
-              marginBottom: `${layoutContext.footerMarginBottom}px`,
-            }}
+            <Box
+              sx={{
+                maxWidth: context.valueOf() === DeviceType.isDesktopOrLaptop
+                  ? window.innerWidth * 0.5 : window.innerWidth * 0.8,
+                // flexGrow: 1,
+                backgroundColor: 'whitesmoke',
+                zIndex: 1000,
+                marginBottom: `${layoutContext.footerMarginBottom}px`,
+              }}
+              style={{
+                scale: context.valueOf() === DeviceType.isDesktopOrLaptop ? '0.8' : '1',
+              }}
             >
               <Paper
                 square

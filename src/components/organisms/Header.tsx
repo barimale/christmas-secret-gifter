@@ -69,7 +69,7 @@ const TopMenu = () => {
                 style={{
                   color: 'whitesmoke',
                   WebkitTapHighlightColor: 'transparent',
-                  fontSize: context === DeviceType.isDesktopOrLaptop ? '58px' : '30px',
+                  fontSize: context === DeviceType.isDesktopOrLaptop ? '46px' : '30px',
                   textAlign: context === DeviceType.isDesktopOrLaptop ? 'center' : 'center',
                   display: 'flex',
                   flexDirection: 'row',

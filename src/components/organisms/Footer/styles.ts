@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import { makeStyles } from '@material-ui/core/styles';
+import { FontFamily } from '../../../theme/custom-theme';
 
 export const useStyles = makeStyles(() => ({
   root: {
@@ -12,6 +13,6 @@ export const useStyles = makeStyles(() => ({
     flexGrow: 1,
     fontSize: 10,
     color: 'white',
-    fontFamily: 'Montserrat',
+    fontFamily: FontFamily,
   },
 }));

@@ -86,7 +86,8 @@ const Participants = ({ maxHeight }: Props) => {
                 }}
               >
                 <TableCell align="left">{p.orderId}</TableCell>
-                <TableCell component="th" scope="row">
+                {/* component="th" put it below and fix */}
+                <TableCell scope="row">
                   {p.name}
                 </TableCell>
                 <TableCell align="right">{p.email}</TableCell>
