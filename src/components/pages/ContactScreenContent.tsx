@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import LaunchIcon from '@material-ui/icons/Launch';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
@@ -87,8 +88,8 @@ export default function ContactScreenContent () {
                 margin: '0px',
               }}
               >
-                Author of the image used as a background of the website:
-                <i>Glade jul by Viggo Johansen (1891)</i>
+                Details of the image used as a background of the website:
+                <i>\'Glade jul\' by Viggo Johansen (1891)</i>
                 [source: Wikipedia]
               </p>
               <LaunchIcon
