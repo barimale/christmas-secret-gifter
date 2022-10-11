@@ -15,6 +15,7 @@ export default function ContactScreenContent () {
           color: 'white',
           paddingBottom: 0,
           fontSize: context === DeviceType.isDesktopOrLaptop ? '40px' : '25px',
+          zIndex: 1000,
         }}
         >
           <div style={{
