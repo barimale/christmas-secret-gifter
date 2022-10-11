@@ -89,7 +89,7 @@ export default function ContactScreenContent () {
               }}
               >
                 Details of the image used as a background of the website:
-                <i>\'Glade jul\' by Viggo Johansen (1891)</i>
+                <i>'Glade jul' by Viggo Johansen (1891)</i>
                 [source: Wikipedia]
               </p>
               <LaunchIcon
