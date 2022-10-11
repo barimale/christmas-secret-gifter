@@ -97,7 +97,7 @@ export default function ContactScreenContent () {
                   height: context === DeviceType.isDesktopOrLaptop ? '32px' : '26px',
                   width: 'auto',
                   alignSelf: 'center',
-                  color: 'silver',
+                  color: 'black',
                   opacity: 'inherit',
                 }}
               />
