@@ -58,6 +58,7 @@ export default function ContactScreenContent () {
                   width: 'auto',
                   alignSelf: 'center',
                   color: 'black',
+                  opacity: 'inherit',
                 }}
               />
             </a>
@@ -97,6 +98,7 @@ export default function ContactScreenContent () {
                   width: 'auto',
                   alignSelf: 'center',
                   color: 'silver',
+                  opacity: 'inherit',
                 }}
               />
             </a>
