@@ -87,7 +87,7 @@ export default function ContactScreenContent () {
                 margin: '0px',
               }}
               >
-                Image used as a background of the website:
+                Author of the image used as a background of the website:
                 <i>Glade jul by Viggo Johansen (1891)</i>
                 [source: Wikipedia]
               </p>
