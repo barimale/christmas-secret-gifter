@@ -75,7 +75,10 @@ export const MainScreen = function () {
   return (
     <DeviceContextConsumer>
       {() => (
-        <CenteredDiv>
+        <CenteredDiv style={{
+          position: 'sticky',
+        }}
+        >
           {giftEvent && progress === 100 && (
             <ConfiguratorStepper />
           )}
