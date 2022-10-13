@@ -8,12 +8,12 @@ const NotifyParticipantsLazy = lazy(() => import('../organisms/NotifyParticipant
 export const ConfiguratorSteps = [
   {
     label: 'Define Participants',
-    description: 'Hello Organizer - You already have Your event registered in the DB. Now, You need to define at least two of participants to generate matching.',
+    description: 'Hello Organizer - You already have Your event registered in the DB. Now, You need to define at least two participants to generate matching.',
     component: <DefineParticipantsLazy />,
   },
   {
     label: 'Exclusions Matrix',
-    description: 'This step is OPTIONAL only. You can exclude some of participants in case You know They do not know each other. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself.',
+    description: 'This step is OPTIONAL. You can exclude some of participants in case You know They do not know each other. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself.',
     component: <ExclusionMatrixLazy />,
   },
   {
