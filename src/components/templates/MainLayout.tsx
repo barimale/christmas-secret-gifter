@@ -27,6 +27,8 @@ export const MainLayout = (props : any) => {
   const snowMaker = SnowMaker.getInstance();
 
   const { innerHeight: height } = window;
+  const [mainDivHeight, setMainDivHeight] = useState<number>(height);
+
   const isPortrait = useMediaQuery({
     orientation: 'portrait',
   });
@@ -69,6 +71,7 @@ export const MainLayout = (props : any) => {
         const node = mainLayoutRef.current as any;
         snowMaker.canvas.height = node.getBoundingClientRect().height;
         snowMaker.canvas.width = node.getBoundingClientRect().width;
+        setMainDivHeight(node.getBoundingClientRect().height);
       }
     };
     // set resize listener
@@ -92,7 +95,7 @@ export const MainLayout = (props : any) => {
         id="greeting"
         className="main-layout"
         style={{
-          height: height - paddingTop,
+          height: mainDivHeight - paddingTop, // height - paddingTop,
           width: '100%',
           paddingTop,
           marginBottom: `${-marginBottom}px`,
