@@ -1,11 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { isMobile, isBrowser, isTablet } from 'react-device-detect';
 
-// eslint-disable-next-line no-shadow
 export enum DeviceType{
-    // eslint-disable-next-line no-unused-vars
     isDesktopOrLaptop,
-    // eslint-disable-next-line no-unused-vars
     isTabletOrMobile
 }
 
@@ -17,19 +16,14 @@ const DeviceContextProvider = (props: any) => {
   const isLandscape = useMediaQuery({
     orientation: 'landscape',
   });
-  const isDesktopOrLaptop = useMediaQuery({
-    minDeviceWidth: 1024,
-  });
-  const isTabletOrMobileDevice = useMediaQuery({
-    maxDeviceWidth: 1023,
-  });
-  const isSmallMobileDevice = useMediaQuery({
-    maxDeviceWidth: 400,
-  });
+
+  const isDesktopOrLaptop = isBrowser;
+
+  const isTabletOrMobileDevice = isMobile || (isTablet && isLandscape === false);
 
   function ObtainType (): DeviceType {
     if (isDesktopOrLaptop
-        || (isTabletOrMobileDevice && isLandscape && (isSmallMobileDevice === false))) {
+        || (isTablet && isLandscape)) {
       return DeviceType.isDesktopOrLaptop;
     }
 

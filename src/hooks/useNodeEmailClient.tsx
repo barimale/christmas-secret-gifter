@@ -49,7 +49,6 @@ export const useNodeEmailClient = () => {
       params.append('captcha', captcha);
 
       const encryptedParams = new URLSearchParams();
-
       encryptedParams.append('data', encrypt(params.toString()));
 
       const config = {
