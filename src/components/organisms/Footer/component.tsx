@@ -25,6 +25,7 @@ const Footer = () => {
             bottom: 0,
             width: '100%',
             backgroundColor,
+            zIndex: 3,
           }}
         >
           <div
@@ -49,7 +50,6 @@ const Footer = () => {
                   cursor: 'pointer',
                   fontSize: 'inherit',
                   fontFamily: 'inherit',
-                  zIndex: 3,
                 }}
               >
                 &copy; 2022 - barimale
