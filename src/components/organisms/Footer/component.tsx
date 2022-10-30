@@ -49,6 +49,7 @@ const Footer = () => {
                   cursor: 'pointer',
                   fontSize: 'inherit',
                   fontFamily: 'inherit',
+                  zIndex: 3,
                 }}
               >
                 &copy; 2022 - barimale
