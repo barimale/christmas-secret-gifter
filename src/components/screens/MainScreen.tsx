@@ -77,6 +77,7 @@ export const MainScreen = function () {
       {() => (
         <CenteredDiv style={{
           position: 'sticky',
+          zIndex: 2,
         }}
         >
           {giftEvent && progress === 100 && (
