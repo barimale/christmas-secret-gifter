@@ -27,6 +27,10 @@ type EventManager = {
         : CancelToken) => Promise<boolean>;
     checkEmailExistance: (email: string, cancellationToken?
       : CancelToken) => Promise<boolean>;
+    checkNameExistanceEditMode: (participantId: string, name: string, cancellationToken?
+        : CancelToken) => Promise<boolean>;
+    checkEmailExistanceEditMode: (participantId: string, email: string, cancellationToken?
+      : CancelToken) => Promise<boolean>;
     analyze: (cancellationToken?
         : CancelToken) => Promise<AlgorithmResponse | undefined>;
     cleanUp: () => void;
@@ -235,7 +239,7 @@ const EventContextProvider = (props: any) => {
     )
       .then(async (response: any) => {
         if (response.status === 200) {
-          return Promise.resolve(response.data);
+          return Promise.resolve(response.data === false);
         }
 
         return Promise.resolve(false);
@@ -253,7 +257,43 @@ const EventContextProvider = (props: any) => {
     )
       .then(async (response: any) => {
         if (response.status === 200) {
-          return Promise.resolve(response.data);
+          return Promise.resolve(response.data === false);
+        }
+
+        return Promise.resolve(false);
+      })
+      .catch(() => Promise.resolve(false)),
+    checkEmailExistanceEditMode: async (participantId: string, email: string, cancellationToken?
+    // eslint-disable-next-line no-return-await
+                : CancelToken) => await axios.get(
+      `${backendUrl}/api/events/${event?.id}/participants/${participantId}/check-email-existance/${email}`,
+      {
+        cancelToken: cancellationToken,
+        headers: {
+        },
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          return Promise.resolve(response.data === false);
+        }
+
+        return Promise.resolve(false);
+      })
+      .catch(() => Promise.resolve(false)),
+    checkNameExistanceEditMode: async (participantId: string, name: string, cancellationToken?
+    // eslint-disable-next-line no-return-await
+                    : CancelToken) => await axios.get(
+      `${backendUrl}/api/events/${event?.id}/participants/${participantId}/check-name-existance/${name}`,
+      {
+        cancelToken: cancellationToken,
+        headers: {
+        },
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          return Promise.resolve(response.data === false);
         }
 
         return Promise.resolve(false);

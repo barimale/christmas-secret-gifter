@@ -96,48 +96,6 @@ const AddParticipantModalContent = (props: AddParticipantModalProps) => {
   );
 };
 
-const backendUrl = process.env.REACT_APP_BACKEND;
-
-const AddSchema = Yup.object().shape({
-  eventId: Yup.string()
-    .notRequired(),
-  name: Yup.string()
-    .required('Field is required')
-    .min(2, 'Field has to be at least 2 signs long')
-    .max(50, 'Field cannot be longer than 50 signs')
-    .test('checkNameUnique', 'Participant with the name is already registered.', (value, context) => axios.get(
-      `${backendUrl}/api/events/${context.parent.eventId}/participants/check-name-existance/${value}`,
-      {
-        headers: {
-        },
-      },
-    ).then(async (response: any) => {
-      if (response.status === 200) {
-        return Promise.resolve(response.data === false);
-      }
-
-      return Promise.resolve(true);
-    })
-      .catch(() => Promise.resolve(true))),
-  email: Yup.string()
-    .email()
-    .required('Field is required')
-    .test('checkEmailUnique', 'Participant with the email is already registered.', (value, context) => axios.get(
-      `${backendUrl}/api/events/${context.parent.eventId}/participants/check-email-existance/${value}`,
-      {
-        headers: {
-        },
-      },
-    ).then(async (response: any) => {
-      if (response.status === 200) {
-        return Promise.resolve(response.data === false);
-      }
-
-      return Promise.resolve(true);
-    })
-      .catch(() => Promise.resolve(true))),
-});
-
 type AddFormProps = {
     close: () => void;
 }
@@ -149,7 +107,8 @@ const AddForm = (props: AddFormProps) => {
   const {
     addParticipant,
     participants,
-    giftEvent,
+    checkEmailExistance,
+    checkNameExistance,
   } = useContext(EventContext);
 
   const cancelToken = axios.CancelToken;
@@ -166,7 +125,6 @@ const AddForm = (props: AddFormProps) => {
     orderId: theHighestIndex + 1,
     name: '',
     email: '',
-    eventId: giftEvent?.id,
   } as Participant);
 
   // eslint-disable-next-line arrow-body-style
@@ -197,6 +155,18 @@ const AddForm = (props: AddFormProps) => {
       close();
     }
   };
+
+  const AddSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('Field is required')
+      .min(2, 'Field has to be at least 2 signs long')
+      .max(50, 'Field cannot be longer than 50 signs')
+      .test('checkNameUnique', 'Participant with the name is already registered.', (value) => checkNameExistance(value || '', source.token)),
+    email: Yup.string()
+      .email()
+      .required('Field is required')
+      .test('checkEmailUnique', 'Participant with the email is already registered.', (value) => checkEmailExistance(value || '', source.token)),
+  });
 
   return (
     <DeviceContextConsumer>

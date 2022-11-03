@@ -99,15 +99,6 @@ const EditParticipantModalContent = (props: EditParticipantModalProps) => {
   );
 };
 
-const EditSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Field is required')
-    .min(2, 'Field has to be at least 2 signs long')
-    .max(50, 'Field cannot be longer than 50 signs'),
-  email: Yup.string().email()
-    .required('Field is required'),
-});
-
 type EditFormProps = {
     close: () => void;
     participant: Participant;
@@ -117,7 +108,11 @@ const EditForm = (props: EditFormProps) => {
   const { close, participant } = props;
   const [sendingInProgress, setSendingInProgress] = useState<boolean>(false);
   const theme = useTheme();
-  const { editParticipant } = useContext(EventContext);
+  const {
+    editParticipant,
+    checkEmailExistanceEditMode,
+    checkNameExistanceEditMode,
+  } = useContext(EventContext);
 
   const cancelToken = axios.CancelToken;
   const source = cancelToken.source();
@@ -145,6 +140,25 @@ const EditForm = (props: EditFormProps) => {
       close();
     }
   };
+
+  const EditSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('Field is required')
+      .min(2, 'Field has to be at least 2 signs long')
+      .max(50, 'Field cannot be longer than 50 signs')
+      .test(
+        'checkNameUnique',
+        'Participant with the name is already registered.',
+        (value) => checkNameExistanceEditMode(participant.id || '', value || '', source.token),
+      ),
+    email: Yup.string().email()
+      .required('Field is required')
+      .test(
+        'checkEmailUnique',
+        'Participant with the email is already registered.',
+        (value) => checkEmailExistanceEditMode(participant.id || '', value || '', source.token),
+      ),
+  });
 
   return (
     <DeviceContextConsumer>
