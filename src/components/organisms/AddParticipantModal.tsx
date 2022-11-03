@@ -8,7 +8,7 @@ import Fade from '@material-ui/core/Fade';
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 import { Box, Button, CircularProgress } from '@material-ui/core';
-import { Form, Formik, FormikProps } from 'formik';
+import { Form, Formik, FormikProps } from 'formik'; // yupToFormErrors
 import * as Yup from 'yup';
 
 import { DeviceContextConsumer, DeviceType, EventContext } from '../../contexts';
@@ -96,13 +96,46 @@ const AddParticipantModalContent = (props: AddParticipantModalProps) => {
   );
 };
 
+const backendUrl = process.env.REACT_APP_BACKEND;
+
 const AddSchema = Yup.object().shape({
+  eventId: Yup.string()
+    .notRequired(),
   name: Yup.string()
     .required('Field is required')
     .min(2, 'Field has to be at least 2 signs long')
-    .max(50, 'Field cannot be longer than 50 signs'),
-  email: Yup.string().email()
-    .required('Field is required'),
+    .max(50, 'Field cannot be longer than 50 signs')
+    .test('checkNameUnique', 'Participant with the name is already registered.', (value, context) => axios.get(
+      `${backendUrl}/api/events/${context.parent.eventId}/participants/check-name-existance/${value}`,
+      {
+        headers: {
+        },
+      },
+    ).then(async (response: any) => {
+      if (response.status === 200) {
+        return Promise.resolve(response.data === false);
+      }
+
+      return Promise.resolve(true);
+    })
+      .catch(() => Promise.resolve(true))),
+  email: Yup.string()
+    .email()
+    .required('Field is required')
+    .test('checkEmailUnique', 'Participant with the email is already registered.', (value, context) => axios.get(
+      `${backendUrl}/api/events/${context.parent.eventId}/participants/check-email-existance/${value}`,
+      {
+        headers: {
+        },
+      },
+    ).then(async (response: any) => {
+      if (response.status === 200) {
+        return Promise.resolve(response.data === false);
+      }
+
+      return Promise.resolve(true);
+    })
+      .catch(() => Promise.resolve(true))),
 });
 
 type AddFormProps = {
@@ -113,7 +146,11 @@ const AddForm = (props: AddFormProps) => {
   const { close } = props;
   const [sendingInProgress, setSendingInProgress] = useState<boolean>(false);
   const theme = useTheme();
-  const { addParticipant, participants } = useContext(EventContext);
+  const {
+    addParticipant,
+    participants,
+    giftEvent,
+  } = useContext(EventContext);
 
   const cancelToken = axios.CancelToken;
   const source = cancelToken.source();
@@ -129,6 +166,7 @@ const AddForm = (props: AddFormProps) => {
     orderId: theHighestIndex + 1,
     name: '',
     email: '',
+    eventId: giftEvent?.id,
   } as Participant);
 
   // eslint-disable-next-line arrow-body-style

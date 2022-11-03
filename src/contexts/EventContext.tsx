@@ -23,6 +23,10 @@ type EventManager = {
       : CancelToken) => void;
     editParticipant: (participant: Participant, cancellationToken?
       : CancelToken) => void;
+    checkNameExistance: (name: string, cancellationToken?
+        : CancelToken) => Promise<boolean>;
+    checkEmailExistance: (email: string, cancellationToken?
+      : CancelToken) => Promise<boolean>;
     analyze: (cancellationToken?
         : CancelToken) => Promise<AlgorithmResponse | undefined>;
     cleanUp: () => void;
@@ -219,6 +223,42 @@ const EventContextProvider = (props: any) => {
         return Promise.reject(participants);
       })
       .catch(() => Promise.reject(participants)),
+    checkEmailExistance: async (email: string, cancellationToken?
+    // eslint-disable-next-line no-return-await
+            : CancelToken) => await axios.get(
+      `${backendUrl}/api/events/${event?.id}/participants/check-email-existance/${email}`,
+      {
+        cancelToken: cancellationToken,
+        headers: {
+        },
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          return Promise.resolve(response.data);
+        }
+
+        return Promise.resolve(false);
+      })
+      .catch(() => Promise.resolve(false)),
+    checkNameExistance: async (name: string, cancellationToken?
+    // eslint-disable-next-line no-return-await
+                : CancelToken) => await axios.get(
+      `${backendUrl}/api/events/${event?.id}/participants/check-name-existance/${name}`,
+      {
+        cancelToken: cancellationToken,
+        headers: {
+        },
+      },
+    )
+      .then(async (response: any) => {
+        if (response.status === 200) {
+          return Promise.resolve(response.data);
+        }
+
+        return Promise.resolve(false);
+      })
+      .catch(() => Promise.resolve(false)),
     removeParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
         : CancelToken) => await axios.delete(
