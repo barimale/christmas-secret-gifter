@@ -11,10 +11,12 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { Suspense, useContext, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 import { ConfiguratorSteps } from './ConfiguratorSteps';
 import CenteredDiv from '../templates/CenteredDiv';
 import { DeviceContextConsumer, DeviceType, EventContext, LayoutContextConsumer } from '../../contexts';
 import { Theme } from '../../theme/custom-theme';
+// import LanguageSetter from '../molecules/LanguageSetter';
 
 const GoldButton = withStyles({
   root: {
@@ -34,6 +36,7 @@ export default function ConfiguratorStepper () {
   const maxSteps = steps.length;
   const { restartEvent, participants, analysisResult } = useContext(EventContext);
   const [isInProgress, setIsInProgress] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -85,8 +88,9 @@ export default function ConfiguratorStepper () {
                   color: 'whitesmoke',
                 }}
                 >
-                  {steps[activeStep].label}
+                  {t(steps[activeStep].label)}
                 </Typography>
+                {/* <LanguageSetter /> */}
               </Paper>
               <Box sx={{
                 height: context.valueOf() === DeviceType.isDesktopOrLaptop
@@ -113,7 +117,7 @@ export default function ConfiguratorStepper () {
                     textShadow: '1px 1px black',
                   }}
                 >
-                  {steps[activeStep].description}
+                  {t(steps[activeStep].description)}
                 </div>
                 <Suspense fallback={(
                   <CenteredDiv>
@@ -141,7 +145,7 @@ export default function ConfiguratorStepper () {
                 || (activeStep === 0 && participants.length < 2)
                 || (analysisResult && analysisResult.analysisStatus?.toLocaleLowerCase() === 'infeasible' && activeStep === 2)}
                   >
-                    Next
+                    {t('Next')}
                     {theme.direction === 'rtl' ? (
                       <KeyboardArrowLeft />
                     ) : (
@@ -164,7 +168,7 @@ export default function ConfiguratorStepper () {
                     ) : (
                       <KeyboardArrowLeft />
                     )}
-                    Back
+                    {t('Back')}
                   </GoldButton>
         )}
               />
@@ -181,7 +185,7 @@ export default function ConfiguratorStepper () {
                   setIsInProgress(false);
                 }}
               >
-                Restart
+                {t('Restart')}
               </GoldButton>
             </Box>
           )}

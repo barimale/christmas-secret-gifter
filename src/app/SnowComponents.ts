@@ -108,9 +108,9 @@ class SnowMaker {
       this.flakes.push({
         x: randomInt(0, this.canvas.width),
         y: randomInt(0, this.canvas.height),
-        radius: random(0.25, this.snowflakeSizeMax),
-        sway: random(-0.3, 0.3),
-        drop: random(-0.5, 0.5),
+        radius: random(Math.random() / 4 + 0.15, this.snowflakeSizeMax),
+        sway: random(-1 * (Math.random() / 3 + 0.25), (Math.random() / 3 + 0.25)),
+        drop: random(-1 * (Math.random() / 4 + 0.55), -1 * (Math.random() / 4 + 0.55)),
       });
     }
   }

@@ -161,11 +161,11 @@ const AddForm = (props: AddFormProps) => {
       .required('Field is required')
       .min(2, 'Field has to be at least 2 signs long')
       .max(50, 'Field cannot be longer than 50 signs')
-      .test('checkNameUnique', 'Participant with the name is already registered.', (value) => checkNameExistance(value || '', source.token)),
+      .test('checkNameUnique', 'Participant with the same name is already registered.', (value) => checkNameExistance(value || '', source.token)),
     email: Yup.string()
       .email()
       .required('Field is required')
-      .test('checkEmailUnique', 'Participant with the email is already registered.', (value) => checkEmailExistance(value || '', source.token)),
+      .test('checkEmailUnique', 'Participant with the same email is already registered.', (value) => checkEmailExistance(value || '', source.token)),
   });
 
   return (

@@ -1,16 +1,20 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, hexToRgb } from '@material-ui/core/styles';
+import { RGBToRGBA } from '../utilities/customTheme';
 
 export const FontFamily = [
   'Nanum-Gothic', 'sans-serif',
 ].join(',');
 
+const primaryMain = '#9c31bd';
+const secondaryMain = '#bdad31';
+
 export const Theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#9c31bd',
+      main: primaryMain,
     },
     secondary: {
-      main: '#bdad31',
+      main: secondaryMain,
     },
   },
   typography: {
@@ -20,6 +24,15 @@ export const Theme = createMuiTheme({
     MuiTableContainer: {
       root: {
         overflowX: 'unset',
+      },
+    },
+    MuiMenu: {
+      paper: {
+        borderRadius: '0px',
+        boxShadow: 'unset',
+        border: `2px solid ${hexToRgb('#000000')}`,
+        backgroundColor: `${RGBToRGBA(hexToRgb('#000000'), 1)}`,
+        scrollBehavior: 'smooth',
       },
     },
     MuiCheckbox: {

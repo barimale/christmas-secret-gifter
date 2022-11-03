@@ -1,10 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import LaunchIcon from '@material-ui/icons/Launch';
+import { useTranslation } from 'react-i18next';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import { Theme as customTheme } from '../../theme/custom-theme';
 
 export default function ContactScreenContent () {
+  const { t } = useTranslation();
+
   return (
     <DeviceContextConsumer>
       {(context) => (
@@ -88,9 +91,9 @@ export default function ContactScreenContent () {
                 margin: '0px',
               }}
               >
-                Details of the image used as a background of the website:
-                <i>'Glade jul' by Viggo Johansen (1891)</i>
-                [source: Wikipedia]
+                {t('Details.Line1')}
+                <i>{t('Details.Line2')}</i>
+                {t('Details.Line3')}
               </p>
               <LaunchIcon
                 style={{
@@ -104,7 +107,6 @@ export default function ContactScreenContent () {
               />
             </a>
           </div>
-
         </div>
       )}
     </DeviceContextConsumer>

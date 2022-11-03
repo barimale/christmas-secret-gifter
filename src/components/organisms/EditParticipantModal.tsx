@@ -148,14 +148,14 @@ const EditForm = (props: EditFormProps) => {
       .max(50, 'Field cannot be longer than 50 signs')
       .test(
         'checkNameUnique',
-        'Participant with the name is already registered.',
+        'Participant with the same name is already registered.',
         (value) => checkNameExistanceEditMode(participant.id || '', value || '', source.token),
       ),
     email: Yup.string().email()
       .required('Field is required')
       .test(
         'checkEmailUnique',
-        'Participant with the email is already registered.',
+        'Participant with the same email is already registered.',
         (value) => checkEmailExistanceEditMode(participant.id || '', value || '', source.token),
       ),
   });

@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import sizeMe from 'react-sizeme';
+import { useTranslation } from 'react-i18next';
 import { useStyles } from './styles';
 import { ContactPath } from '../../screens/ContactScreen';
 import { DeviceContextConsumer } from '../../../contexts';
@@ -12,6 +13,7 @@ import { Theme } from '../../../theme/custom-theme';
 const Footer = () => {
   const basicColor = `${Theme.palette.common.black}`;
   const [backgroundColor, setBackgroundColor] = useState<string>(basicColor);
+  const { t } = useTranslation();
 
   const classes = useStyles();
   return (
@@ -52,7 +54,7 @@ const Footer = () => {
                   fontFamily: 'inherit',
                 }}
               >
-                &copy; 2022 - barimale
+                {`${t('Created in')} ©2022 ${t('by')} barimale`}
               </Link>
             </span>
           </div>
