@@ -16,7 +16,7 @@ function encrypt (text: string) {
 }
 
 export const useNodeEmailClient = () => {
-  axios.defaults.timeout = 5000;
+  axios.defaults.timeout = 50000;
 
   const sendByNode = async (address: string, title: string, message: string, captcha: string)
   : Promise<string> => {
