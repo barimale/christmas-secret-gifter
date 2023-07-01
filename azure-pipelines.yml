@@ -21,11 +21,6 @@ steps:
     workingDirectory: '$(Agent.ToolsDirectory)'
   displayName: 'install firebase tools'
 
-- task: CmdLine@2
-  inputs:
-    script: 'firebase login:ci --no-localhost'
-  displayName: 'login to firebase'
-
 - script: |
     npm install
     npm run build
