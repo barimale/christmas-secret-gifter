@@ -23,7 +23,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'firebase login:ci'
+    script: 'firebase login:ci --no-localhost'
   displayName: 'login to firebase'
 
 - script: |
