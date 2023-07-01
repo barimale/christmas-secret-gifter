@@ -16,18 +16,23 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
-  displayName: 'Install Node.js'
+  displayName: 'Install Node.js 14.x'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js 18.x'
 
 - task: CmdLine@2
   inputs:
     script: 'npm install -g firebase-tools'
     workingDirectory: '$(Agent.ToolsDirectory)'
   displayName: 'install firebase tools'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
 
 - task: CmdLine@2
   inputs:
