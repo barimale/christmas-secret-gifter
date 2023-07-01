@@ -32,5 +32,5 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'firebase deploy --token "$(FIREBASE_TOKEN)" -m "$(Build.BuildNumber)"'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\\sample\\ElCamino.DocFx.WebAppRefresh.Sample\\'
+#    workingDirectory: '$(System.DefaultWorkingDirectory)\\sample\\ElCamino.DocFx.WebAppRefresh.Sample\\'
   displayName: 'firebase publish -m "$(Build.BuildNumber)"'
