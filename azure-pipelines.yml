@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-- group: deploy-group
-
 steps:
 - task: NodeTool@0
   inputs:
@@ -34,8 +31,11 @@ steps:
     workingDirectory: '$(Agent.ToolsDirectory)'
   displayName: 'install firebase tools'
 
+- bash: |
+    echo "##vso[task.setvariable variable=GOOGLE_APPLICATION_CREDENTIALS;]./.gcloudconfig/key.json"
+
 - task: CmdLine@2
   inputs:
-    script: 'firebase deploy --token "$(FIREBASE_TOKEN)" -m "$(Build.BuildNumber)"'
+    script: 'firebase deploy -m "$(Build.BuildNumber)"'
 #    workingDirectory: '$(System.DefaultWorkingDirectory)\\'
   displayName: 'firebase publish -m "$(Build.BuildNumber)"'
