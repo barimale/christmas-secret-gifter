@@ -1,3 +1,7 @@
+# TODOs
+Extract the url to mailer to env files.
+double check if there is any occurance of heroku urlin code.
+
 # Azure pipeline details
 ```
 https://firebaseopensource.com/projects/firebase/firebase-tools/#using_with%20ci%20systems
