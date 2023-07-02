@@ -38,7 +38,7 @@ export const useNodeEmailClient = () => {
 
   const sendByNodeOnce = async (address: string, title: string, message: string, captcha: string)
   : Promise<string> => {
-    const url = 'https://christmas-secret-gifter-mailer.herokuapp.com/send-email';
+    const url = 'https://christmas-secret-gifter.azurewebsites.net/send-email';
     try {
       const params = new URLSearchParams();
       params.append('serviceid', 'service_08vey2o');
