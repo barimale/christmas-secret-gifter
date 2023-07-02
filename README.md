@@ -1,3 +1,8 @@
+# Azure pipeline details
+```
+https://firebaseopensource.com/projects/firebase/firebase-tools/#using_with%20ci%20systems
+```
+
 # Introduction 
 Organize an event, invite family members, ask for their preferences and match them as everyone has its dreamy gift.
 
