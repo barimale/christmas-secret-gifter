@@ -181,10 +181,13 @@
   background: transparent;
   box-shadow: 0 0 0 0 rgba(189, 173, 49, 1);
   transform: scale(1);
+  -webkit-transform: scale(1);
+  -o-transform: scale(1);
   animation: pulse-black 1s;
   -webkit-animation: pulse-black 1s;
   -o-animation: pulse-black 1s;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 @keyframes pulse-black {
@@ -305,6 +308,8 @@
 
 .neonTextInProgress {
   animation: flicker 1.5s infinite alternate;
+  -webkit-animation: flicker 1.5s infinite alternate;
+  -o-animation: flicker 1.5s infinite alternate;
 }
 
 @keyframes flicker {
@@ -320,6 +325,20 @@
     text-shadow: none;
   }
 }
+
+@-webkit-keyframes flicker {
+    10%, 24%, 55% {
+        text-shadow:
+              0 0 2px #fff,
+                    0 0 6px #fff,
+                          0 0 10px #fff,
+                                0 0 20px #bdad31,
+                                      0 0 30px #bdad31;
+                                        }
+                                          0%, 20%, 22%, 25%, 53%, 57%, 100% {       
+                                              text-shadow: none;
+                                                }
+                                                }
 
 .main-layout {
   background-image: url(../assets/images/stars.jpg);
