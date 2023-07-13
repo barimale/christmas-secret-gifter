@@ -9,7 +9,7 @@
         "Description": "Hello Organizer - You already have Your event registered in the system. Now, You need to define at least two participants to be able to generate pairings."
     },
     "Exclusions Matrix": {
-        "Title": "Exclusions Matrix",
+        "Title": "Exclusions Matrix - optional",
         "Description": "This step is OPTIONAL. You can exclude some of participants in case You know They do not know each other. As it is the matrix-based representative of participants - some choices are blocked by default as You are not allowed to buy a gift for Yourself."
     },
     "Matching Participants":{
@@ -17,8 +17,8 @@
         "Description": "Results of pairing are presented here. You may get INFEASIBLE status, which means in practice, that some of participants will not be gifted."
     },
     "Notify Participants":{
-        "Title":"Notify Participants",
-        "Description": "Results of pairing are send to participants via email. Only You - as an Organizator of the event - have access to all of them."
+        "Title":"Notify Participants - optional",
+        "Description": "This step is OPTIONAL. Results of pairing are send to participants via email. Only You - as an Organizator of the event - have access to all of them."
     },
     "Menu": "Menu",
     "Details":{
