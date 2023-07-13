@@ -6,7 +6,7 @@
     "Back": "Back",
     "Define Participants": {
         "Title": "Define Participants",
-        "Description": "Hello Organizer - You already have Your event registered in the DB. Now, You need to define at least two participants to generate matching."
+        "Description": "Hello Organizer - You already have Your event registered in the system. Now, You need to define at least two participants to be able to generate pairings."
     },
     "Exclusions Matrix": {
         "Title": "Exclusions Matrix",
