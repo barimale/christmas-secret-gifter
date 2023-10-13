@@ -2,6 +2,10 @@
 Extract the url to mailer to env files.
 double check if there is any occurance of heroku urlin code.
 TODO: minify js and css.
+replace checkbox current symbol by X
+add black border to pdf,
+
+replace pdf generation by backend api method?
 
 # Azure pipeline details
 ```
