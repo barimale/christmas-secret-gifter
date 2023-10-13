@@ -1,6 +1,7 @@
 # TODOs
 Extract the url to mailer to env files.
 double check if there is any occurance of heroku urlin code.
+TODO: minify js and css.
 
 # Azure pipeline details
 ```
