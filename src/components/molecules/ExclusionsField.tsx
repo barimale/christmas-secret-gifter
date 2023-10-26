@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FormikProps } from 'formik';
 import Grid from '@material-ui/core/Grid';
 import { Checkbox, InputLabel, ListItemIcon, ListItemText, MenuItem, Select, MenuProps } from '@material-ui/core';
+import CloseIcon from '@mui/icons-material/Close';
 import { DeviceContextConsumer } from '../../contexts';
 import Participant from '../../store/model/participant';
 
@@ -38,6 +39,7 @@ export const ExclusionsField = (props: ExclusionsFieldProps) => {
   // const [field, meta] = useField(props.name);
 
   const [selected, setSelected] = useState<Participant[]>([props.values]);
+  const defaultCheckedIcon = <CloseIcon />;
 
   const handleChange = (event: any) => {
     const { value } = event.target;
@@ -70,8 +72,10 @@ export const ExclusionsField = (props: ExclusionsFieldProps) => {
             {participants?.map((option: Participant) => (
               <MenuItem key={option.id} value={option.name ?? ''} disabled={props.values.id === option.id}>
                 <ListItemIcon>
-                  <Checkbox checked={
-                    props.values.id === option.id ? true : (selected.indexOf(option) > -1)
+                  <Checkbox
+                    checkedIcon={defaultCheckedIcon}
+                    checked={
+                      props.values.id === option.id ? true : (selected.indexOf(option) > -1)
                     }
                   />
                 </ListItemIcon>
