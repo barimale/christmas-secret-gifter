@@ -5,7 +5,6 @@ import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext'
 import { Theme as customTheme } from '../../theme/custom-theme';
 
 export default function ContactScreenContent () {
-
   return (
     <DeviceContextConsumer>
       {(context) => (
