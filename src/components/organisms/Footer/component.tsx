@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import sizeMe from 'react-sizeme';
 import { useTranslation } from 'react-i18next';
 import { useStyles } from './styles';
-import { ContactPath } from '../../screens/ContactScreen';
 import { DeviceContextConsumer } from '../../../contexts';
 import { Theme } from '../../../theme/custom-theme';
 
@@ -43,9 +42,11 @@ const Footer = () => {
               fontSize: '12px',
             }}
             >
-              <Link
+              <a
                 className="pointerOverEffect"
-                to={ContactPath}
+                href="https://github.com/barimale"
+                target="_blank"
+                rel="noreferrer"
                 style={{
                   color: 'white',
                   textDecoration: 'none',
@@ -55,7 +56,7 @@ const Footer = () => {
                 }}
               >
                 {`${t('Created in')} ©2022 ${t('by')} barimale`}
-              </Link>
+              </a>
             </span>
           </div>
         </footer>
