@@ -2,8 +2,8 @@ import axios from 'axios';
 import crypto from 'crypto';
 
 const algorithm = 'aes-256-cbc';
-const keyJson = '{"type":"Buffer","data":[124,220,206,184,127,124,38,166,182,93,101,77,57,223,219,125,166,33,187,151,77,32,103,199,215,19,248,113,255,232,220,19]}';
-const ivJson = '{"type":"Buffer","data":[77,177,156,230,70,8,218,20,182,232,146,11,74,126,187,23]}';
+const keyJson = '{"type":"Buffer","data":[124]}';
+const ivJson = '{"type":"Buffer","data":[77,177]}';
 const key: Buffer = JSON.parse(keyJson);
 const iv: Buffer = JSON.parse(ivJson);
 
@@ -38,11 +38,11 @@ export const useNodeEmailClient = () => {
 
   const sendByNodeOnce = async (address: string, title: string, message: string, captcha: string)
   : Promise<string> => {
-    const url = 'https://christmas-secret-gifter.azurewebsites.net/send-email';
+    const url = 'https://cmailer.net/send-email';
     try {
       const params = new URLSearchParams();
-      params.append('serviceid', 'service_08vey2o');
-      params.append('apikey', 'odkrywajcie-mailer-ajdfnhajdfnaf-Password@2020');
+      params.append('serviceid', 'serviceId_HERE');
+      params.append('apikey', 'API_KEY_HERE');
       params.append('to', address);
       params.append('subject', title);
       params.append('message', message);
