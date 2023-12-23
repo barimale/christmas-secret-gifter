@@ -1,5 +1,5 @@
 # Introduction 
-Organize an event, invite family members, ask for their preferences and match them as everyone wants its dreamy gift.
+Organize an event, invite family members, ask for their preferences and match them as everyone wants dreamy gift.
 
 # Actors
 - Organizer
