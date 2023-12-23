@@ -1,30 +1,3 @@
-
-# Main layout background with image example(put it to App.css):
-```
-.main-layout {
-  background-image: url(../assets/images/stars.jpg);
-  background-size: contain;
-  -moz-background-size: contain;
-  -webkit-background-size: contain;
-  -o-background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-```
-# TODOs
-Extract the url to mailer to env files.
-double check if there is any occurance of heroku urlin code.
-TODO: minify js and css.
-replace checkbox current symbol by X
-add black border to pdf,
-
-replace pdf generation by backend api method?
-
-# Azure pipeline details
-```
-https://firebaseopensource.com/projects/firebase/firebase-tools/#using_with%20ci%20systems
-```
-
 # Introduction 
 Organize an event, invite family members, ask for their preferences and match them as everyone has its dreamy gift.
 
