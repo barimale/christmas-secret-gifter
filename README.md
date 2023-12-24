@@ -5,6 +5,6 @@ Organize an event, invite family members, ask for their preferences and match th
 - Organizer
 - Participants
 
-# Some constraints
+# Constraints
  - minimal amout of participants, organizer included: 3
  - maximal amount: 1024 -> select all etc.
