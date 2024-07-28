@@ -104,7 +104,7 @@ const EventContextProvider = (props: any) => {
     // eslint-disable-next-line no-return-await
     startEvent: async (cancellationToken?
     // eslint-disable-next-line no-return-await
-      : CancelToken) => await axios.post(`${backendUrl}/api/events/create`, {
+      : CancelToken) => await axios.post(`${backendUrl}/api/v1/events/create`, {
     }, {
       cancelToken: cancellationToken,
       headers: {
@@ -125,7 +125,7 @@ const EventContextProvider = (props: any) => {
     // eslint-disable-next-line no-return-await
     analyze: async (cancellationToken?
     // eslint-disable-next-line no-return-await
-        : CancelToken) => await axios.post(`${backendUrl}/api/events/${event?.id}/execute`, {
+        : CancelToken) => await axios.post(`${backendUrl}/api/v1/events/${event?.id}/execute`, {
     }, {
       cancelToken: cancellationToken,
       headers: {
@@ -159,7 +159,7 @@ const EventContextProvider = (props: any) => {
     addParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
         : CancelToken) => await axios.post(
-      `${backendUrl}/api/events/${event?.id}/participants/register`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/register`,
       {
         name: participant.name,
         email: participant.email,
@@ -177,7 +177,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `${backendUrl}/api/events/${event?.id}/participants/all`,
+            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
             {
               cancelToken: cancellationToken,
               headers: {
@@ -198,7 +198,7 @@ const EventContextProvider = (props: any) => {
     editParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
         : CancelToken) => await axios.put(
-      `${backendUrl}/api/events/${event?.id}/participants/${participant.id}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
       participant,
       {
         cancelToken: cancellationToken,
@@ -209,7 +209,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `${backendUrl}/api/events/${event?.id}/participants/all`,
+            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
             {
               cancelToken: cancellationToken,
               headers: {
@@ -230,7 +230,7 @@ const EventContextProvider = (props: any) => {
     checkEmailExistance: async (email: string, cancellationToken?
     // eslint-disable-next-line no-return-await
             : CancelToken) => await axios.get(
-      `${backendUrl}/api/events/${event?.id}/participants/check-email-existance/${email}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/check-email-existance/${email}`,
       {
         cancelToken: cancellationToken,
         headers: {
@@ -248,7 +248,7 @@ const EventContextProvider = (props: any) => {
     checkNameExistance: async (name: string, cancellationToken?
     // eslint-disable-next-line no-return-await
                 : CancelToken) => await axios.get(
-      `${backendUrl}/api/events/${event?.id}/participants/check-name-existance/${name}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/check-name-existance/${name}`,
       {
         cancelToken: cancellationToken,
         headers: {
@@ -266,7 +266,7 @@ const EventContextProvider = (props: any) => {
     checkEmailExistanceEditMode: async (participantId: string, email: string, cancellationToken?
     // eslint-disable-next-line no-return-await
                 : CancelToken) => await axios.get(
-      `${backendUrl}/api/events/${event?.id}/participants/${participantId}/check-email-existance/${email}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-email-existance/${email}`,
       {
         cancelToken: cancellationToken,
         headers: {
@@ -284,7 +284,7 @@ const EventContextProvider = (props: any) => {
     checkNameExistanceEditMode: async (participantId: string, name: string, cancellationToken?
     // eslint-disable-next-line no-return-await
                     : CancelToken) => await axios.get(
-      `${backendUrl}/api/events/${event?.id}/participants/${participantId}/check-name-existance/${name}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-name-existance/${name}`,
       {
         cancelToken: cancellationToken,
         headers: {
@@ -302,7 +302,7 @@ const EventContextProvider = (props: any) => {
     removeParticipant: async (participant: Participant, cancellationToken?
     // eslint-disable-next-line no-return-await
         : CancelToken) => await axios.delete(
-      `${backendUrl}/api/events/${event?.id}/participants/${participant.id}`,
+      `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
       {
         cancelToken: cancellationToken,
         headers: {
@@ -312,7 +312,7 @@ const EventContextProvider = (props: any) => {
       .then(async (response: any) => {
         if (response.status === 200) {
           const result = await axios.get(
-            `${backendUrl}/api/events/${event?.id}/participants/all`,
+            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
             {
               cancelToken: cancellationToken,
               headers: {
