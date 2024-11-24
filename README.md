@@ -8,3 +8,6 @@ Organize an event, invite family members, ask for their preferences and match th
 # Constraints
  - minimal amout of participants: 2
  - maximal amount: 128
+
+# Prereqs
+- NodeJS 14.x
