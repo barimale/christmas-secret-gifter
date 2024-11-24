@@ -30,7 +30,7 @@ const MenuPropsSettings: Partial<MenuProps> = {
 const defaultXs = 12;
 const defaultSm = 6;
 
-interface ExclusionsFieldProps extends FormikProps<Participant>{
+interface ExclusionsFieldProps extends FormikProps<Participant> {
   participants: Participant[];
 }
 

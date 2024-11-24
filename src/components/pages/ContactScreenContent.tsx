@@ -4,7 +4,7 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import { DeviceContextConsumer, DeviceType } from '../../contexts/DeviceContext';
 import { Theme as customTheme } from '../../theme/custom-theme';
 
-export default function ContactScreenContent () {
+export default function ContactScreenContent() {
   return (
     <DeviceContextConsumer>
       {(context) => (

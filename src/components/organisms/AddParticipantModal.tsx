@@ -33,11 +33,11 @@ const useStyles = makeStyles(() => createStyles({
 }));
 
 type AddParticipantModalProps = {
-    isDisplayed: boolean;
-    close: () => void;
+  isDisplayed: boolean;
+  close: () => void;
 }
 
-export default function AddParticipantModal (props: AddParticipantModalProps) {
+export default function AddParticipantModal(props: AddParticipantModalProps) {
   return (
     <AddParticipantModalContent {...props} />
   );
@@ -97,7 +97,7 @@ const AddParticipantModalContent = (props: AddParticipantModalProps) => {
 };
 
 type AddFormProps = {
-    close: () => void;
+  close: () => void;
 }
 
 const AddForm = (props: AddFormProps) => {

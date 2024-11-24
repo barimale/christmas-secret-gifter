@@ -16,7 +16,7 @@ const usePrevious = (value: any) => {
   return ref.current;
 };
 
-export const MainLayout = (props : any) => {
+export const MainLayout = (props: any) => {
   const basicColor = `${Theme.palette.common.black}`;
   const { backgroundColorMode } = useContext(BackgroundContext);
   const { setFooterMarginBottom } = useContext(LayoutContext);

@@ -29,7 +29,7 @@ const GoldButton = withStyles({
   },
 })(Button);
 
-export default function ConfiguratorStepper () {
+export default function ConfiguratorStepper() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = ConfiguratorSteps;
@@ -123,7 +123,7 @@ export default function ConfiguratorStepper () {
                   <CenteredDiv>
                     <CircularProgress color="secondary" />
                   </CenteredDiv>
-          )}
+                )}
                 >
                   {steps[activeStep].component}
                 </Suspense>
@@ -142,8 +142,8 @@ export default function ConfiguratorStepper () {
                     }}
                     onClick={handleNext}
                     disabled={(activeStep === maxSteps - 1)
-                || (activeStep === 0 && participants.length < 2)
-                || (analysisResult && analysisResult.analysisStatus?.toLocaleLowerCase() === 'infeasible' && activeStep === 2)}
+                      || (activeStep === 0 && participants.length < 2)
+                      || (analysisResult && analysisResult.analysisStatus?.toLocaleLowerCase() === 'infeasible' && activeStep === 2)}
                   >
                     {t('Next')}
                     {theme.direction === 'rtl' ? (
@@ -152,7 +152,7 @@ export default function ConfiguratorStepper () {
                       <KeyboardArrowRight />
                     )}
                   </GoldButton>
-        )}
+                )}
                 backButton={(
                   <GoldButton
                     className="pointerOverEffect"
@@ -170,7 +170,7 @@ export default function ConfiguratorStepper () {
                     )}
                     {t('Back')}
                   </GoldButton>
-        )}
+                )}
               />
               <GoldButton
                 className="pointerOverEffect"

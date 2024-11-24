@@ -33,12 +33,12 @@ const useStyles = makeStyles(() => createStyles({
 }));
 
 type EditParticipantModalProps = {
-    isDisplayed: boolean;
-    close: () => void;
-    participant: Participant | undefined;
+  isDisplayed: boolean;
+  close: () => void;
+  participant: Participant | undefined;
 }
 
-export default function EditParticipantModal (props: EditParticipantModalProps) {
+export default function EditParticipantModal(props: EditParticipantModalProps) {
   return (
     <EditParticipantModalContent {...props} />
   );
@@ -88,7 +88,7 @@ const EditParticipantModalContent = (props: EditParticipantModalProps) => {
               >
                 <ModalTitle title="Edit item" close={close} />
                 {props.participant !== undefined && (
-                <EditForm close={close} participant={props.participant} />
+                  <EditForm close={close} participant={props.participant} />
                 )}
               </div>
             </Fade>
@@ -100,8 +100,8 @@ const EditParticipantModalContent = (props: EditParticipantModalProps) => {
 };
 
 type EditFormProps = {
-    close: () => void;
-    participant: Participant;
+  close: () => void;
+  participant: Participant;
 }
 
 const EditForm = (props: EditFormProps) => {

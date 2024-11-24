@@ -5,7 +5,7 @@ import { Theme as customTheme } from '../../theme/custom-theme';
 import { EventContext } from '../../contexts';
 import AlgorithmResponse from '../../store/model/algorithm-response';
 
-interface Props{
+interface Props {
   onAnalyzeFinished: (response: AlgorithmResponse | undefined) => void;
 }
 

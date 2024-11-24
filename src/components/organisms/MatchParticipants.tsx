@@ -45,7 +45,7 @@ const MatchParticipants = () => {
   const source = cancelToken.source();
 
   useEffect(() => {
-    async function AnalyzeAsync () {
+    async function AnalyzeAsync() {
       setIsInProgress(true);
       const result = await analyze(source.token);
       setResponse(result);
@@ -60,8 +60,8 @@ const MatchParticipants = () => {
   }, []);
 
   useEffect(() => {
-    async function ToImageViewsAsync () {
-      async function ToImageView (element: HTMLElement): Promise<ReactNode> {
+    async function ToImageViewsAsync() {
+      async function ToImageView(element: HTMLElement): Promise<ReactNode> {
         if (element === null || element === undefined) {
           return (
             <View>
@@ -98,10 +98,10 @@ const MatchParticipants = () => {
             >
               <Image
                 style={[styles.image,
-                  {
-                    height,
-                    width,
-                  }]}
+                {
+                  height,
+                  width,
+                }]}
                 cache={false}
                 source={asBuffer.toDataURL('image/png', 1.0)}
               />
@@ -141,7 +141,7 @@ const MatchParticipants = () => {
     }
   }, [response]);
 
-  function getName (orderId: number): string | undefined | null {
+  function getName(orderId: number): string | undefined | null {
     const found = participants[orderId];
 
     if (found !== undefined) {
@@ -223,7 +223,7 @@ const MatchParticipants = () => {
                                     content={
                                       response.pairs.flatMap((r) => (
                                         `${getName(r.fromIndex)} is going to buy a gift to ${getName(r.toIndex)}\n`))
-                                      }
+                                    }
                                   />
                                 </div>
                               )}
@@ -235,44 +235,44 @@ const MatchParticipants = () => {
                             <PairingResultsRow />
                           </TableRow>
                           {!response.isError && (
-                          <TableRow
-                            key={3}
-                            sx={{
-                              '&:last-child td, &:last-child th': {
-                                borderBottom: 0,
-                              },
-                            }}
-                          >
-                            <TableCell
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '10px',
-                                justifyContent: 'center',
+                            <TableRow
+                              key={3}
+                              sx={{
+                                '&:last-child td, &:last-child th': {
+                                  borderBottom: 0,
+                                },
                               }}
                             >
-                              <List
-                                ref={ref}
+                              <TableCell
                                 style={{
-                                  fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
-                                  marginTop: '0px',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '10px',
+                                  justifyContent: 'center',
                                 }}
                               >
-                                {response.pairs.flatMap((r, index) => (
-                                  // eslint-disable-next-line no-return-assign
-                                  <PairRow
-                                    pair={r}
-                                    index={index}
-                                    ref={(el) => {
-                                      if (el !== null) {
-                                        (pairsRef.current[index] = el);
-                                      }
-                                    }}
-                                  />
-                                ))}
-                              </List>
-                            </TableCell>
-                          </TableRow>
+                                <List
+                                  ref={ref}
+                                  style={{
+                                    fontSize: context.valueOf() === DeviceType.isDesktopOrLaptop ? '16px' : '12px',
+                                    marginTop: '0px',
+                                  }}
+                                >
+                                  {response.pairs.flatMap((r, index) => (
+                                    // eslint-disable-next-line no-return-assign
+                                    <PairRow
+                                      pair={r}
+                                      index={index}
+                                      ref={(el) => {
+                                        if (el !== null) {
+                                          (pairsRef.current[index] = el);
+                                        }
+                                      }}
+                                    />
+                                  ))}
+                                </List>
+                              </TableCell>
+                            </TableRow>
                           )}
                         </TableBody>
                       </Table>

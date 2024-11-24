@@ -1,10 +1,10 @@
 import { RefObject } from 'react';
 
-function useScroolTo<T extends HTMLElement = HTMLElement, K extends HTMLElement = HTMLElement> (
+function useScroolTo<T extends HTMLElement = HTMLElement, K extends HTMLElement = HTMLElement>(
   targetRef: RefObject<T>,
   containerRef: RefObject<K>,
   direction: 'y' | 'x',
-): ()=> void {
+): () => void {
   const scroolToTarget = () => {
     if (direction === 'y') {
       if (containerRef && containerRef.current) {

@@ -23,7 +23,7 @@ const LanguageSetter = () => {
 
   return (
     <DeviceContextConsumer>
-      { (context) => (
+      {(context) => (
         <>
           <div style={{
             left: context === DeviceType.isDesktopOrLaptop ? 'unset' : '90%',
@@ -84,31 +84,31 @@ const LanguageSetter = () => {
             TransitionComponent={Fade}
             anchorReference="anchorEl"
             anchorPosition={
-            context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? undefined
-              : undefined
-}
+              context.valueOf() === DeviceType.isDesktopOrLaptop
+                ? undefined
+                : undefined
+            }
             anchorOrigin={
-            context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? {
-                vertical: 'bottom',
-                horizontal: 'center',
-              } : {
-                vertical: 'bottom',
-                horizontal: 'center',
-              }
-}
+              context.valueOf() === DeviceType.isDesktopOrLaptop
+                ? {
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                } : {
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }
+            }
             transformOrigin={
-            context.valueOf() === DeviceType.isDesktopOrLaptop
-              ? {
-                vertical: 'top',
-                horizontal: 'center',
-              }
-              : {
-                vertical: 'top',
-                horizontal: 'center',
-              }
-}
+              context.valueOf() === DeviceType.isDesktopOrLaptop
+                ? {
+                  vertical: 'top',
+                  horizontal: 'center',
+                }
+                : {
+                  vertical: 'top',
+                  horizontal: 'center',
+                }
+            }
           >
             <Languages handleClose={handleClose} />
           </Menu>

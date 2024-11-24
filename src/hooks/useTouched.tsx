@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { useState, useEffect, RefObject } from 'react';
 
-function useTouched<T extends HTMLElement = HTMLElement> (
+function useTouched<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
 ): boolean {
   const [value, setValue] = useState<boolean>(false);

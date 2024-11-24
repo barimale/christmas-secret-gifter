@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, useTheme } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
-type LanguagesProps ={
+type LanguagesProps = {
   handleClose: () => void;
 }
 
@@ -21,7 +21,7 @@ export const Languages = (props: LanguagesProps) => {
               <Language language={language} handleClose={props.handleClose} />
             </MenuItem>
             {index !== (i18n.languages.length - 1) && (
-            <Divider orientation="horizontal" />
+              <Divider orientation="horizontal" />
             )}
           </>
         ))}
@@ -29,7 +29,7 @@ export const Languages = (props: LanguagesProps) => {
   );
 };
 
-interface LanguageProps extends LanguagesProps{
+interface LanguageProps extends LanguagesProps {
   language: string;
 }
 

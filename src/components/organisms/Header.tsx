@@ -80,7 +80,7 @@ const TopMenu = () => {
               >
                 {context === DeviceType.isDesktopOrLaptop ? (
                   <StyledLink
-                  // eslint-disable-next-line no-nested-ternary
+                    // eslint-disable-next-line no-nested-ternary
                     className={[(giftEvent === undefined ? 'neonTextInProgress' : 'neonText')].join(' ')}
                     to={MainPath}
                     ref={hoverDesktopRef}
@@ -93,7 +93,7 @@ const TopMenu = () => {
                   </StyledLink>
                 ) : (
                   <StyledLink
-                  // eslint-disable-next-line no-nested-ternary
+                    // eslint-disable-next-line no-nested-ternary
                     className={[(giftEvent === undefined ? 'neonTextInProgress' : 'neonTextMobile')].join(' ')}
                     to={MainPath}
                     ref={hoverRef}

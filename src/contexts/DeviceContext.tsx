@@ -3,9 +3,9 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { isMobile, isBrowser, isTablet } from 'react-device-detect';
 
-export enum DeviceType{
-    isDesktopOrLaptop,
-    isTabletOrMobile
+export enum DeviceType {
+  isDesktopOrLaptop,
+  isTabletOrMobile
 }
 
 const DeviceContext = React.createContext(DeviceType.isDesktopOrLaptop);
@@ -21,9 +21,9 @@ const DeviceContextProvider = (props: any) => {
 
   const isTabletOrMobileDevice = isMobile || (isTablet && isLandscape === false);
 
-  function ObtainType (): DeviceType {
+  function ObtainType(): DeviceType {
     if (isDesktopOrLaptop
-        || (isTablet && isLandscape)) {
+      || (isTablet && isLandscape)) {
       return DeviceType.isDesktopOrLaptop;
     }
 

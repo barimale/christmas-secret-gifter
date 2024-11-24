@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { useState, useEffect, RefObject } from 'react';
 
-function useHover<T extends HTMLElement = HTMLElement> (
+function useHover<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
 ): boolean {
   const [value, setValue] = useState<boolean>(false);

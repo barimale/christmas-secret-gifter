@@ -19,7 +19,7 @@ const NotifyParticipants = () => {
   const [isCaptchaAgreed, setIsCaptchaAgreed] = useState<boolean>(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  let captcha : ReCAPTCHA | null = null;
+  let captcha: ReCAPTCHA | null = null;
 
   useEffect(() => {
     if (captcha !== null) {
@@ -73,12 +73,12 @@ const NotifyParticipants = () => {
                     lineHeight: context.valueOf() === DeviceType.isDesktopOrLaptop ? '1.5' : '1.5',
                   }}
                   >
-                  By accepting CAPTCHA You agree to send emails to all participants and have a guarantee that mail is not classified as SPAM.
+                    By accepting CAPTCHA You agree to send emails to all participants and have a guarantee that mail is not classified as SPAM.
                   </p>
                 </div>
               </div>
               <ReCAPTCHA
-                ref={(el:any) => { captcha = el; }}
+                ref={(el: any) => { captcha = el; }}
                 hl="en-GB"
                 size={context.valueOf() === DeviceType.isDesktopOrLaptop ? 'normal' : 'compact'}
                 sitekey="6Ld1vkceAAAAAImBNnWg0TTYf80V3ly9NPs4gth8"
@@ -100,7 +100,7 @@ const NotifyParticipants = () => {
             <TableContainer
               component={Paper}
               sx={{
-              // maxHeight,
+                // maxHeight,
                 height: 'auto',
                 marginBottom: '20px',
               }}
@@ -117,33 +117,33 @@ const NotifyParticipants = () => {
                       style={{
                       }}
                     >
-ID
+                      ID
                     </TableCell>
                     <TableCell style={{
                     }}
                     >
-GIVER
+                      GIVER
                     </TableCell>
                     <TableCell
                       align="left"
                       style={{
                       }}
                     >
-E-MAIL
+                      E-MAIL
                     </TableCell>
                     <TableCell
                       align="right"
                       style={{
                       }}
                     >
-GIFTED
+                      GIFTED
                     </TableCell>
                     <TableCell
                       align="right"
                       style={{
                       }}
                     >
-STATUS
+                      STATUS
                     </TableCell>
                   </TableRow>
                 </TableHead>

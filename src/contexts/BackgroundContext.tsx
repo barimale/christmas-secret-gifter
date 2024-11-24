@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 
 // eslint-disable-next-line no-shadow
-export enum BackgroundColorMode{
-    // eslint-disable-next-line no-unused-vars
-    normal,
-    // eslint-disable-next-line no-unused-vars
-    error
+export enum BackgroundColorMode {
+  // eslint-disable-next-line no-unused-vars
+  normal,
+  // eslint-disable-next-line no-unused-vars
+  error
 }
 
 type BackgroundManager = {

@@ -15,7 +15,7 @@ const ParticipantsGrid = () => {
       monitorHeight
       monitorWidth
     >
-      { (size) => (
+      {(size) => (
         <DeviceContextConsumer>
           {(context) => (
             <div

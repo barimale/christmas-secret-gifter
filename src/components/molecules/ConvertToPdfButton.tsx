@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 const MyDocument = (props: any) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      {props.children?.map((child:any, index: number) => (
+      {props.children?.map((child: any, index: number) => (
         <View key={`view${index}`}>
           {child.props.children}
         </View>
@@ -53,7 +53,7 @@ export const ConvertToPdfButton = (props: any) => {
 
   return (
     <DeviceContextConsumer>
-      { (context) => (
+      {(context) => (
         <IconButton
           onClick={() => {
             setIsGenerating(true);

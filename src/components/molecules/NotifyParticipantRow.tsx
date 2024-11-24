@@ -28,7 +28,7 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
     status: 'pending',
   });
 
-  async function SendAsync () {
+  async function SendAsync() {
     const detail = sendMailDetails
       .find((p: ToGifterParams) => p.participantId === props.participant.id);
     if (detail !== undefined) {
@@ -76,16 +76,16 @@ export const NotifyParticipantRow = (props: NotifyParticipantRowProps) => {
           }}
           >
             {mailStatus.status === 'inprogress' && (
-            <SyncProblemIcon />
+              <SyncProblemIcon />
             )}
             {mailStatus.status === 'success' && (
-            <ThumbUpAltIcon />
+              <ThumbUpAltIcon />
             )}
             {mailStatus.status === 'error' && (
-            <ReportIcon />
+              <ReportIcon />
             )}
             {mailStatus.status === 'pending' && (
-            <PendingActionsIcon />
+              <PendingActionsIcon />
             )}
           </IconButton>
         </Tooltip>

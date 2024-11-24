@@ -40,7 +40,7 @@ class CopyToClipboard extends React.Component<Props, OwnState> {
     });
   };
 
-  public render () {
+  public render() {
     return (
       <Tooltip
         open={this.state.showTooltip}

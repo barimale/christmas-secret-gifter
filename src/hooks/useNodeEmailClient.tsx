@@ -7,7 +7,7 @@ const ivJson = '{"type":"Buffer","data":[77,177]}';
 const key: Buffer = JSON.parse(keyJson);
 const iv: Buffer = JSON.parse(ivJson);
 
-function encrypt (text: string) {
+function encrypt(text: string) {
   const cipher = crypto.createCipheriv(algorithm, Buffer.from(key), Buffer.from(iv));
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
@@ -19,7 +19,7 @@ export const useNodeEmailClient = () => {
   axios.defaults.timeout = 50000;
 
   const sendByNode = async (address: string, title: string, message: string, captcha: string)
-  : Promise<string> => {
+    : Promise<string> => {
     let attempts = 5;
     let result = '';
 
@@ -37,7 +37,7 @@ export const useNodeEmailClient = () => {
   };
 
   const sendByNodeOnce = async (address: string, title: string, message: string, captcha: string)
-  : Promise<string> => {
+    : Promise<string> => {
     const url = 'https://cmailer.net/send-email';
     try {
       const params = new URLSearchParams();

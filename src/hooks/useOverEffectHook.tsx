@@ -5,7 +5,7 @@ import { DeviceContext, DeviceType } from '../contexts/DeviceContext';
 import useHover from './useHover';
 import useTouched from './useTouched';
 
-function useOverEffectHook<T extends HTMLElement = HTMLElement> (
+function useOverEffectHook<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
 ): string {
   const context = useContext<DeviceType>(DeviceContext);

@@ -14,8 +14,8 @@ import Participant from '../../store/model/participant';
 import EditParticipantModal from '../organisms/EditParticipantModal';
 import { DeleteActionComponent } from './DeleteActionComponent';
 
-interface Props{
-    maxHeight: number;
+interface Props {
+  maxHeight: number;
 }
 
 const Participants = ({ maxHeight }: Props) => {

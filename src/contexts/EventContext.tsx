@@ -8,36 +8,36 @@ import AlgorithmResponse from '../store/model/algorithm-response';
 import { ToGifterParams } from '../hooks/useEmailClient';
 import Pair from '../store/model/pair';
 
-export interface MailStatus extends ToGifterParams{
+export interface MailStatus extends ToGifterParams {
   status: 'success' | 'error'
 }
 
 type EventManager = {
-    startEvent: (cancellationToken?
-        : CancelToken) => Promise<GiftEvent | undefined>;
-    restartEvent: (cancellationToken?
-        : CancelToken) => void;
-    addParticipant: (participant: Participant, cancellationToken?
-      : CancelToken) => void;
-    removeParticipant: (participant: Participant, cancellationToken?
-      : CancelToken) => void;
-    editParticipant: (participant: Participant, cancellationToken?
-      : CancelToken) => void;
-    checkNameExistance: (name: string, cancellationToken?
-        : CancelToken) => Promise<boolean>;
-    checkEmailExistance: (email: string, cancellationToken?
-      : CancelToken) => Promise<boolean>;
-    checkNameExistanceEditMode: (participantId: string, name: string, cancellationToken?
-        : CancelToken) => Promise<boolean>;
-    checkEmailExistanceEditMode: (participantId: string, email: string, cancellationToken?
-      : CancelToken) => Promise<boolean>;
-    analyze: (cancellationToken?
-        : CancelToken) => Promise<AlgorithmResponse | undefined>;
-    cleanUp: () => void;
-    giftEvent: GiftEvent | undefined;
-    analysisResult: AlgorithmResponse | undefined;
-    participants: Participant[];
-    sendMailDetails: ToGifterParams[];
+  startEvent: (cancellationToken?
+    : CancelToken) => Promise<GiftEvent | undefined>;
+  restartEvent: (cancellationToken?
+    : CancelToken) => void;
+  addParticipant: (participant: Participant, cancellationToken?
+    : CancelToken) => void;
+  removeParticipant: (participant: Participant, cancellationToken?
+    : CancelToken) => void;
+  editParticipant: (participant: Participant, cancellationToken?
+    : CancelToken) => void;
+  checkNameExistance: (name: string, cancellationToken?
+    : CancelToken) => Promise<boolean>;
+  checkEmailExistance: (email: string, cancellationToken?
+    : CancelToken) => Promise<boolean>;
+  checkNameExistanceEditMode: (participantId: string, name: string, cancellationToken?
+    : CancelToken) => Promise<boolean>;
+  checkEmailExistanceEditMode: (participantId: string, email: string, cancellationToken?
+    : CancelToken) => Promise<boolean>;
+  analyze: (cancellationToken?
+    : CancelToken) => Promise<AlgorithmResponse | undefined>;
+  cleanUp: () => void;
+  giftEvent: GiftEvent | undefined;
+  analysisResult: AlgorithmResponse | undefined;
+  participants: Participant[];
+  sendMailDetails: ToGifterParams[];
 };
 
 const EventContext = React.createContext<EventManager>({
@@ -51,7 +51,7 @@ const EventContextProvider = (props: any) => {
   const [analysisResult, setAnalysisResult] = useState<AlgorithmResponse | undefined>(undefined);
   const [sendMailDetails, setSendMailDetails] = useState<ToGifterParams[]>([]);
 
-  function getName (index: number): string | undefined | null {
+  function getName(index: number): string | undefined | null {
     const found = participants[index];
     if (found !== undefined) {
       return found.name;
@@ -59,7 +59,7 @@ const EventContextProvider = (props: any) => {
     return undefined;
   }
 
-  function getEmail (index: number): string | undefined | null {
+  function getEmail(index: number): string | undefined | null {
     const found = participants[index];
     if (found !== undefined) {
       return found.email;
@@ -67,7 +67,7 @@ const EventContextProvider = (props: any) => {
     return undefined;
   }
 
-  function getParticipantId (index: number): string | undefined | null {
+  function getParticipantId(index: number): string | undefined | null {
     const found = participants[index];
     if (found !== undefined) {
       return found.id;
@@ -75,7 +75,7 @@ const EventContextProvider = (props: any) => {
     return undefined;
   }
 
-  function MapToMailDetails (): ToGifterParams[] {
+  function MapToMailDetails(): ToGifterParams[] {
     const details = analysisResult?.pairs.flatMap((p: Pair) => {
       const detail = {
         participantId: getParticipantId(p.fromIndex),
@@ -103,51 +103,51 @@ const EventContextProvider = (props: any) => {
   const eventContext: EventManager = ({
     // eslint-disable-next-line no-return-await
     startEvent: async (cancellationToken?
-    // eslint-disable-next-line no-return-await
+      // eslint-disable-next-line no-return-await
       : CancelToken) => await axios.post(`${backendUrl}/api/v1/events/create`, {
-    }, {
-      cancelToken: cancellationToken,
-      headers: {
-      },
-    })
-      .then((response: any) => {
-        if (response.status === 200) {
-          const { data } = response;
-          setEvent(data ?? undefined);
-        }
-
-        return Promise.resolve(event);
+      }, {
+        cancelToken: cancellationToken,
+        headers: {
+        },
       })
-      .catch(() => {
-        setEvent(undefined);
-        return Promise.reject(event);
-      }),
+        .then((response: any) => {
+          if (response.status === 200) {
+            const { data } = response;
+            setEvent(data ?? undefined);
+          }
+
+          return Promise.resolve(event);
+        })
+        .catch(() => {
+          setEvent(undefined);
+          return Promise.reject(event);
+        }),
     // eslint-disable-next-line no-return-await
     analyze: async (cancellationToken?
-    // eslint-disable-next-line no-return-await
-        : CancelToken) => await axios.post(`${backendUrl}/api/v1/events/${event?.id}/execute`, {
-    }, {
-      cancelToken: cancellationToken,
-      headers: {
-      },
-    })
-      .then((response: any) => {
-        if (response.status === 200) {
-          const { data } = response;
-          const mapped = data as AlgorithmResponse;
-          setAnalysisResult(mapped);
-          return Promise.resolve(mapped);
-        }
-
-        setAnalysisResult(undefined);
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject(undefined);
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.post(`${backendUrl}/api/v1/events/${event?.id}/execute`, {
+      }, {
+        cancelToken: cancellationToken,
+        headers: {
+        },
       })
-      .catch(() => {
-        setAnalysisResult(undefined);
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject(undefined);
-      }),
+        .then((response: any) => {
+          if (response.status === 200) {
+            const { data } = response;
+            const mapped = data as AlgorithmResponse;
+            setAnalysisResult(mapped);
+            return Promise.resolve(mapped);
+          }
+
+          setAnalysisResult(undefined);
+          // eslint-disable-next-line prefer-promise-reject-errors
+          return Promise.reject(undefined);
+        })
+        .catch(() => {
+          setAnalysisResult(undefined);
+          // eslint-disable-next-line prefer-promise-reject-errors
+          return Promise.reject(undefined);
+        }),
     analysisResult,
     sendMailDetails,
     cleanUp: () => {
@@ -157,179 +157,179 @@ const EventContextProvider = (props: any) => {
       setSendMailDetails([]);
     },
     addParticipant: async (participant: Participant, cancellationToken?
-    // eslint-disable-next-line no-return-await
-        : CancelToken) => await axios.post(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/register`,
-      {
-        name: participant.name,
-        email: participant.email,
-        orderId: participant.orderId,
-        eventId: event?.id,
-        id: Guid.create().toString(),
-        excludedOrderIds: participant.excludedOrderIds,
-      },
-      {
-        cancelToken: cancellationToken,
-        headers: {
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.post(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/register`,
+        {
+          name: participant.name,
+          email: participant.email,
+          orderId: participant.orderId,
+          eventId: event?.id,
+          id: Guid.create().toString(),
+          excludedOrderIds: participant.excludedOrderIds,
         },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          const result = await axios.get(
-            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
-            {
-              cancelToken: cancellationToken,
-              headers: {
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
+        },
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            const result = await axios.get(
+              `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
+              {
+                cancelToken: cancellationToken,
+                headers: {
+                },
               },
-            },
-          );
-          if (result.status === 200) {
-            const { data } = result;
+            );
+            if (result.status === 200) {
+              const { data } = result;
 
-            setParticipants(data);
+              setParticipants(data);
+            }
+
+            return Promise.resolve(participants);
           }
-
-          return Promise.resolve(participants);
-        }
-        return Promise.reject(participants);
-      })
-      .catch(() => Promise.reject(participants)),
+          return Promise.reject(participants);
+        })
+        .catch(() => Promise.reject(participants)),
     editParticipant: async (participant: Participant, cancellationToken?
-    // eslint-disable-next-line no-return-await
-        : CancelToken) => await axios.put(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
-      participant,
-      {
-        cancelToken: cancellationToken,
-        headers: {
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.put(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
+        participant,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
         },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          const result = await axios.get(
-            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
-            {
-              cancelToken: cancellationToken,
-              headers: {
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            const result = await axios.get(
+              `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
+              {
+                cancelToken: cancellationToken,
+                headers: {
+                },
               },
-            },
-          );
-          if (result.status === 200) {
-            const { data } = result;
+            );
+            if (result.status === 200) {
+              const { data } = result;
 
-            setParticipants(data);
+              setParticipants(data);
+            }
+
+            return Promise.resolve(participants);
           }
-
-          return Promise.resolve(participants);
-        }
-        return Promise.reject(participants);
-      })
-      .catch(() => Promise.reject(participants)),
+          return Promise.reject(participants);
+        })
+        .catch(() => Promise.reject(participants)),
     checkEmailExistance: async (email: string, cancellationToken?
-    // eslint-disable-next-line no-return-await
-            : CancelToken) => await axios.get(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/check-email-existance/${email}`,
-      {
-        cancelToken: cancellationToken,
-        headers: {
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.get(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/check-email-existance/${email}`,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
         },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          return Promise.resolve(response.data === false);
-        }
-
-        return Promise.resolve(false);
-      })
-      .catch(() => Promise.resolve(false)),
-    checkNameExistance: async (name: string, cancellationToken?
-    // eslint-disable-next-line no-return-await
-                : CancelToken) => await axios.get(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/check-name-existance/${name}`,
-      {
-        cancelToken: cancellationToken,
-        headers: {
-        },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          return Promise.resolve(response.data === false);
-        }
-
-        return Promise.resolve(false);
-      })
-      .catch(() => Promise.resolve(false)),
-    checkEmailExistanceEditMode: async (participantId: string, email: string, cancellationToken?
-    // eslint-disable-next-line no-return-await
-                : CancelToken) => await axios.get(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-email-existance/${email}`,
-      {
-        cancelToken: cancellationToken,
-        headers: {
-        },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          return Promise.resolve(response.data === false);
-        }
-
-        return Promise.resolve(false);
-      })
-      .catch(() => Promise.resolve(false)),
-    checkNameExistanceEditMode: async (participantId: string, name: string, cancellationToken?
-    // eslint-disable-next-line no-return-await
-                    : CancelToken) => await axios.get(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-name-existance/${name}`,
-      {
-        cancelToken: cancellationToken,
-        headers: {
-        },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          return Promise.resolve(response.data === false);
-        }
-
-        return Promise.resolve(false);
-      })
-      .catch(() => Promise.resolve(false)),
-    removeParticipant: async (participant: Participant, cancellationToken?
-    // eslint-disable-next-line no-return-await
-        : CancelToken) => await axios.delete(
-      `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
-      {
-        cancelToken: cancellationToken,
-        headers: {
-        },
-      },
-    )
-      .then(async (response: any) => {
-        if (response.status === 200) {
-          const result = await axios.get(
-            `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
-            {
-              cancelToken: cancellationToken,
-              headers: {
-              },
-            },
-          );
-          if (result.status === 200) {
-            const { data } = result;
-
-            setParticipants(data);
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            return Promise.resolve(response.data === false);
           }
 
-          return Promise.resolve(participants);
-        }
-        return Promise.reject(participants);
-      })
-      .catch(() => Promise.reject(participants)),
+          return Promise.resolve(false);
+        })
+        .catch(() => Promise.resolve(false)),
+    checkNameExistance: async (name: string, cancellationToken?
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.get(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/check-name-existance/${name}`,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
+        },
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            return Promise.resolve(response.data === false);
+          }
+
+          return Promise.resolve(false);
+        })
+        .catch(() => Promise.resolve(false)),
+    checkEmailExistanceEditMode: async (participantId: string, email: string, cancellationToken?
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.get(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-email-existance/${email}`,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
+        },
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            return Promise.resolve(response.data === false);
+          }
+
+          return Promise.resolve(false);
+        })
+        .catch(() => Promise.resolve(false)),
+    checkNameExistanceEditMode: async (participantId: string, name: string, cancellationToken?
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.get(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/${participantId}/check-name-existance/${name}`,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
+        },
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            return Promise.resolve(response.data === false);
+          }
+
+          return Promise.resolve(false);
+        })
+        .catch(() => Promise.resolve(false)),
+    removeParticipant: async (participant: Participant, cancellationToken?
+      // eslint-disable-next-line no-return-await
+      : CancelToken) => await axios.delete(
+        `${backendUrl}/api/v1/events/${event?.id}/participants/${participant.id}`,
+        {
+          cancelToken: cancellationToken,
+          headers: {
+          },
+        },
+      )
+        .then(async (response: any) => {
+          if (response.status === 200) {
+            const result = await axios.get(
+              `${backendUrl}/api/v1/events/${event?.id}/participants/all`,
+              {
+                cancelToken: cancellationToken,
+                headers: {
+                },
+              },
+            );
+            if (result.status === 200) {
+              const { data } = result;
+
+              setParticipants(data);
+            }
+
+            return Promise.resolve(participants);
+          }
+          return Promise.reject(participants);
+        })
+        .catch(() => Promise.reject(participants)),
     giftEvent: event,
     participants,
     restartEvent: () => {

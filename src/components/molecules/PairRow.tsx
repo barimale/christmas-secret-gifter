@@ -10,7 +10,7 @@ import Pair from '../../store/model/pair';
 // import { RGBToRGBA } from '../../utilities/customTheme';
 import { Theme } from '../../theme/custom-theme';
 
-interface PairRowProps{
+interface PairRowProps {
   pair: Pair;
   index: number;
 }
@@ -20,7 +20,7 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
     const { pair, index } = props;
     const { participants } = useContext(EventContext);
 
-    function getName (orderId: number): string | undefined | null {
+    function getName(orderId: number): string | undefined | null {
       const found = participants[orderId];
 
       if (found !== undefined) {
@@ -29,7 +29,7 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
       return undefined;
     }
 
-    function isLast (orderId: number): boolean {
+    function isLast(orderId: number): boolean {
       const found = participants[orderId];
       const last = participants[participants.length - 1];
 
@@ -40,7 +40,7 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
       return false;
     }
 
-    function stringToColor (input: string) {
+    function stringToColor(input: string) {
       let hash = 0;
       let i;
 
@@ -105,7 +105,7 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
                   >
                     {gifterName}
                   </Typography>
-              )}
+                )}
               />
               <div style={{
                 display: 'flex',
@@ -175,17 +175,17 @@ export const PairRow = React.forwardRef<HTMLLIElement, PairRowProps>(
                   >
                     {getName(pair.toIndex)}
                   </Typography>
-              )}
+                )}
               />
             </ListItem>
             {!isLast(pair.fromIndex) && (
-            <Divider
-              variant="inset"
-              component="li"
-              style={{
-                borderColor: 'transparent',
-              }}
-            />
+              <Divider
+                variant="inset"
+                component="li"
+                style={{
+                  borderColor: 'transparent',
+                }}
+              />
             )}
           </>
         )}

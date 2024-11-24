@@ -6,8 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import { DeviceContextConsumer, DeviceType } from '../../contexts';
 
 type ModalTitleProps = {
-    title: string;
-    close?: () => void;
+  title: string;
+  close?: () => void;
 }
 
 export const ModalTitle = (props: ModalTitleProps) => {
@@ -49,19 +49,19 @@ export const ModalTitle = (props: ModalTitleProps) => {
             {props.title}
           </Typography>
           {props.close !== undefined && (
-          <IconButton
-            className="pointerOverEffect"
-            onClick={async () => {
-              if (props.close !== undefined) {
-                props.close();
-              }
-            }}
-          >
-            <ClearIcon style={{
-              color: 'white',
-            }}
-            />
-          </IconButton>
+            <IconButton
+              className="pointerOverEffect"
+              onClick={async () => {
+                if (props.close !== undefined) {
+                  props.close();
+                }
+              }}
+            >
+              <ClearIcon style={{
+                color: 'white',
+              }}
+              />
+            </IconButton>
           )}
         </div>
       )}

@@ -33,7 +33,7 @@ export const MainScreen = function () {
     const cancelToken = axios.CancelToken;
     const source = cancelToken.source();
 
-    async function CreateEventAsync () {
+    async function CreateEventAsync() {
       await startEvent(source.token);
     }
 

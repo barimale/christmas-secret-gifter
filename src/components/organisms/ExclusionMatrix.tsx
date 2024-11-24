@@ -31,17 +31,17 @@ const GoldCheckbox = withStyles({
 })(Checkbox);
 
 interface ParticipantExclusion {
-    forOrderId: number;
-    orderId: number;
-    isChecked: boolean;
+  forOrderId: number;
+  orderId: number;
+  isChecked: boolean;
 }
 
 const ExclusionMatrix = () => {
   const { participants, editParticipant } = useContext(EventContext);
   const { setBackgroundMode } = useContext(BackgroundContext);
   const [exclusions, setExclusions] = useState<ParticipantExclusion[]>(
-    participants.flatMap((p:Participant) => (
-      participants.flatMap((pp:Participant) => ({
+    participants.flatMap((p: Participant) => (
+      participants.flatMap((pp: Participant) => ({
         forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
       } as ParticipantExclusion)))),
   );
@@ -52,14 +52,14 @@ const ExclusionMatrix = () => {
 
   useEffect(() => {
     setExclusions(
-      participants.flatMap((p:Participant) => (
-        participants.flatMap((pp:Participant) => ({
+      participants.flatMap((p: Participant) => (
+        participants.flatMap((pp: Participant) => ({
           forOrderId: p.orderId, orderId: pp.orderId, isChecked: p.excludedOrderIds.includes(pp.orderId),
         } as ParticipantExclusion)))),
     );
   }, [participants]);
 
-  async function handleChange (forOrderId: number, orderId: number, checked: boolean) {
+  async function handleChange(forOrderId: number, orderId: number, checked: boolean) {
     const newExclusions = Array.from(exclusions);
     const found = newExclusions?.find((s) => s.forOrderId === forOrderId && s.orderId === orderId);
     if (found !== undefined) {
@@ -111,7 +111,7 @@ const ExclusionMatrix = () => {
                     zIndex: 10,
                   }}
                   />
-                  {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p : Participant) => (
+                  {participants.sort((a: Participant, b: Participant) => a.orderId - b.orderId).flatMap((p: Participant) => (
                     <TableCell
                       align="center"
                       style={{

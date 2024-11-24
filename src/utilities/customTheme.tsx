@@ -10,7 +10,7 @@ export const cacheImages = async (srcArray: Array<string>) => {
   await Promise.all(promises);
 };
 
-export function RGBToHex (rgb: any) {
+export function RGBToHex(rgb: any) {
   const sep = rgb.indexOf(',') > -1 ? ',' : ' ';
   const resultedRgb = rgb.substr(4).split(')')[0].split(sep);
 
@@ -25,7 +25,7 @@ export function RGBToHex (rgb: any) {
   return `#${r}${g}${b}`;
 }
 
-export function RGBToRGBA (rgb: any, alpha: any) {
+export function RGBToRGBA(rgb: any, alpha: any) {
   const sep = rgb.indexOf(',') > -1 ? ',' : ' ';
   const resultedRgb = rgb.substr(4).split(')')[0].split(sep);
 

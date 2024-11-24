@@ -37,17 +37,17 @@ class SnowMaker {
 
   private maxFlake: number = this.isMobile ? 130 : 600;
 
-  private animFrameId: number|null = 0;
+  private animFrameId: number | null = 0;
 
   private snowflakeSizeMax: number = this.isMobile ? 1 : 2;
 
-  private constructor () {
+  private constructor() {
     this.initCanvas();
     this.generateFlakes(randomInt(this.minFlake, this.maxFlake));
     this.attachEvents();
   }
 
-  public static getInstance (): SnowMaker {
+  public static getInstance(): SnowMaker {
     if (!SnowMaker.instance) {
       SnowMaker.instance = new SnowMaker();
     }
@@ -56,7 +56,7 @@ class SnowMaker {
   }
 
   /** Start the animation. */
-  start () {
+  start() {
     if (!this.animFrameId) {
       this.setCanvasSize();
       this.requestDraw();
@@ -64,7 +64,7 @@ class SnowMaker {
   }
 
   /** Pause the animation. */
-  pause () {
+  pause() {
     if (this.animFrameId) {
       window.cancelAnimationFrame(this.animFrameId);
       this.animFrameId = null;
@@ -72,13 +72,13 @@ class SnowMaker {
   }
 
   /** Stop the animation (pause + clear). */
-  stop () {
+  stop() {
     this.pause();
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   /** Initialize the canvas & its styles. */
-  private initCanvas () {
+  private initCanvas() {
     this.canvas.className = 'snow';
     this.canvas.style.position = 'fixed';
     this.canvas.style.top = '0';
@@ -91,18 +91,18 @@ class SnowMaker {
   }
 
   /** Set the canvase size. */
-  private setCanvasSize () {
+  private setCanvasSize() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
   }
 
   /** Attach any events we're interested in. */
-  private attachEvents () {
+  private attachEvents() {
     window.addEventListener('resize', () => { this.setCanvasSize(); });
   }
 
   /** Generate our flakes. */
-  private generateFlakes (numOfFlakes: number) {
+  private generateFlakes(numOfFlakes: number) {
     this.flakes.length = 0;
     for (let i = 0; i < numOfFlakes; i++) {
       this.flakes.push({
@@ -116,12 +116,12 @@ class SnowMaker {
   }
 
   /** Request a draw on the next animation frame. */
-  private requestDraw () {
+  private requestDraw() {
     this.animFrameId = window.requestAnimationFrame(() => { this.draw(); });
   }
 
   /** The meat, drawing our snowflakes on each frame. */
-  private draw () {
+  private draw() {
     // Increment our angle. We use trigonometry to gently sway
     // our snowflakes back and forth
     this.angle += 0.002;
@@ -152,11 +152,11 @@ class SnowMaker {
 }
 
 /** Helper function returning a random decimal between min and max. */
-function random (min: number, max: number) {
+function random(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 /** Helper functions to generate a random int inclusive of min and max. */
-function randomInt (min: number, max: number) {
+function randomInt(min: number, max: number) {
   return (Math.floor(Math.random() * (max - min + 1)) + min);
 }
 

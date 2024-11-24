@@ -5,7 +5,7 @@ import { CircularProgressWithLogo } from './CircularProgressWithLogo';
 import { CircularProgressWithLogoWrapper } from './CircularProgressWithLogoWrapper';
 import { Theme } from '../../theme/custom-theme';
 
-interface Props{
+interface Props {
   progress: number;
 }
 
