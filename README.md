@@ -7,7 +7,6 @@ Organize an event, invite members, ask for their exclusions and match them as ev
 
 # Constraints
  - minimal amout of participants: 2
- - maximal amount: 128
 
 # Prereqs
 - NodeJS 14.x
