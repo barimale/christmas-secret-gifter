@@ -6,4 +6,4 @@ Organize an event, invite members, ask for their exclusions and match them as ev
 - Participants
 
 # Prereqs
-- NodeJS 14.x
+- NodeJS 14.20.0
